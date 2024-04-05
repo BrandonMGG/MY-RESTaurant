@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@keyframes backgroundAnim {
+    0%{
+      background-position: 0% 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%
+    {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes neon {
+    from {
+      box-shadow: 0 0 5px #00FFFF, 0 0 10px #8A2BE2, 0 0 15px #00FF00;
+    }
+    to {
+      box-shadow: 0 0 15px #00FFFF, 0 0 20px #8A2BE2, 0 0 25px #00FF00;
+    }
+  }
+  
