@@ -10,7 +10,9 @@ import { ReservaComponent } from './reserva/reserva.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import {MatNativeDateModule } from '@angular/material/core';
 
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +26,9 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
     MatToolbarModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,MatCardModule,MatNativeDateModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

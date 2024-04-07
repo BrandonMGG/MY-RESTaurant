@@ -1,4 +1,4 @@
-.container{
+.container {
     border: none;
     width: 100%;
     padding: 1px;
@@ -6,3 +6,72 @@
     border-radius: 5px;
     background-color: transparent;
 }
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.reser-label {
+    font-weight: bold;
+    width: 150px;
+    flex-shrink: 0;
+}
+.reser-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+button {
+    background-color: #4CAF50;
+    /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    /* Indicate clickable behavior */
+    margin-top: 10px;
+    /* Adjust margin based on placement */
+}
+
+button:hover {
+    background-color: #3e8e41;
+    /* Darker green on hover */
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.menu-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer; /* Indicate clickable behavior */
+    margin-top: 10px; /* Adjust margin based on placement */
+  }
+  
+  .menu-button:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+  }
+  .menu-row-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .demo-inline-calendar-card {
+    width: 300px;
+  }

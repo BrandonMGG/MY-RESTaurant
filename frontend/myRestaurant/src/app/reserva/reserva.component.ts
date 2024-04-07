@@ -14,6 +14,7 @@ export class ReservaComponent implements OnInit {
   }
   selectedDate: Date;
   minDate = new Date(); // Today's date as minimum selectable date
+  selected: Date | null;
 
   onDateChange(event : Event) {
    // this.selectedDate = new Date(dateStr);
