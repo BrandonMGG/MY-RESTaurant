@@ -1,0 +1,8 @@
+<div class="container">
+<form class="container" #reservationForm="ngForm">
+    <label for="reservationDate">Select Date:</label>
+    <input type="date" id="reservationDate" name="reservationDate" (change)="onDateChange($event)">
+    <br>
+    <button type="submit" (click)="makeReservation()">Make Reservation</button>
+</form>
+</div>
