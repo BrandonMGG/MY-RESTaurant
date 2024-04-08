@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { ReservaService } from './reserva.service';
+
+export interface Reserva{
+  fecha:string;
+  horas_disponibles: string[];
+  mensaje:string;
+}
 
 @Component({
   selector: 'app-reserva',
@@ -8,7 +15,9 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 })
 export class ReservaComponent implements OnInit {
 
-  constructor() { }
+  reserva:Reserva;
+
+  constructor(private reservaService:ReservaService) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +35,15 @@ export class ReservaComponent implements OnInit {
     console.log("Reservation requested for:", this.selectedDate);
     this.reservation= true;
     // You can make an API call, show a confirmation message etc. here
+    this.getReserva();
   }
 
+  getReserva(){
+    this.reservaService.getReserva().subscribe((data) => {
+      this.reserva =data.reserva;
+    });
+    console.log(this.reserva);
+  }
 
 
 }

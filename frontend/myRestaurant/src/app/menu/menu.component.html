@@ -44,10 +44,14 @@
                 <input  class="menu-select" #feedback type="text">
             </div>
             <div class="menu-row-button">
-                <button class="menu-button" type="submit" (click)="getRecomendation()">
+                <button class="menu-button" type="submit" (click)="postFeedback()">
                     Enviar
                 </button>
             </div>
+        </div>
+        <div class="recom-container">
+            <p  *ngIf="feedback">
+                {{feedback?.mensaje}}</p>
         </div>
     </div>
 </div>

@@ -73,14 +73,17 @@ export class MenuComponent implements OnInit {
     });
     this.updateMenu();
   }
+  postFeedback(){
+    this.menuService.postFeedback().subscribe((data) => {
+      this.feedback = data;
+    });
 
-  disableLeftOver() {
-  
   }
+  disableLeftOver() {
+  }
+
   onPlatoPrincipalChange(event: Event): void {
-
     console.log(this.formulario.value.platoPrincipal);
-
   }
 
 }

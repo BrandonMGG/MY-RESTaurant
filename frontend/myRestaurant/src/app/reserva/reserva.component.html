@@ -2,7 +2,7 @@
     <h1>Reservaciones</h1>
     <div class="reser-row">
         <label class="menu-label">Consultar Disponibilidad</label>
-        <input  class="menu-select" #feedback type="text">
+        <input class="menu-select" #feedback type="text">
     </div>
     <div class="reser-row">
         <mat-card class="demo-inline-calendar-card">
@@ -12,11 +12,12 @@
     <div class="menu-row-button">
         <button class="menu-button" type="submit" (click)="makeReservation()">Consultar Reserva</button>
     </div>
-    <div *ngIf="reservation">
-        <div class="menu-row-button">
-            <button class="menu-button" type="submit" >
-                Enviar
-            </button>
-        </div>
+    <div class="recom-container" *ngIf="reserva">
+        <p>Fecha: {{reserva.fecha}}</p>
+        <p>{{reserva.mensaje}}</p>
+        <p>Horas Disponibles</p>
+        <mat-list role="list">
+            <mat-list-item *ngFor="let hora of reserva.horas_disponibles">{{hora}}</mat-list-item>
+        </mat-list>
     </div>
 </div>

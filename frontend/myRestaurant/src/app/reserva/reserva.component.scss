@@ -90,3 +90,17 @@ button {
     font-size: 16px;
     appearance: none;
   }
+  .recom-container {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .recom-container p {
+    flex-grow: 1;
+    margin:10px;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #f2f2f2, 0px 1px 3px #bdbdbd;
+    border-radius: 5px;
+  }
