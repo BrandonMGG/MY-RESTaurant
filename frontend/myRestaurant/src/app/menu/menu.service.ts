@@ -8,7 +8,7 @@ export class MenuService {
 
   constructor(private http:HttpClient) { }
   getMenu(){
-    return this.http.get<any>('https://us-central1-proyect2soa.cloudfunctions.net/backend')
+    return this.http.get<any>('/api/backend')
   }
   getRecomendation(){
     return this.http.get<any>('/assets/recomendacion.json')

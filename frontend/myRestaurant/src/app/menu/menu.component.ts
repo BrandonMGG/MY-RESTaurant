@@ -50,6 +50,10 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.updateMenu();
+  }
+
+  updateMenu(){
     this.menuService.getMenu().subscribe((data) => {
       this.platosPrincipales = data.platosPrincipales;
       this.postres = data.postres;
@@ -67,9 +71,11 @@ export class MenuComponent implements OnInit {
     this.menuService.getRecomendation().subscribe((data) => {
       this.recomendation = data;
     });
+    this.updateMenu();
   }
 
   disableLeftOver() {
+  
   }
   onPlatoPrincipalChange(event: Event): void {
 

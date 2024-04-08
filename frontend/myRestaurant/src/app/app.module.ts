@@ -14,7 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientJsonpModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule, MatCardModule, MatNativeDateModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,HttpClientJsonpModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
