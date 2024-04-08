@@ -75,3 +75,18 @@ button {
   .demo-inline-calendar-card {
     width: 300px;
   }
+
+  .menu-label {
+    font-weight: bold;
+    width: 150px;
+    flex-shrink: 0;
+  }
+  
+  .menu-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    appearance: none;
+  }

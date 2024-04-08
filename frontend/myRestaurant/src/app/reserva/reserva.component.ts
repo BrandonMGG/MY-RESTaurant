@@ -15,6 +15,7 @@ export class ReservaComponent implements OnInit {
   selectedDate: Date;
   minDate = new Date(); // Today's date as minimum selectable date
   selected: Date | null;
+  reservation:boolean;
 
   onDateChange(event : Event) {
    // this.selectedDate = new Date(dateStr);
@@ -23,6 +24,7 @@ export class ReservaComponent implements OnInit {
   makeReservation() {
     // Implement logic to handle reservation based on selectedDate
     console.log("Reservation requested for:", this.selectedDate);
+    this.reservation= true;
     // You can make an API call, show a confirmation message etc. here
   }
 

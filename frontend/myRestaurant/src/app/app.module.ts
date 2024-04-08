@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './menu/menu.component';
 import { ReservaComponent } from './reserva/reserva.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import {MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    FormsModule,MatCardModule,MatNativeDateModule
+    FormsModule, MatCardModule, MatNativeDateModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
