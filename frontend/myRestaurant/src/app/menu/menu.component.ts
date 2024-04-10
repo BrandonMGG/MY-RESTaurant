@@ -34,6 +34,8 @@ export class MenuComponent implements OnInit {
   bebidaSeleccionada: Bebida | undefined;
 
   formulario: FormGroup;
+  formFeedback: FormGroup;
+
   disablePostre:boolean;
   disablePlato:boolean;
   disableBebida:boolean;
@@ -46,6 +48,9 @@ export class MenuComponent implements OnInit {
       platoPrincipal: ['', Validators.required],
       postres: ['', Validators.required],
       bebidas: ['', Validators.required],
+    });
+    this.formFeedback = this.formBuilder.group({
+      feedbackControl: ['',Validators.required]
     });
   }
 
@@ -74,7 +79,11 @@ export class MenuComponent implements OnInit {
     this.updateMenu();
   }
   postFeedback(){
-    this.menuService.postFeedback().subscribe((data) => {
+    const mensaje = {
+      mensaje : this.formFeedback.value.feedbackControl
+    };
+
+    this.menuService.postFeedback(mensaje).subscribe((data) => {
       this.feedback = data;
     });
 

@@ -1,7 +1,6 @@
 <div class="container">
     <h1>Reservaciones</h1>
     <form [formGroup]="form">
-
         <div class="reser-row">
             <label class="menu-label">Consultar Disponibilidad</label>
             <input class="menu-select" formControlName="mensaje" type="text" #mensaje>
@@ -10,6 +9,7 @@
 
     <div class="reser-row">
         <mat-card class="demo-inline-calendar-card">
+            <mat-hint>MM-DD-YYYY</mat-hint>
             <mat-calendar [(selected)]="selected"></mat-calendar>
         </mat-card>
     </div>

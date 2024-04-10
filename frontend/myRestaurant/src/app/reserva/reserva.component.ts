@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReservaService } from './reserva.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 export interface Reserva {
   fecha: string;
@@ -16,47 +17,57 @@ export interface Reserva {
 })
 export class ReservaComponent implements OnInit {
 
+  formattedDate:string | null;
   reserva: Reserva;
   form: FormGroup;
-  constructor(private reservaService: ReservaService, private formBuilder: FormBuilder) {
+  constructor(private reservaService: ReservaService, private formBuilder: FormBuilder,
+    private datePipe: DatePipe
+  ) {
     this.form = this.formBuilder.group({
-        mensaje: ['',Validators.required]
+      mensaje: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
   }
+
   selectedDate: Date;
   minDate = new Date();
-  selected: Date | null;
+  selected: Date;
   reservation: boolean;
 
 
-
-  onDateChange(event: Event) {
-
-  }
-
   makeReservation() {
-   // console.log("Reservation requested for:", this.selectedDate);
+    console.log("Reservation requested for:", this.selected);
     this.reservation = true;
+    if (this.selected) {
+      this.formattedDate = this.datePipe.transform(this.selected, 'yyyy-MM-dd');
+    }
+    console.log("FormattedDate ", this.formattedDate)
     this.getReserva();
   }
 
   getReserva() {
-    const data = {
-      mensaje: "Me aaaaaaa",
-      fecha: "" 
-    };
-    console.log(data);
-    this.reservaService.getReserva(data).subscribe({
-      next: (data) => {
+    if(this.formattedDate){
+      const datat = {
+        mensaje: this.form.value.mensaje,
+        fecha: this.formattedDate
+      };
+  
+      this.reservaService.getReserva(datat).subscribe((data) => {
         this.reserva = data;
-      },
-      error: (error) => {
-        console.error('Error getting reservation:', error);
-      }
-    });
+      });
+    }else {
+      const datat = {
+        mensaje: this.form.value.mensaje,
+        fecha: ''
+      };
+  
+      this.reservaService.getReserva(datat).subscribe((data) => {
+        this.reserva = data;
+      });
+    }
+   
     console.log(this.reserva);
   }
 

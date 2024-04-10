@@ -1,8 +1,10 @@
 {
     "/api": {
-      "target": "https://us-central1-proyect2soa.cloudfunctions.net/backend",
+      "target": "https://us-central1-proyect2soa.cloudfunctions.net/",
       "secure": false,
-      "changeOrigin": true
+      "changeOrigin": true,
+      "pathRewrite": {"^/api" : ""}
+
     }
   }
   

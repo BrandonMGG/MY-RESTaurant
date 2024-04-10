@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,HttpClientJsonpModule,MatListModule
     
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,8 @@ export class MenuService {
   getRecomendation(){
     return this.http.get<any>('/assets/recomendacion.json')
   }
-  postFeedback(){
-    return this.http.get<any>('/assets/feedback.json')
+  postFeedback(mensaje: any){
+    return this.http.post<any>('/api/backend/feedback', mensaje)
   }
+  
 }

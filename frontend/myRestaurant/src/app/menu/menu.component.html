@@ -39,10 +39,12 @@
                 {{recomendation?.recomendacion?.titulo}}</p>
         </div>
         <div *ngIf="recomendation">
-            <div class="menu-row">
-                <label class="menu-label">Feedback</label>
-                <input class="menu-select" #feedback type="text">
-            </div>
+            <form [formGroup]="formFeedback">
+                <div class="menu-row">
+                    <label class="menu-label">Feedback</label>
+                    <input class="menu-select" formControlName="feedbackControl" #feedback type="text">
+                </div>
+            </form>
             <div class="menu-row-button">
                 <button class="menu-button" type="submit" (click)="postFeedback()">
                     Enviar
