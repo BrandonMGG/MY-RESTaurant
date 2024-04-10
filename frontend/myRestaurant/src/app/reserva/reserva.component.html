@@ -1,9 +1,13 @@
 <div class="container">
     <h1>Reservaciones</h1>
-    <div class="reser-row">
-        <label class="menu-label">Consultar Disponibilidad</label>
-        <input class="menu-select" #feedback type="text">
-    </div>
+    <form [formGroup]="form">
+
+        <div class="reser-row">
+            <label class="menu-label">Consultar Disponibilidad</label>
+            <input class="menu-select" formControlName="mensaje" type="text" #mensaje>
+        </div>
+    </form>
+
     <div class="reser-row">
         <mat-card class="demo-inline-calendar-card">
             <mat-calendar [(selected)]="selected"></mat-calendar>

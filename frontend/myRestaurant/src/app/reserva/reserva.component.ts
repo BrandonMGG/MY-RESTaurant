@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReservaService } from './reserva.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-export interface Reserva{
-  fecha:string;
+export interface Reserva {
+  fecha: string;
   horas_disponibles: string[];
-  mensaje:string;
+  mensaje: string;
 }
 
 @Component({
@@ -15,32 +16,46 @@ export interface Reserva{
 })
 export class ReservaComponent implements OnInit {
 
-  reserva:Reserva;
-
-  constructor(private reservaService:ReservaService) { }
+  reserva: Reserva;
+  form: FormGroup;
+  constructor(private reservaService: ReservaService, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+        mensaje: ['',Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }
   selectedDate: Date;
-  minDate = new Date(); // Today's date as minimum selectable date
+  minDate = new Date();
   selected: Date | null;
-  reservation:boolean;
+  reservation: boolean;
 
-  onDateChange(event : Event) {
-   // this.selectedDate = new Date(dateStr);
+
+
+  onDateChange(event: Event) {
+
   }
 
   makeReservation() {
-    // Implement logic to handle reservation based on selectedDate
-    console.log("Reservation requested for:", this.selectedDate);
-    this.reservation= true;
-    // You can make an API call, show a confirmation message etc. here
+   // console.log("Reservation requested for:", this.selectedDate);
+    this.reservation = true;
     this.getReserva();
   }
 
-  getReserva(){
-    this.reservaService.getReserva().subscribe((data) => {
-      this.reserva =data.reserva;
+  getReserva() {
+    const data = {
+      mensaje: "Me aaaaaaa",
+      fecha: "" 
+    };
+    console.log(data);
+    this.reservaService.getReserva(data).subscribe({
+      next: (data) => {
+        this.reserva = data;
+      },
+      error: (error) => {
+        console.error('Error getting reservation:', error);
+      }
     });
     console.log(this.reserva);
   }

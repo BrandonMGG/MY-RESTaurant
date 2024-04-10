@@ -8,8 +8,8 @@ export class ReservaService {
 
   constructor(private http: HttpClient) { }
 
-  getReserva(){
-    return this.http.get<any>('/assets/reserva.json')
+  getReserva(data: any){
+    return this.http.post<any>('/api/backend/reservacion', data);
   }
 }
 

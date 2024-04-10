@@ -35,13 +35,13 @@
             </div>
         </form>
         <div class="recom-container">
-            <p  *ngIf="recomendation">Le recomendamos para acompañar su seleccion:
+            <p *ngIf="recomendation">Le recomendamos para acompañar su seleccion:
                 {{recomendation?.recomendacion?.titulo}}</p>
         </div>
         <div *ngIf="recomendation">
             <div class="menu-row">
                 <label class="menu-label">Feedback</label>
-                <input  class="menu-select" #feedback type="text">
+                <input class="menu-select" #feedback type="text">
             </div>
             <div class="menu-row-button">
                 <button class="menu-button" type="submit" (click)="postFeedback()">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="recom-container">
-            <p  *ngIf="feedback">
+            <p *ngIf="feedback">
                 {{feedback?.mensaje}}</p>
         </div>
     </div>
