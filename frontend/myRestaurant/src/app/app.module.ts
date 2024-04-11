@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { DatePipe } from '@angular/common';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
