@@ -32,5 +32,4 @@ jobs:
         cache-dependency-path: frontend/myRestaurant/package-lock.json
     - run: export OPENSSL_CONF=/dev/null
     - run: npm install
-    - run: npm run build
-    - run: npm start & npm test
+    - run: ng test
