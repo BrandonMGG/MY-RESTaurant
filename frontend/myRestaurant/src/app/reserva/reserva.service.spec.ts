@@ -26,6 +26,5 @@ describe('ReservaService', () => {
       expect(JSON.stringify(data)).toEqual(JSON.stringify({disponible:false, mensaje:"Fecha no válida"}));
       done();
     });
-
   });
 });

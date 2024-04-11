@@ -28,8 +28,8 @@ describe('ReservaComponent', () => {
   it('verificar envio de reserva', () => {
     const reservaComponent =fixture.componentInstance;
     let mensaje= reservaComponent.form.controls['mensaje'];
-    let selected = reservaComponent.formattedDate;
-    selected = '2024-04-20'
+    let format = reservaComponent.formattedDate;
+    format = '2024-04-20'
     mensaje.setValue('Me gustaria un fin de semana');
     expect(reservaComponent.makeReservation()).toBe();
   });
@@ -37,8 +37,8 @@ describe('ReservaComponent', () => {
   it('verificar fecha de reserva', () => {
     const reservaComponent =fixture.componentInstance;
     let mensaje= reservaComponent.form.controls['mensaje'];
-    let selected = reservaComponent.formattedDate;
-    selected = '2024-04-20'
+    let format = reservaComponent.formattedDate;
+    format = '2024-04-20'
     mensaje.setValue('Me gustaria un fin de semana');
     expect(reservaComponent.getReserva()).toBe();
   });

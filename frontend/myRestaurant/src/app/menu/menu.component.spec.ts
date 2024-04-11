@@ -24,4 +24,16 @@ describe('MenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('verificar envio de menu', () => {
+    const menucomponent =fixture.componentInstance;
+    let plato= menucomponent.formulario.controls['platoPrincipal'];
+    let postre = menucomponent.formulario.controls['postres'];
+    let bebida = menucomponent.formulario.controls['bebidas'];
+
+    plato.setValue('');
+    postre.setValue('');
+    bebida.setValue('');
+    
+    expect(menucomponent.getRecomendation()).toBe();
+  });
 });
