@@ -12,6 +12,9 @@ with open('reservaciones.json', 'r') as f:
 # Endpoint para la sugerencia de hora
 @app.route('/sugerencia_hora', methods=['POST'])
 def sugerencia_hora():
+    if(len(request.data) == 0 or request.json == {}):
+        return jsonify({'mensaje': 'Los datos introducidos no son válidos'}), 400
+    
     # Obtener la fecha del cuerpo de la solicitud POST
     fecha = request.json.get('fecha')
     
