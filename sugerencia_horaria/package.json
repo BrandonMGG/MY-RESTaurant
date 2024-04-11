@@ -6,11 +6,8 @@
   "version": "1.0.0",
   "main": "./build/index.js",
   "scripts": {
-    "start": "cd ./build && npm run local-deploy",
     "build": "tsc",
-    "test": "jest",
-    "start-dev": "nodemon --watch ./src --ext ts --exec 'npm run build && npm run local-deploy'",
-    "local-deploy": "cd ./build && npx @google-cloud/functions-framework --target=food-recommendation --port 8080"
+    "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
