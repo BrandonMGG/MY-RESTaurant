@@ -1,0 +1,59 @@
+<div class="container">
+    <h1>Menú</h1>
+
+    <div class="row">
+        <form [formGroup]="formulario">
+            <div class="menu-row">
+                <label class="menu-label" for="platoPrincipal">Plato principal:</label>
+                <select class="menu-select" id="platoPrincipal" name="platoPrincipal" formControlName="platoPrincipal"
+                    [attr.disabled]="disablePlato" (change)="disableLeftOver()">
+                    <option value="">-- Seleccione un plato principal --</option>
+                    <option *ngFor="let platoPrincipal of platosPrincipales" [value]="platoPrincipal.nombre">{{
+                        platoPrincipal.nombre}}</option>
+                </select>
+            </div>
+            <div class="menu-row">
+                <label class="menu-label" for="postre">Postre:</label>
+                <select class="menu-select" id="postre" name="postre" formControlName="postres"
+                    [attr.disabled]="disablePostre" (change)="disableLeftOver()">
+                    <option value="">-- Seleccione un postre --</option>
+                    <option *ngFor="let postre of postres" [value]="postre.nombre">{{postre.nombre}}</option>
+                </select>
+            </div>
+            <div class="menu-row">
+                <label class="menu-label" for="bebida">Bebida:</label>
+                <select class="menu-select" id="bebida" name="bebida" formControlName="bebidas"
+                    [attr.disabled]="disableBebida" (change)="disableLeftOver()">
+                    <option value="">-- Seleccione una bebida --</option>
+                    <option *ngFor="let bebida of bebidas" [value]="bebida.nombre">{{ bebida.nombre }}</option>
+                </select>
+            </div>
+            <div class="menu-row-button">
+                <button class="menu-button" type="submit" (click)="getRecomendation()">
+                    Sugerir Comida
+                </button>
+            </div>
+        </form>
+        <div class="recom-container">
+            <p *ngIf="recomendation">Le recomendamos para acompañar su seleccion:
+                {{recomendation?.recomendacion?.titulo}}</p>
+        </div>
+        <div *ngIf="recomendation">
+            <form [formGroup]="formFeedback">
+                <div class="menu-row">
+                    <label class="menu-label">Feedback</label>
+                    <input class="menu-select" formControlName="feedbackControl" #feedback type="text">
+                </div>
+            </form>
+            <div class="menu-row-button">
+                <button class="menu-button" type="submit" (click)="postFeedback()">
+                    Enviar
+                </button>
+            </div>
+        </div>
+        <div class="recom-container">
+            <p *ngIf="feedback">
+                {{feedback?.mensaje}}</p>
+        </div>
+    </div>
+</div>

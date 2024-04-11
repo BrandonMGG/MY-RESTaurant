@@ -1,0 +1,28 @@
+{
+  "name": "functions",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "scripts": {
+    "start": "cd ./build && npm run local-deploy",
+    "build": "tsc",
+    "test": "jest",
+    "start-dev": "nodemon --watch ./src --ext ts --exec 'npm run build && npm run local-deploy'",
+    "local-deploy": "cd ./build && npx @google-cloud/functions-framework --target=food-recommendation --port 8080"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.5",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  }
+}

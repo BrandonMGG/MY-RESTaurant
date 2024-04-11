@@ -1,0 +1,44 @@
+{
+    "platosPrincipales": [
+        {
+            "id": 1,
+            "nombre": "Hamburguesa"
+        },
+        {
+            "id": 2,
+            "nombre": "Pizza"
+        },
+        {
+            "id": 3,
+            "nombre": "Ensalada"
+        }
+    ],
+    "postres": [
+        {
+            "id": 1,
+            "nombre": "Helado"
+        },
+        {
+            "id": 2,
+            "nombre": "Pastel"
+        },
+        {
+            "id": 3,
+            "nombre": "Fruta"
+        }
+    ],
+    "bebidas": [
+        {
+            "id": 1,
+            "nombre": "Agua"
+        },
+        {
+            "id": 2,
+            "nombre": "Refresco"
+        },
+        {
+            "id": 3,
+            "nombre": "Jugo"
+        }
+    ]
+}
