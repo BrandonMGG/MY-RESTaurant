@@ -35,8 +35,16 @@
             </div>
         </form>
         <div class="recom-container">
-            <p *ngIf="recomendation">Le recomendamos para acompañar su seleccion:
-                {{recomendation?.recomendacion?.titulo}}</p>
+            <p *ngIf="recomendation?.platoPrincipal">El mejor combo para su seleccion es:
+                {{recomendation?.platoPrincipal}}</p>
+            <p *ngIf="recomendation?.postres">
+                {{recomendation?.postres}}</p>
+            <p *ngIf="recomendation?.bebidas">
+                {{recomendation?.bebidas}}</p>
+        </div>
+        <div class="recom-container">
+            <p *ngIf="recomendation?.error">
+                {{recomendation?.error}}</p>
         </div>
         <div *ngIf="recomendation">
             <form [formGroup]="formFeedback">

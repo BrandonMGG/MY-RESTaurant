@@ -1,0 +1,7 @@
+runtime: python38
+handlers:
+- url: /
+  static_files: dist/my-restaurant/index.html
+  upload: dist/my-restaurant/index.html
+- url: /
+  static_dir: dist/my-restaurant
