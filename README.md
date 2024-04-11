@@ -139,16 +139,31 @@ _Estrategias de Optimización de Costos:_
 ## Pruebas y Validación: 
 
 ### Frontend
+
+Se prueba que las respuestas del backend sean consistentes con respecto a las peticiones realizadas por el usuario.
+
 ![imagen]()
 
 ### Backend
-![imagen]()
+
+Para esta seccion se hicieron pruebas unitarias en cuanto a las llamadas de las funciones de recomendacion ed comidas, recomendacion de hora para reservación, feedback y el funcionamiento del frontend.
+
+![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/backend.jpg)
 
 ### Análisis de sentimiento
+
+Se prueba que dada una retroalimentación en texto, se devuelva el resultado del analisis correspondiente con su respectiva respuesta por poarte de la función.
+
 ![imagen]()
 
 ### Recomendación de comida
+
+Se prueba que dada una petición de recomendación, se devuelva una respuesta coherente con respecto al menú utilizado.
+
 ![imagen]()
 
 ### Recomendación de horario
+
+Se prueba que dada una petición por parte del usuario para obtener una recomendación de un día y una hora para reservar o visitar el restaurante se haga de manera coherente con respecto a lo que proporciona la base de datos.
+
 ![imagen]()
