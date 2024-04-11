@@ -15,6 +15,7 @@ http('food-recommendation', (req: Request, res: Response) => {
 
   try {
     const foodRequest: IRecommendation = req.body;
+
     const recommendation: IRecommendation = getFoodRecommendation(foodRequest);
 
     res.send(recommendation);
