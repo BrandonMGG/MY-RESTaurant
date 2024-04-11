@@ -10,16 +10,16 @@ on:
     branches: [ "main", "development"]
 
 jobs:
-  build-food-recommendation:
+  build-sugerencia-horaria:
 
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./food-recommendation
+        working-directory: ./sugerencia_horaria
         
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -29,8 +29,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: food-recommendation/package-lock.json
+        cache-dependency-path: sugerencia_horaria/package-lock.json
+    - run: pip install -U Flask
     - run: npm install
-    - run: npm run build --if-present
-    - run: npm start & npm test
-    - run: npm test
+    - run: npm run build
+    - run: python sugerenciaHorario.py & npm test

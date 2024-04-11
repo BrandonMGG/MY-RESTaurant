@@ -72,8 +72,7 @@ export class MenuComponent implements OnInit {
       postres: this.formulario.value.postres,
       bebidas: this.formulario.value.bebidas,
     };
-    console.log(data);
-    this.menuService.getRecomendation().subscribe((data) => {
+    this.menuService.getRecomendation(data).subscribe((data) => {
       this.recomendation = data;
     });
     this.updateMenu();

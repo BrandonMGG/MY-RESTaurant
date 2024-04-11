@@ -1,20 +1,15 @@
 {
-  "name": "food-recommendation",
+  "name": "sugerencia_horaria",
   "author": "",
   "license": "ISC",
   "description": "",
   "version": "1.0.0",
   "main": "./build/index.js",
   "scripts": {
-    "start": "cd ./build && npm run local-deploy",
     "build": "tsc",
-    "test": "jest",
-    "start-dev": "nodemon --watch ./src --ext ts --exec 'npm run build && npm run local-deploy'",
-    "local-deploy": "cd ./build && npx @google-cloud/functions-framework --target=food-recommendation --port 8080"
+    "test": "jest"
   },
-  "dependencies": {
-    "@google-cloud/functions-framework": "^3.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "^29.5.12",
