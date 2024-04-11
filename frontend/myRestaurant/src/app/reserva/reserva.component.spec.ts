@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReservaComponent } from './reserva.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 describe('ReservaComponent', () => {
   let component: ReservaComponent;
@@ -8,7 +11,9 @@ describe('ReservaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReservaComponent ]
+      declarations: [ ReservaComponent ],
+      imports:[ReactiveFormsModule,HttpClientModule],
+      providers:[DatePipe]
     })
     .compileComponents();
 
