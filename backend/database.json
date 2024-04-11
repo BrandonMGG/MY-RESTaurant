@@ -1,0 +1,265 @@
+{
+  "platosPrincipales": [
+    {
+     "id":1,
+     "nombre":"Deditos de corvina"
+    },
+
+    {
+      "id": 2,
+      "nombre": "Raviole en salsa de tomate"
+    },
+    {
+      "id": 3,
+      "nombre": "Raviole en salsa de tomate"
+    },
+    {
+      "id": 4,
+      "nombre": "Spaghetti a la mantequilla"
+    },
+    {
+      "id": 5,
+      "nombre": "Pizza Focaccia"
+    },
+    {
+      "id": 6,
+      "nombre": "Mozzarella Sticks"
+    },
+    {
+      "id": 7,
+      "nombre": "Mozzarella Sticks"
+    },
+    {
+      "id": 6,
+      "nombre": "Hamburguesa de la casa"
+    },{
+      "id": 7,
+      "nombre": "Mozzarella en Carroza"
+    },{
+      "id": 8,
+      "nombre": "Alitas en salsa Luisiana"
+    },
+    {
+      "id": 9,
+      "nombre": "Alitas en salsa Barbacoa"
+    },
+    {
+      "id": 10,
+      "nombre": "Mejillones en salsa marinara"
+    },{
+      "id": 11,
+      "nombre": "Antipasto caliente"
+    },
+    {
+      "id": 12,
+      "nombre": "Pan con ajo"
+    },
+    {
+      "id": 13,
+      "nombre": "Papas a la francesa"
+    },
+    {
+      "id": 14,
+      "nombre": "Orden de puré de papas"
+    },
+    {
+      "id": 15,
+      "nombre": "Orden de arroz blanco"
+    },
+    {
+      "id": 16,
+      "nombre": "Papa al horno"
+    },
+    {
+      "id": 17,
+      "nombre": "Orden de vegetales mixtos"
+    },
+    {
+      "id": 18,
+      "nombre": "Pico de gallo"
+    },
+    {
+      "id": 19,
+      "nombre": "Chicken finger"
+    },
+    {
+      "id": 20,
+      "nombre": "Fish and Chips"
+    },
+    {
+      "id": 21,
+      "nombre": "Chile jalapeño relleno"
+    },
+    {
+      "id": 22,
+      "nombre": "Hamburguesa"
+    },
+    {
+      "id": 23,
+      "nombre": "Pizza"
+    },
+    {
+      "id": 24,
+      "nombre": "Tacos"
+    },
+    {
+      "id": 25,
+      "nombre": "Pizza"
+    },
+    {
+      "id": 26,
+      "nombre": "Sushi"
+    }
+  
+    
+    
+  ],
+  "postres": [
+    {
+      "id": 1,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 2,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 3,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 4,
+      "nombre": "Flan casero"
+    },
+    {
+      "id": 5,
+      "nombre": "Pastel de zanahoria"
+    },
+    {
+      "id": 6,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 7,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 8,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 9,
+      "nombre": "Flan casero"
+    },
+    {
+      "id": 10,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 11,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 12,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 13,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 14,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 15,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 16,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 17,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 18,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 19,
+      "nombre": "Tarta de manzana"
+    },
+    {
+      "id": 20,
+      "nombre": "Helado de vainilla"
+    },
+    {
+      "id": 21,
+      "nombre": "Cheesecake de frutos rojos"
+    },
+    {
+      "id": 22,
+      "nombre": "Brownie"
+    },
+    {
+      "id": 23,
+      "nombre": "Fruta"
+    },
+    {
+      "id": 24,
+      "nombre": "Flan"
+    },
+    {
+      "id": 25,
+      "nombre": "Pastel"
+    }
+  ],
+  "bebidas": [
+    {
+      "id": 1,
+      "nombre": "Frappé Villa Italia"
+    },
+    {
+      "id": 2,
+      "nombre": "Gaseosa 3L"
+    },
+    {
+      "id": 3,
+      "nombre": "Copa de Vino Blanco"
+    },
+    {
+      "id": 4,
+      "nombre": "Vino Tinto"
+    },
+    {
+      "id": 5,
+      "nombre": "Copa de Sangría"
+    },
+    {
+      "id": 6,
+      "nombre": "Gaseosa 600mL"
+    },
+    {
+      "id": 7,
+      "nombre": "Frappé Oreo"
+    },
+    {
+      "id": 8,
+      "nombre": "Imperial"
+    },
+    {
+      "id": 9,
+      "nombre": "Té de manzanilla"
+    },
+    {
+      "id": 10,
+      "nombre": "Gaseosa 2.5L"
+    },
+    {
+      "id": 11,
+      "nombre": "Imperial Silver"
+    }
+  ]
+}
