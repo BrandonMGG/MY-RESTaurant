@@ -167,3 +167,33 @@ Se prueba que dada una petición de recomendación, se devuelva una respuesta co
 Se prueba que dada una petición por parte del usuario para obtener una recomendación de un día y una hora para reservar o visitar el restaurante se haga de manera coherente con respecto a lo que proporciona la base de datos.
 
 ![imagen]()
+
+##Bibliografia
+
+Angular. (s/f). Angular.Io. Recuperado el 11 de abril de 2024, de https://angular.io/guide/testing-code-coverage
+
+Angular material. (s/f). Angular Material. Recuperado el 11 de abril de 2024, de https://material.angular.io/components/datepicker/overview
+
+Biston, S. (2023, noviembre 8). Resolve CORS errors once and for all: Three methods. Medium. https://medium.com/@stephen.biston/resolve-cors-errors-once-and-for-all-three-methods-d821c258d025
+
+CORS error on deployed React app, but not on local development or production built app. (2021a, febrero 14). The freeCodeCamp Forum. https://forum.freecodecamp.org/t/cors-error-on-deployed-react-app-but-not-on-local-development-or-production-built-app/446251/7
+
+CORS error on deployed React app, but not on local development or production built app. (2021b, febrero 14). The freeCodeCamp Forum. https://forum.freecodecamp.org/t/cors-error-on-deployed-react-app-but-not-on-local-development-or-production-built-app/446251/2
+
+Das, P. (2022, diciembre 12). Angular logging HTTP requests & HTTP errors - piyali Das. Medium. https://medium.com/@piyalidas.it/angular-logging-http-requests-http-errors-fc8b9123204c
+
+Elias, D. (2023, julio 7). Building your first Angular app and deploying to Google Cloud App Engine. Medium. https://eliasdouglas.medium.com/building-your-first-angular-app-and-deploying-to-google-cloud-app-engine-657671b5c584
+
+Errigo, G. (2023, enero 27). Angular 15: what happened to environment.ts. DEV Community. https://dev.to/this-is-angular/angular-15-what-happened-to-environmentts-koh
+
+Korneeva, M. (2022, mayo 5). How to proxy HTTP requests in Angular. Ngconf. https://medium.com/ngconf/how-to-proxy-http-requests-in-angular-f873183880a4
+
+Mastering API requests the right way in angular. (2023, septiembre 8). DEV Community. https://dev.to/chintanonweb/mastering-api-requests-the-right-way-in-angular-247o
+
+TekTutorialsHub. (2019, noviembre 17). Angular Environment Variables. TekTutorialsHub. https://www.tektutorialshub.com/angular/angular-environment-variables/
+
+Vázquez, J. R. (2019, mayo 12). Configurar proxy en Angular CLI - comunidad JavaScript - medium. Comunidad JavaScript. https://medium.com/javascript-comunidad/configurar-proxy-en-angular-cli-25f07237d13e
+
+Victor, N. L. (2022, septiembre 6). Angular basics: Using environmental variables to organize build configurations. Telerik Blogs. https://www.telerik.com/blogs/angular-basics-using-environmental-variables-organize-build-configurations
+
+Vijay, S. (2022, noviembre 29). Building an Angular Application in various environments using angular-CLI and server. YavarTechWorks. https://medium.com/yavar/building-an-angular-application-in-various-environments-using-angular-cli-and-server-18f94067154b
