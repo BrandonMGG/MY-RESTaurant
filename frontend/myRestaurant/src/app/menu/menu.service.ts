@@ -11,13 +11,22 @@ export class MenuService {
 
   constructor(private http:HttpClient) { }
   getMenu(){
-    return this.http.get<any>(this.apiUrl + 'api/backend')
+    return this.http.get<any>(this.apiUrl)
   }
-  getRecomendation(){
-    return this.http.get<any>('/assets/recomendacion.json')
+  getRecomendation(comidas:any){
+    return this.http.get<any>(this.apiUrl+'/menu?'+ convertToUrlParams(comidas))
   }
   postFeedback(mensaje: any){
-    return this.http.post<any>('/api/backend/feedback', mensaje)
+    return this.http.get<any>(this.apiUrl+'/feedback?'+ convertToUrlParams(mensaje))
   }
   
+}
+function convertToUrlParams(data: any): string {
+  const params = new URLSearchParams();
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      params.set(key, data[key]);
+    }
+  }
+  return params.toString();
 }

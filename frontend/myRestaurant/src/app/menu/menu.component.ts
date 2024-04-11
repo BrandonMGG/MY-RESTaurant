@@ -73,9 +73,10 @@ export class MenuComponent implements OnInit {
       bebidas: this.formulario.value.bebidas,
     };
     console.log(data);
-    this.menuService.getRecomendation().subscribe((data) => {
+    this.menuService.getRecomendation(data).subscribe((data) => {
       this.recomendation = data;
     });
+    console.log(this.recomendation);
     this.updateMenu();
   }
   postFeedback(){
