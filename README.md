@@ -142,7 +142,7 @@ _Estrategias de Optimización de Costos:_
 
 Se prueba que las respuestas del backend sean consistentes con respecto a las peticiones realizadas por el usuario.
 
-![imagen]()
+![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/front.jpg)
 
 ### Backend
 
