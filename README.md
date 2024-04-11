@@ -154,7 +154,7 @@ Para esta seccion se hicieron pruebas unitarias en cuanto a las llamadas de las 
 
 Se prueba que dada una retroalimentación en texto, se devuelva el resultado del analisis correspondiente con su respectiva respuesta por poarte de la función.
 
-![imagen]()
+![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/chatbot.jpg)
 
 ### Recomendación de comida
 
