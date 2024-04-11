@@ -24,17 +24,3 @@ http('food-recommendation', (req: Request, res: Response) => {
     sendError(res, error);
   }
 });
-
-
-http('booking-recommendation', (req: Request, res: Response) => {
-  res.set('Access-Control-Allow-Origin', '*');
-
-  res.send('Sugerencia de Hora');
-});
-
-
-http('feedback-chatbot', (req: Request, res: Response) => {
-  res.set('Access-Control-Allow-Origin', '*');
-
-  res.send('Chatbot de sugerencias');
-});
