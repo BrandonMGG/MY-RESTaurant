@@ -32,5 +32,5 @@ jobs:
         cache-dependency-path: sugerencia_horaria/package-lock.json
     - run: npm install
     - run: npm run build
-    - run: python sugerenciaHoraria.py & npm test
+    - run: python sugerenciaHorario.py & npm test
     - run: npm test
