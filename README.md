@@ -80,3 +80,75 @@ _Salida esperada:_ textos con las recomendaciones realizadas por el sistema para
 
 _Relación con otras funciones:_ La Frontend Cloud Function interactúa directamente con el Backend para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al Backend, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el Backend recibe la respuesta de estas funciones, la envía de vuelta a la Frontend Cloud Function, que luego presenta los resultados al usuario.
 
+## Seguridad y escalabilidad.
+
+1. Seguridad
+
+En cuanto a las consideraciones de seguridad, los datos utilizados son transferidos por medio de metodos HTTP (en este caso específico GET) para todas las Cloud Funcions, y las bases de datos utilizadas se ubican en cada una de las Cloud Functions que lo requieren(recomendacion de comida y recomendacion de hora para posibles reservaciones), lo que asegura su fiabilidad y consistencia.
+
+2. Escalabilidad
+
+En cuanto a la escalabilidad de las funciones realizadas, las consideraciones aplican a nivel general dado que se trata de funciones independientes del sistema. Estas consideraciones incluyen:
+
+Almacenamiento de Datos: Es posible utilizar servicios como Cloud Firestore o Cloud Bigtable, que escalan automáticamente para manejar grandes volúmenes de datos y picos de tráfico sin degradación del rendimiento.
+
+Balanceo de Carga: La arquitectura actual del sistema hace posiblemplementar el balanceo de carga HTTP(S) de Google Cloud de manera que se pueda distribuir de manera eficiente las solicitudes entrantes entre las instancias de Cloud Functions, mejorando el rendimiento y la disponibilidad.
+
+Diseño sin servidor: Esto nos permitió facilitar la escalabilidad individual de las funciones sin afectar otras partes del sistema, de forma que cada componente sea escalado de manera independiente según sea necesario, optimizando los recursos y reduciendo costos.
+
+## Gestión de errores.
+
+Para esta arquitectura, los errores se basan en "bad requests" y pueden ser generadas por una mala inserción de los datos requeridos en cada uno de los campos por parte del usuario. Estos errores no hacen que el sistema se caiga o deje de funcionar, ya que cuando se detecta alguna inconsistencia en los requests se devuelve un mensaje que le indica al usuario lo que ha pasado con su petición o con las diferentes acciones realizadas.
+
+
+## Estrategias de despliegue
+
+En este caso, se utilizó la estrategia de desarrollo local, lo cual permitió que se desarrollara y probara cada una de las funciones del proyecto utilizando un repositorio de GitHub para el control de versiones del código y el desarrollo incremental. Posteriormente, una vez que se encontraran funcionando las funciones desarrolladas, se procedió a hacer deploy de las mismas en la plataforma de Google Cloud.
+
+## Consideraciones de costos
+
+Cuando se desarrolla una arquitectura en Google Cloud Platform (GCP), la gestión de costos es esencial y debe evaluarse cuidadosamente para asegurar que el proyecto se mantenga dentro del presupuesto. Aquí hay un análisis detallado de los costos asociados con la arquitectura realizada, utilizando los servicios de Google Cloud Functions y Google Natural Language API.
+
+1. Google Cloud Functions
+
+Costos:
+
+_Invocaciones:_ Google Cloud Functions cobra por el número de invocaciones. Cada invocación cuesta $0.0000004.
+_Tiempo de Ejecución y Recursos:_ El costo también depende del tiempo de ejecución y la memoria asignada a cada función. Por ejemplo, $0.0000025 por GB-segundo y $0.00001 por GHz-segundo.
+
+Análisis:
+
+Si cada una de las funciones se invoca 1000 veces al día, esto conduce a unas 4,000 invocaciones diarias. Estimar los recursos de computación por función puede variar, pero suponiendo un uso moderado, podemos calcular un costo aproximado no tan elevado.
+
+2. Google Natural Language API
+
+_Costos:_ Se cobra por cada 1000 caracteres de texto procesado. El costo puede variar dependiendo del modelo utilizado, pero generalmente está alrededor de $1.00 por 1000 caracteres para el análisis de sentimientos.
+
+Análisis:
+Si el análisis de feedback se realiza en textos cortos (aproximadamente 500 caracteres en promedio) 500 veces al día, el costo será una consideración relevante.
+
+_Estrategias de Optimización de Costos:_
+
+1.	Monitorización y Alertas: Utilizar Google Cloud Monitoring para rastrear el uso y costos, configurando alertas para evitar gastos inesperados.
+2.	Ajuste de Recursos: Optimizar la configuración de memoria y CPU de las Cloud Functions basándose en las métricas de uso reales para no sobreprovisionar recursos.
+
+3.	Revisión de Precios y Quotas: Revisar regularmente las opciones de precios de GCP y aplicar a las quotas y descuentos por uso extendido o compromisos a largo plazo.
+
+4.	Caché de Datos: Implementar soluciones de caché para reducir las consultas a bases de datos y APIs externas, minimizando los costos operacionales.
+
+## Pruebas y Validación: 
+
+### Frontend
+![imagen]()
+
+### Backend
+![imagen]()
+
+### Análisis de sentimiento
+![imagen]()
+
+### Recomendación de comida
+![imagen]()
+
+### Recomendación de horario
+![imagen]()
