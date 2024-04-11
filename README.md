@@ -1,6 +1,6 @@
 # Bienvenidos a la documentación de la aplicacion web My-RESTaurant!
 
-Esta página alberga el diseño e implementación del proyecto.
+Esta página contiene la documentación general del proyecto.
 
 ## Visión general de la arquitectura.
 
