@@ -30,6 +30,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: sugerencia_horaria/package-lock.json
+    - run: pip install -U Flask
     - run: npm install
     - run: npm run build
     - run: python sugerenciaHorario.py & npm test
