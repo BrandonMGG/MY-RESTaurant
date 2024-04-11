@@ -16,6 +16,7 @@ jobs:
     defaults:
       run:
         working-directory: ./food-recommendation
+        
     strategy:
       matrix:
         node-version: [18.x, 20.x]
