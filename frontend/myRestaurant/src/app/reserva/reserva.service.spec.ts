@@ -17,4 +17,15 @@ describe('ReservaService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  it('Verificar Get Reserva', (done) => {
+    let reserva = {
+      mensaje: 'me gustaria un jueves',
+      fecha: '20/10/2024',
+    }
+    service.getReserva(reserva).subscribe(data => {
+      expect(JSON.stringify(data)).toEqual(JSON.stringify({disponible:false, mensaje:"Fecha no válida"}));
+      done();
+    });
+
+  });
 });
