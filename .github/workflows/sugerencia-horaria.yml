@@ -19,7 +19,7 @@ jobs:
         
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -34,4 +34,3 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: python sugerenciaHorario.py & npm test
-    - run: npm test
