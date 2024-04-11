@@ -17,7 +17,7 @@ export interface Reserva {
 })
 export class ReservaComponent implements OnInit {
 
-  formattedDate:string | null;
+  formattedDate: string | null;
   reserva: Reserva;
   form: FormGroup;
   constructor(private reservaService: ReservaService, private formBuilder: FormBuilder,
@@ -38,38 +38,30 @@ export class ReservaComponent implements OnInit {
 
 
   makeReservation() {
-    console.log("Reservation requested for:", this.selected);
     this.reservation = true;
     if (this.selected) {
       this.formattedDate = this.datePipe.transform(this.selected, 'yyyy-MM-dd');
     }
-    console.log("FormattedDate ", this.formattedDate)
     this.getReserva();
   }
 
   getReserva() {
-    if(this.formattedDate){
+    if (this.formattedDate) {
       const datat = {
         mensaje: this.form.value.mensaje,
         fecha: this.formattedDate
       };
-  
       this.reservaService.getReserva(datat).subscribe((data) => {
         this.reserva = data;
       });
-    }else {
+    } else {
       const datat = {
         mensaje: this.form.value.mensaje,
         fecha: ''
       };
-  
       this.reservaService.getReserva(datat).subscribe((data) => {
         this.reserva = data;
       });
     }
-   
-    console.log(this.reserva);
   }
-
-
 }

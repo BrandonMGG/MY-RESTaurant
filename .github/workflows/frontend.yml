@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./frontend/myRestaurant
         
     strategy:
       matrix:
@@ -29,6 +29,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
+        cache-dependency-path: frontend/myRestaurant/package-lock.json
+    - run: export OPENSSL_CONF=/dev/null
     - run: npm install
-    - run: ng test
+    - run: npm run build
+    - run: npm start & npm test

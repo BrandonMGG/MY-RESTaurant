@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://us-central1-proyect2soa.cloudfunctions.net/'
+  api: 'https://us-central1-proyect2soa.cloudfunctions.net/backend'
 };
 
 /*
