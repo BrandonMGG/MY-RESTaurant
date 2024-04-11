@@ -168,7 +168,7 @@ Se prueba que dada una petición por parte del usuario para obtener una recomend
 
 ![imagen]()
 
-##Bibliografia
+## Bibliografia
 
 Angular. (s/f). Angular.Io. Recuperado el 11 de abril de 2024, de https://angular.io/guide/testing-code-coverage
 
