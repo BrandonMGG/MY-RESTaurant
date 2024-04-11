@@ -4,9 +4,9 @@ interface IMenuEntry {
 }
 
 interface IRecommendation {
-  food: string | null;
-  dessert: string | null;
-  drink: string | null;
+  food?: string | null;
+  dessert?: string | null;
+  drink?: string | null;
 }
 
 export {

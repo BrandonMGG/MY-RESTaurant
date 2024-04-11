@@ -1,8 +1,15 @@
-const axios = require('axios');
+import axios from 'axios';
+
+import { IRecommendation } from "../interfaces/Menu";
+
+interface IServerResponse {
+  status: number;
+  data: IRecommendation | string;
+}
 
 const url = 'http://localhost:8080/food-recommendation';
 
-async function testFunction(testData) {
+async function testFunction(testData: any): Promise<IServerResponse> {
   return axios.get(url, { data: testData })
     .then((response) => {
       const status = response.status;
@@ -18,13 +25,13 @@ async function testFunction(testData) {
 
 
 test('Gets a successful response', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     food: "Deditos de pollo",
-    drink: "Imperial Silver",
-    dessert: "Cheesecake de frutos rojos"
+    dessert: "Cheesecake de frutos rojos",
+    drink: "Imperial Silver"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Deditos de pollo",
     dessert: "Cheesecake de frutos rojos",
     drink: "Imperial Silver"
@@ -38,12 +45,12 @@ test('Gets a successful response', async () => {
 
 
 test('Sends a request with food and drink parameters', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     food: "Hamburguesa",
     drink: "Imperial Silver"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Hamburguesa",
     dessert: "Helado",
     drink: "Imperial Silver"
@@ -57,12 +64,12 @@ test('Sends a request with food and drink parameters', async () => {
 
 
 test('Sends a request with food and dessert parameters', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     food: "Hamburguesa",
     dessert: "Helado"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Hamburguesa",
     dessert: "Helado",
     drink: "Refresco"
@@ -76,12 +83,12 @@ test('Sends a request with food and dessert parameters', async () => {
 
 
 test('Sends a request with drink and dessert parameters', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     dessert: "Brownie",
     drink: "Refresco",
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Pizza",
     dessert: "Brownie",
     drink: "Refresco"
@@ -95,11 +102,11 @@ test('Sends a request with drink and dessert parameters', async () => {
 
 
 test('Sends a request with food parameter', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     food: "Ensalada"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Ensalada",
     dessert: "Fruta",
     drink: "Agua"
@@ -113,11 +120,11 @@ test('Sends a request with food parameter', async () => {
 
 
 test('Sends a request with dessert parameter', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     dessert: "Fruta"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Ensalada",
     dessert: "Fruta",
     drink: "Agua"
@@ -131,11 +138,11 @@ test('Sends a request with dessert parameter', async () => {
 
 
 test('Sends a request with drink parameter', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     drink: "Agua"
   };
 
-  const expectedResponse = {
+  const expectedResponse: IRecommendation = {
     food: "Ensalada",
     dessert: "Fruta",
     drink: "Agua"
@@ -149,7 +156,7 @@ test('Sends a request with drink parameter', async () => {
 
 
 test('Sends a request without parameters', async () => {
-  const testData = {};
+  const testData: IRecommendation = {};
 
   const expectedResponse = 'La información recibida no cumple con el formato esperado.';
 
@@ -173,7 +180,7 @@ test('Sends an empty request', async () => {
 
 
 test('Sends a request with both correct and incorrect parameters', async () => {
-  const testData = {
+  const testData: any = {
     food: "Ensalada",
     food1231: 'Ensalada',
     dessert: "Fruta",
@@ -208,7 +215,7 @@ test('Sends a request with only incorrect parameters', async () => {
 
 
 test('Sends a request that doesn\'t match any database entry', async () => {
-  const testData = {
+  const testData: IRecommendation = {
     food: 'Ensalada',
     dessert: "Fruta",
     drink: "Aguasssss"
