@@ -347,8 +347,34 @@ const RECOMMENDATIONS: IRecommendation[] = [
 		food: "Chile jalapeño relleno",
 		dessert: "Tarta de manzana",
 		drink: "Imperial Silver"
+	},
+	{
+		food: "Hamburguesa",
+		dessert: "Helado",
+		drink: "Refresco"
+	},
+	{
+		food: "Pizza",
+		dessert: "Brownie",
+		drink: "Jugo"
+	},
+	{
+		food: "Ensalada",
+		dessert: "Fruta",
+		drink: "Agua"
+	},
+	{
+		food: "Tacos",
+		dessert: "Flan",
+		drink: "Té"
+	},
+	{
+		food: "Sushi",
+		dessert: "Pastel",
+		drink: "Café"
 	}
 ];
+
 
 export {
 	FOODS,
