@@ -221,7 +221,7 @@ test('Sends a request that doesn\'t match any database entry', async () => {
     drink: "Aguasssss"
   };
 
-  const expectedResponse = 'No se encontraron recomendaciones para la información suministrada.';
+  const expectedResponse = 'No se encontraron recomendaciones para la información sssssuministrada.';
 
   const response = await testFunction(testData);
 
