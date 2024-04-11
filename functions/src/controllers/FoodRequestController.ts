@@ -1,36 +1,28 @@
-import {
-  findDrinkRecommendation,
-  findFoodRecommendation
-} from "../models/FoodRequestModel";
+import { findRecommendation } from "../models/FoodRequestModel";
 
-import { buildFoodResponse } from "../helpers/FoodRequestHelpers";
+import { IRecommendation } from "../interfaces/Menu";
+import { incorrectFormat, recommendationNotFound } from "../helpers/Errors";
 
-import { CustomError } from "../interfaces/Error";
-import { IFoodRequest, IFoodResponse } from "../interfaces/FoodRecommendation";
-
-function getFoodRecommendation(foodRequest: IFoodRequest): string {
-  if (!foodRequest || (!foodRequest.food && !foodRequest.drink)) {
-    throw new CustomError({
-      status: 400,
-      message: 'La información recibida no cumple con el formato esperado.'
-    });
+function getFoodRecommendation(foodRequest: IRecommendation): IRecommendation {
+  if (!foodRequest.food && !foodRequest.dessert && !foodRequest.drink) {
+    incorrectFormat();
   }
 
-  const recommendations: IFoodResponse = {
-    foods: foodRequest.drink ? findFoodRecommendation(foodRequest.drink) : null,
-    drinks: foodRequest.food ? findDrinkRecommendation(foodRequest.food) : null
-  };
+  Object.keys(foodRequest).forEach((key) => {
+    if (key !== 'food' && key !== 'dessert' && key !== 'drink') {
+      incorrectFormat();
+    }
+  });
 
-  if (!recommendations.foods && !recommendations.drinks) {
-    throw new CustomError({
-      status: 404,
-      message: 'No se encontraron recomendaciones para la información suministrada.'
-    });
+  const recommendation = findRecommendation(foodRequest);
+
+  if (!recommendation.food && !recommendation.dessert && !recommendation.drink) {
+    recommendationNotFound();
   }
 
-  return buildFoodResponse(foodRequest, recommendations);
+  return recommendation;
 }
 
 export {
   getFoodRecommendation
-}
+};

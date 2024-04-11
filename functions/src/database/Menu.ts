@@ -1,7 +1,6 @@
 import {
 	IMenuEntry,
-	IDrinkRecommendation,
-	IFoodRecommendation
+	IRecommendation
 } from "../interfaces/Menu"
 
 const FOODS: IMenuEntry[] = [
@@ -97,7 +96,50 @@ const FOODS: IMenuEntry[] = [
 		name: "Chile jalapeño relleno",
 		price: 3200
 	}
-]
+];
+
+const DESSERTS: IMenuEntry[] = [
+	{
+		name: "Tarta de manzana",
+		price: 2500
+	},
+	{
+		name: "Brownie de chocolate",
+		price: 2800
+	},
+	{
+		name: "Helado de vainilla",
+		price: 1800
+	},
+	{
+		name: "Cupcake de fresa",
+		price: 1500
+	},
+	{
+		name: "Cheesecake de frutos rojos",
+		price: 3200
+	},
+	{
+		name: "Mousse de chocolate",
+		price: 2200
+	},
+	{
+		name: "Flan casero",
+		price: 2000
+	},
+	{
+		name: "Crema catalana",
+		price: 2800
+	},
+	{
+		name: "Pastel de zanahoria",
+		price: 2600
+	},
+	{
+		name: "Gelatina de limón",
+		price: 1200
+	}
+];
 
 const DRINKS: IMenuEntry[] = [
 	{
@@ -190,198 +232,127 @@ const DRINKS: IMenuEntry[] = [
 	}
 ];
 
-const FOOD_RECOMMENDATIONS: IFoodRecommendation[] = [
+const RECOMMENDATIONS: IRecommendation[] = [
 	{
 		food: "Deditos de corvina",
-		drinks: ["Frappé Villa Italia", "Gaseosa 2.5L"]
+		dessert: "Tarta de manzana",
+		drink: "Frappé Villa Italia"
 	},
 	{
 		food: "Deditos de pollo",
-		drinks: ["Gaseosa 3L", "Copa de Vino Tinto"]
+		dessert: "Helado de vainilla",
+		drink: "Gaseosa 3L"
 	},
 	{
 		food: "Raviole en salsa de tomate",
-		drinks: ["Copa de Vino Blanco", "Té de manzanilla"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Copa de Vino Blanco"
 	},
 	{
 		food: "Spaghetti a la mantequilla",
-		drinks: ["Vino Tinto", "Té negro en leche"]
+		dessert: "Flan casero",
+		drink: "Vino Tinto"
 	},
 	{
 		food: "Pizza Focaccia",
-		drinks: ["Copa de Sangría", "Vino Blanco"]
+		dessert: "Pastel de zanahoria",
+		drink: "Copa de Sangría"
 	},
 	{
 		food: "Mozzarella Sticks",
-		drinks: ["Gaseosa 600mL", "Copa de Sangría"]
+		dessert: "Tarta de manzana",
+		drink: "Gaseosa 600mL"
 	},
 	{
 		food: "Hamburguesa de la casa",
-		drinks: ["Gaseosa 3L", "Imperial Silver"]
+		dessert: "Helado de vainilla",
+		drink: "Gaseosa 3L"
 	},
 	{
 		food: "Mozzarella en Carroza",
-		drinks: ["Frappé Oreo", "Copa de Vino Blanco"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Frappé Oreo"
 	},
 	{
 		food: "Alitas en salsa Luisiana",
-		drinks: ["Imperial", "Frappé Villa Italia"]
+		dessert: "Flan casero",
+		drink: "Imperial"
 	},
 	{
 		food: "Alitas en salsa Barbacoa",
-		drinks: ["Gaseosa 3L", "Copa de Vino Tinto"]
+		dessert: "Tarta de manzana",
+		drink: "Gaseosa 3L"
 	},
 	{
 		food: "Mejillones en salsa marinara",
-		drinks: ["Copa de Vino Blanco", "Té de manzanilla"]
+		dessert: "Helado de vainilla",
+		drink: "Copa de Vino Blanco"
 	},
 	{
 		food: "Antipasto caliente",
-		drinks: ["Gaseosa 600mL", "Imperial Silver"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Gaseosa 600mL"
 	},
 	{
 		food: "Antipasto frío",
-		drinks: ["Copa de Sangría", "Frappé Villa Italia"]
+		dessert: "Tarta de manzana",
+		drink: "Copa de Sangría"
 	},
 	{
 		food: "Pan con ajo",
-		drinks: ["Té de manzanilla", "Espresso"]
+		dessert: "Flan casero",
+		drink: "Té de manzanilla"
 	},
 	{
 		food: "Papas a la francesa",
-		drinks: ["Gaseosa 3L", "Imperial Silver"]
+		dessert: "Helado de vainilla",
+		drink: "Gaseosa 3L"
 	},
 	{
 		food: "Orden de puré de papas",
-		drinks: ["Gaseosa 2.5L", "Café con leche"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Gaseosa 2.5L"
 	},
 	{
 		food: "Orden de arroz blanco",
-		drinks: ["Vino Tinto", "Té negro en leche"]
+		dessert: "Tarta de manzana",
+		drink: "Vino Tinto"
 	},
 	{
 		food: "Papa al horno",
-		drinks: ["Copa de Vino Blanco", "Gaseosa 2.5L"]
+		dessert: "Helado de vainilla",
+		drink: "Copa de Vino Blanco"
 	},
 	{
 		food: "Orden de vegetales mixtos",
-		drinks: ["Copa de Vino Blanco", "Frappé Villa Italia"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Copa de Vino Blanco"
 	},
 	{
 		food: "Pico de gallo",
-		drinks: ["Té de manzanilla", "Frappé Oreo"]
+		dessert: "Tarta de manzana",
+		drink: "Té de manzanilla"
 	},
 	{
 		food: "Chicken finger",
-		drinks: ["Gaseosa 3L", "Imperial Silver"]
+		dessert: "Helado de vainilla",
+		drink: "Gaseosa 3L"
 	},
 	{
 		food: "Fish and Chips",
-		drinks: ["Copa de Sangría", "Imperial"]
+		dessert: "Cheesecake de frutos rojos",
+		drink: "Copa de Sangría"
 	},
 	{
 		food: "Chile jalapeño relleno",
-		drinks: ["Imperial Silver", "Vino Blanco"]
-	},
-];
-
-const DRINK_RECOMMENDATIONS: IDrinkRecommendation[] = [
-	{
-		drink: 'Frappé Villa Italia',
-		foods: [
-			'Deditos de corvina',
-			'Alitas en salsa Luisiana',
-			'Antipasto frío',
-			'Orden de vegetales mixtos'
-		]
-	},
-	{
-		drink: 'Gaseosa 2.5L',
-		foods: ['Deditos de corvina', 'Orden de puré de papas', 'Papa al horno']
-	},
-	{
-		drink: 'Gaseosa 3L',
-		foods: [
-			'Deditos de pollo',
-			'Hamburguesa de la casa',
-			'Alitas en salsa Barbacoa',
-			'Papas a la francesa',
-			'Chicken finger'
-		]
-	},
-	{
-		drink: 'Copa de Vino Tinto',
-		foods: ['Deditos de pollo', 'Alitas en salsa Barbacoa']
-	},
-	{
-		drink: 'Copa de Vino Blanco',
-		foods: [
-			'Raviole en salsa de tomate',
-			'Mozzarella en Carroza',
-			'Mejillones en salsa marinara',
-			'Papa al horno',
-			'Orden de vegetales mixtos'
-		]
-	},
-	{
-		drink: 'Té de manzanilla',
-		foods: [
-			'Raviole en salsa de tomate',
-			'Mejillones en salsa marinara',
-			'Pan con ajo',
-			'Pico de gallo'
-		]
-	},
-	{
-		drink: 'Vino Tinto',
-		foods: ['Spaghetti a la mantequilla', 'Orden de arroz blanco']
-	},
-	{
-		drink: 'Té negro en leche',
-		foods: ['Spaghetti a la mantequilla', 'Orden de arroz blanco']
-	},
-	{
-		drink: 'Copa de Sangría',
-		foods: [
-			'Pizza Focaccia',
-			'Mozzarella Sticks',
-			'Antipasto frío',
-			'Fish and Chips'
-		]
-	},
-	{
-		drink: 'Vino Blanco',
-		foods: ['Pizza Focaccia', 'Chile jalapeño relleno']
-	},
-	{
-		drink: 'Gaseosa 600mL',
-		foods: ['Mozzarella Sticks', 'Antipasto caliente']
-	},
-	{
-		drink: 'Imperial Silver',
-		foods: [
-			'Hamburguesa de la casa',
-			'Antipasto caliente',
-			'Papas a la francesa',
-			'Chicken finger',
-			'Chile jalapeño relleno'
-		]
-	},
-	{
-		drink: 'Frappé Oreo',
-		foods: ['Mozzarella en Carroza', 'Pico de gallo']
-	},
-	{
-		drink: 'Imperial',
-		foods: ['Alitas en salsa Luisiana', 'Fish and Chips']
-	},
-	{ drink: 'Espresso', foods: ['Pan con ajo'] },
-	{ drink: 'Café con leche', foods: ['Orden de puré de papas'] }
+		dessert: "Tarta de manzana",
+		drink: "Imperial Silver"
+	}
 ];
 
 export {
 	FOODS,
+	DESSERTS,
 	DRINKS,
-	FOOD_RECOMMENDATIONS,
-	DRINK_RECOMMENDATIONS
+	RECOMMENDATIONS
 };

@@ -1,62 +1,78 @@
-import {
-  DRINK_RECOMMENDATIONS,
-  DRINKS,
-  FOOD_RECOMMENDATIONS,
-  FOODS
-} from "../database/Menu";
+import { RECOMMENDATIONS } from "../database/Menu";
 
-import {
-  IDrinkRecommendation,
-  IFoodRecommendation,
-  IMenuEntry
-} from "../interfaces/Menu";
+import { IRecommendation } from "../interfaces/Menu";
 
 
-function findFoodRecommendation(drinkRequest: string) {
-  const drinkRecommendation: IDrinkRecommendation | undefined = DRINK_RECOMMENDATIONS
-    .find((drinkRecommendation) => drinkRecommendation.drink === drinkRequest);
+function findRecommendation(foodRequest: IRecommendation): IRecommendation {
+  const result: IRecommendation = {
+    food: null,
+    dessert: null,
+    drink: null
+  }
 
-  if (!drinkRecommendation) { return null; }
+  if (foodRequest.food) {
+    let recommendationFound = false;
 
-  const recommendedFoods: IMenuEntry[] = []
+    for (let index = 0; index < RECOMMENDATIONS.length; index++) {
+      const recommendation = RECOMMENDATIONS[index];
 
-  for (let index = 0; index < FOODS.length; index++) {
-    const food = FOODS[index];
-    const foodName = food.name;
+      if (recommendation.food === foodRequest.food) {
+        recommendationFound = true
 
-    if (drinkRecommendation.foods.includes(foodName)) {
-      recommendedFoods.push(food);
+        result.food = foodRequest.food;
+        result.drink = recommendation.drink;
+        result.dessert = recommendation.dessert;
+      }
+    }
+
+    if (!recommendationFound) {
+      return { food: null, dessert: null, drink: null };
     }
   }
 
-  if (recommendedFoods.length === 0) { return null; }
+  if (foodRequest.dessert) {
+    let recommendationFound = false;
 
-  return recommendedFoods;
-}
+    for (let index = 0; index < RECOMMENDATIONS.length; index++) {
+      const recommendation = RECOMMENDATIONS[index];
 
-function findDrinkRecommendation(foodRequest: string) {
-  const foodRecommendation: IFoodRecommendation | undefined = FOOD_RECOMMENDATIONS
-    .find((foodRecommendation) => foodRecommendation.food === foodRequest);
+      if (recommendation.dessert === foodRequest.dessert) {
+        recommendationFound = true;
 
-  if (!foodRecommendation) { return null; }
+        result.food = result.food ? result.food : recommendation.food;
+        result.drink = result.drink ? result.drink : recommendation.drink;
+        result.dessert = foodRequest.dessert;
+      }
+    }
 
-  const recommendedDrinks: IMenuEntry[] = []
-
-  for (let index = 0; index < DRINKS.length; index++) {
-    const drink = DRINKS[index];
-    const drinkName = drink.name;
-
-    if (foodRecommendation.drinks.includes(drinkName)) {
-      recommendedDrinks.push(drink);
+    if (!recommendationFound) {
+      return { food: null, dessert: null, drink: null };
     }
   }
 
-  if (recommendedDrinks.length === 0) { return null; }
+  if (foodRequest.drink) {
+    let recommendationFound = false;
 
-  return recommendedDrinks;
+    for (let index = 0; index < RECOMMENDATIONS.length; index++) {
+      const recommendation = RECOMMENDATIONS[index];
+
+      if (recommendation.drink === foodRequest.drink) {
+        recommendationFound = true;
+
+        result.food = result.food ? result.food : recommendation.food;
+        result.drink = foodRequest.drink;
+        result.dessert = result.dessert ? result.dessert : recommendation.dessert;
+      }
+    }
+
+    if (!recommendationFound) {
+      return { food: null, dessert: null, drink: null };
+    }
+  }
+
+  return result;
 }
 
 export {
-  findFoodRecommendation,
-  findDrinkRecommendation
+  findRecommendation
 };

@@ -1,0 +1,11 @@
+{
+    "reserva": {
+        "fecha": "2024-04-05",
+        "horas_disponibles": [
+            "12:30",
+            "13:45",
+            "15:30"
+        ],
+        "mensaje": "Se recomienda la primera hora de la lista para hacer la reservación"
+    }
+}
