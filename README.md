@@ -160,7 +160,7 @@ Se prueba que dada una retroalimentación en texto, se devuelva el resultado del
 
 Se prueba que dada una petición de recomendación, se devuelva una respuesta coherente con respecto al menú utilizado.
 
-![imagen]()
+![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/food.jpg)
 
 ### Recomendación de horario
 
