@@ -166,7 +166,7 @@ Se prueba que dada una petición de recomendación, se devuelva una respuesta co
 
 Se prueba que dada una petición por parte del usuario para obtener una recomendación de un día y una hora para reservar o visitar el restaurante se haga de manera coherente con respecto a lo que proporciona la base de datos.
 
-![imagen]()
+![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/horario.jpg)
 
 ## Bibliografia
 
