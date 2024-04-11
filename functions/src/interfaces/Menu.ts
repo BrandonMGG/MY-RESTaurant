@@ -3,18 +3,13 @@ interface IMenuEntry {
   price: number;
 }
 
-interface IFoodRecommendation {
-  food: string;
-  drinks: string[];
-}
-
-interface IDrinkRecommendation {
-  drink: string;
-  foods: string[];
+interface IRecommendation {
+  food: string | null;
+  dessert: string | null;
+  drink: string | null;
 }
 
 export {
   IMenuEntry,
-  IFoodRecommendation,
-  IDrinkRecommendation
+  IRecommendation
 }
