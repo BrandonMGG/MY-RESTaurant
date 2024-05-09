@@ -18,13 +18,15 @@ import {MatListModule} from '@angular/material/list';
 import { DatePipe } from '@angular/common';
 import { environment } from '../environments/environment';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    ReservaComponent
+    ReservaComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
