@@ -17,6 +17,8 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { DatePipe } from '@angular/common';
 import { environment } from '../environments/environment';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { environment } from '../environments/environment';
     MatFormFieldModule,
     FormsModule, MatCardModule, MatNativeDateModule,
     HttpClientModule,
-    ReactiveFormsModule,HttpClientJsonpModule,MatListModule
+    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule
     
   ],
   providers: [MatDatepickerModule, DatePipe],
