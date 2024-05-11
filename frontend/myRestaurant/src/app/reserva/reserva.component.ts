@@ -20,20 +20,48 @@ export class ReservaComponent implements OnInit {
   formattedDate: string | null;
   reserva: Reserva;
   form: FormGroup;
+  reservacionForm: FormGroup;
+  espaciosDisponiblesArray: string[] = [
+    "mesa 1",
+    "mesa 2",
+    "mesa 3",
+    "mesa 4",
+    "mesa 5",
+    "mesa 6",
+    "mesa 7",
+    "mesa 8",
+    "mesa 9",
+    "mesa 10"
+];
+numeroDePersonas: number[] = [
+  1,2,3,4,5,6,7,8,9,10
+];
+horasDisponibles: string[]=[
+  '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'
+];
+
+
   constructor(private reservaService: ReservaService, private formBuilder: FormBuilder,
     private datePipe: DatePipe
   ) {
     this.form = this.formBuilder.group({
       mensaje: ['', Validators.required]
     });
+    this.reservacionForm = this.formBuilder.group({
+      espacioReservado: ['', Validators.required],
+      numeroPersonas: ['', Validators.required],
+      horaReservacion: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
+    
   }
 
   selectedDate: Date;
   minDate = new Date();
   selected: Date;
+  selectedReservationDate:Date;
   reservation: boolean;
 
   /**

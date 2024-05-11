@@ -1,0 +1,55 @@
+.toolbar {
+    background-color: #212121;
+    color: #fff;
+    /* Set your desired text color */
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    /* Ensure the toolbar is above other content */
+    border-radius: 2px;
+    box-shadow: 0 0 5px red;
+    text-align: center;
+    /* Center the text horizontally */
+    font-weight: 600;
+    height: 30px;
+    /* Set the height of the toolbar */
+    line-height: 30px;
+    /* Center the text vertically within the toolbar */
+    animation: neon 6s ease-in infinite alternate;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    background-image: linear-gradient(to right, #00FFFF, #8A2BE2, #00FF00);
+    background-size: 300% 300%;
+    background-clip: text;
+    color: transparent;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-family: Roboto;
+    position: relative;
+    animation: backgroundAnim 6s ease infinite;
+  }
+  
+  footer {
+    background-image: linear-gradient(to right, #00FFFF, #8A2BE2, #00FF00);
+    background-size: 300% 300%;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    animation: backgroundAnim 6s ease infinite;
+    z-index: 9999;
+    /* Ajusta el valor según sea necesario */
+  }

@@ -28,11 +28,36 @@
     <div class="column">
         <h1>Reservar</h1>
         <div class="reser-row">
-            <mat-card class="demo-inline-calendar-card">
-                <mat-hint>MM-DD-YYYY</mat-hint>
-                <mat-calendar [(selected)]="selected"></mat-calendar>
-            </mat-card>
-        </div>  
+            <div class="column">
+                <label class="menu-label" for="espacioReservado">Espacios Disponibles:</label>
+                <select class="menu-select" id="espacioReservado" name="espacioReservado" formControlName="espacioReservado">
+                    <option value="">-- Seleccione la mesa --</option>
+                    <option *ngFor="let espacio of espaciosDisponiblesArray" [value]="espacio">{{
+                        espacio}}</option>
+                </select>
+                <label class="menu-label" for="numeroPersonas">Numero de Personas:</label>
+                <select class="menu-select" id="numeroPersonas" name="numeroPersonas" formControlName="numeroPersonas">
+                    <option value="">-- Numero de Personas --</option>
+                    <option *ngFor="let personas of numeroDePersonas" [value]="personas">{{
+                        personas}}</option>
+                </select>
+                <label class="menu-label" for="horaReservacion">Hora de Reservacion:</label>
+                <select class="menu-select" id="horaReservacion" name="horaReservacion" formControlName="horaReservacion">
+                    <option value="">-- Seleccione la mesa --</option>
+                    <option *ngFor="let hora of horasDisponibles" [value]="hora">{{
+                        hora}}</option>
+                </select>
+            </div>
+            <div class="column">
+                <mat-card class="demo-inline-calendar-card">
+                    <mat-hint>MM-DD-YYYY</mat-hint>
+                    <mat-calendar [(selected)]="selectedReservationDate"></mat-calendar>
+                </mat-card>
+            </div>
+            
+
+        </div>
+
         <div class="menu-row-button">
             <button class="menu-button" type="submit">Reservar</button>
         </div>

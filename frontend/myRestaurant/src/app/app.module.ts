@@ -19,14 +19,18 @@ import { DatePipe } from '@angular/common';
 import { environment } from '../environments/environment';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HomeComponent } from './home/home.component';
+import { ReservaAdminComponent } from './reserva-admin/reserva-admin.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ReservaComponent,
-    HomeComponent
+    HomeComponent,
+    ReservaAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { HomeComponent } from './home/home.component';
     MatFormFieldModule,
     FormsModule, MatCardModule, MatNativeDateModule,
     HttpClientModule,
-    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule
+    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule,MatTableModule,MatCheckboxModule
     
   ],
   providers: [MatDatepickerModule, DatePipe],

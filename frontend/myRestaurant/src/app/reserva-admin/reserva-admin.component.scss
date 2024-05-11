@@ -1,0 +1,44 @@
+.container {
+    margin: 20px;
+    padding-top: 60px;
+  }
+  
+  .mat-elevation-z8 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .mat-header-row {
+    background-color: #f5f5f5;
+  }
+  
+  .mat-header-cell {
+    font-size: 18px; /* Aumentar tamaño de fuente */
+    font-weight: bold; /* Hacer los encabezados más llamativos */
+    color: #333; /* Color de texto */
+  }
+  
+  .mat-row:hover {
+    background-color: #f0f0f0;
+  }
+  
+  button {
+    margin-top: 20px;
+    font-size: 16px; /* Aumentar tamaño de fuente del botón */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color de texto del botón */
+    border: none; /* Eliminar borde del botón */
+    padding: 10px 20px; /* Ajustar padding del botón */
+    border-radius: 5px; /* Agregar bordes redondeados al botón */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el cursor sobre el botón */
+  }
+  

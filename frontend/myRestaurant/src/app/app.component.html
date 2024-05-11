@@ -1,2 +1,13 @@
-<app-home></app-home>
+<app-home *ngIf="isOnAdminPage()"></app-home>
+<div class="toolbar-row">
+    <div class="toolbar">
+        <div class="mat-row">
+            <span class="logo" routerLink="/adminreserva">FLASH PIZZA</span>
+        </div>
+    </div>
+</div>
 <router-outlet></router-outlet>
+<footer>
+    SOAD PROYECTO 2 2024 SEMESTRE 1
+</footer>
+
