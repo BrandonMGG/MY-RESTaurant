@@ -21,6 +21,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HomeComponent } from './home/home.component';
 import { ReservaAdminComponent } from './reserva-admin/reserva-admin.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
 
 import {MatTableModule} from '@angular/material/table';
 
@@ -41,7 +42,8 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     FormsModule, MatCardModule, MatNativeDateModule,
     HttpClientModule,
-    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule,MatTableModule,MatCheckboxModule
+    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule,MatTableModule,MatCheckboxModule,
+    MatIconModule
     
   ],
   providers: [MatDatepickerModule, DatePipe],

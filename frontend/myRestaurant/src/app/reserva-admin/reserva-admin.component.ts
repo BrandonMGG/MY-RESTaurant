@@ -8,12 +8,13 @@ export interface Reserva {
   personas: number;
   fecha: string;
   mesa: number;
+  numeroReserva: number;
   seleccionado: boolean;
 }
 const ELEMENT_DATA: Reserva[] = [
-  { hora: '10:00', personas: 4, fecha: '2024-05-11', mesa: 1, seleccionado: false },
-  { hora: '12:00', personas: 2, fecha: '2024-05-12', mesa: 2, seleccionado: false },
-  { hora: '15:00', personas: 6, fecha: '2024-05-13', mesa: 3, seleccionado: false },
+  { hora: '10:00', personas: 4, fecha: '2024-05-11', mesa: 1, numeroReserva:1, seleccionado: false },
+  { hora: '12:00', personas: 2, fecha: '2024-05-12', mesa: 2, numeroReserva:2, seleccionado: false },
+  { hora: '15:00', personas: 6, fecha: '2024-05-13', mesa: 3, numeroReserva:3, seleccionado: false },
 ];
 @Component({
   selector: 'app-reserva-admin',
@@ -23,7 +24,7 @@ const ELEMENT_DATA: Reserva[] = [
 
 
 export class ReservaAdminComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select','delete','numeroReserva','hora', 'cantidadPersonas', 'fecha', 'mesa'];
   selection = new SelectionModel<Reserva>(true, []);
   dataSource = new MatTableDataSource<Reserva>(ELEMENT_DATA);
 
@@ -32,9 +33,9 @@ export class ReservaAdminComponent implements OnInit {
   ngOnInit(): void {
   }
   reservas: Reserva[] = [
-    { hora: '10:00', personas: 4, fecha: '2024-05-11', mesa: 1, seleccionado: false },
-    { hora: '12:00', personas: 2, fecha: '2024-05-12', mesa: 2, seleccionado: false },
-    { hora: '15:00', personas: 6, fecha: '2024-05-13', mesa: 3, seleccionado: false },
+    { hora: '10:00', personas: 4, fecha: '2024-05-11', mesa: 1, numeroReserva:1, seleccionado: false },
+    { hora: '12:00', personas: 2, fecha: '2024-05-12', mesa: 2, numeroReserva:2, seleccionado: false },
+    { hora: '15:00', personas: 6, fecha: '2024-05-13', mesa: 3, numeroReserva:3, seleccionado: false },
   ];
 
   toggleSeleccion(index: number) {
@@ -65,5 +66,14 @@ export class ReservaAdminComponent implements OnInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.mesa + 1}`;
+  }
+
+  deleteRow(row: Reserva): void {
+    const index = this.dataSource.data.indexOf(row);
+    if (index > -1) {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource._updateChangeSubscription();
+      this.selection.deselect(row);
+    }
   }
 }
