@@ -43,8 +43,8 @@ export class ReservaAdminComponent implements OnInit {
   }
 
   enviarReservas() {
-    const reservasSeleccionadas = this.reservas.filter(reserva => reserva.seleccionado);
-    console.log(reservasSeleccionadas); // Aquí podrías enviar los datos al backend
+    const reservasSeleccionadas = this.selection.selected;
+    console.log(reservasSeleccionadas);
   }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -61,12 +61,7 @@ export class ReservaAdminComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Reserva): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.mesa + 1}`;
-  }
+  
 
   deleteRow(row: Reserva): void {
     const index = this.dataSource.data.indexOf(row);
