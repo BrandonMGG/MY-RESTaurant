@@ -24,6 +24,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 
 import {MatTableModule} from '@angular/material/table';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -40,10 +43,17 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    FormsModule, MatCardModule, MatNativeDateModule,
+    FormsModule, 
+    MatCardModule, 
+    MatNativeDateModule,
     HttpClientModule,
-    ReactiveFormsModule,HttpClientJsonpModule,MatListModule,MatTabsModule,MatTableModule,MatCheckboxModule,
-    MatIconModule
+    ReactiveFormsModule,
+    HttpClientJsonpModule,
+    MatListModule,
+    MatTabsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,NgxMaterialTimepickerModule,MatInputModule
     
   ],
   providers: [MatDatepickerModule, DatePipe],

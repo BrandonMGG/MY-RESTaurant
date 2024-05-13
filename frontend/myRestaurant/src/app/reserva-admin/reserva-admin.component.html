@@ -1,4 +1,18 @@
 <div class="container">
+    <div class="horarios">
+        <h1>Agregar Horarios</h1>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+
+        <input [ngxTimepicker]="picker" #timeInput placeholder="Hora" />
+        <ngx-material-timepicker #picker></ngx-material-timepicker>
+        <button mat-raised-button color="primary" (click)="addTime(timeInput.value)">Añadir Hora</button>
+    </div>
+
+
+
+    <h1>Modificar Reservaciones</h1>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="select">
             <th mat-header-cell *matHeaderCellDef>

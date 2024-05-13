@@ -41,7 +41,15 @@ export class ReservaAdminComponent implements OnInit {
   toggleSeleccion(index: number) {
     this.reservas[index].seleccionado = !this.reservas[index].seleccionado;
   }
+  timeList: string[] = [];
 
+  addTime(time: string) {
+    this.timeList.push(time);
+  }
+
+  deleteTime(index: number) {
+    this.timeList.splice(index, 1);
+  }
   enviarReservas() {
     const reservasSeleccionadas = this.selection.selected;
     console.log(reservasSeleccionadas);

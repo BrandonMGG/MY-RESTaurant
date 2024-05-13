@@ -1,8 +1,13 @@
+
 .container {
     margin: 20px;
     padding-top: 60px;
     margin: auto;
     text-align: center;
+  }
+  .horarios{
+    margin: 20px;
+    padding: 10px;
   }
   
   .mat-elevation-z8 {
@@ -21,9 +26,9 @@
   }
   
   .mat-header-cell {
-    font-size: 18px; /* Aumentar tamaño de fuente */
-    font-weight: bold; /* Hacer los encabezados más llamativos */
-    color: #333; /* Color de texto */
+    font-size: 18px; 
+    font-weight: bold; 
+    color: #333; 
   }
   
   .mat-row:hover {
@@ -32,15 +37,23 @@
   
   button {
     margin-top: 20px;
-    font-size: 16px; /* Aumentar tamaño de fuente del botón */
-    background-color: #007bff; /* Color de fondo del botón */
-    color: #fff; /* Color de texto del botón */
-    border: none; /* Eliminar borde del botón */
-    padding: 10px 20px; /* Ajustar padding del botón */
-    border-radius: 5px; /* Agregar bordes redondeados al botón */
+    font-size: 16px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; 
   }
   
   button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el cursor sobre el botón */
+    background-color: #0056b3;
   }
-  
+  input{
+    padding: 10px;
+    margin: 10px;
+  }
+  .centered-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
