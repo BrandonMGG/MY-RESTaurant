@@ -63,6 +63,7 @@ __Restablecimiento de contraseña para usuarios olvidadizos:__ En caso de que un
 __Gestión de roles de usuario para diferentes niveles de acceso:__ El servicio de autenticación administra los roles de usuario, lo que significa que puede asignar diferentes niveles de acceso y permisos a los usuarios según su rol en la aplicación. Por ejemplo, puede haber roles de cliente y administrador, cada uno con sus propias capacidades y restricciones.
 
 4. Sistema de Reservas:
+   
 __Posibilidad de visualizar disponibilidad de servicios:__ Este servicio permite a los usuarios verificar la disponibilidad de mesas o espacios para reservar en el restaurante. Puede mostrar información en tiempo real sobre la disponibilidad de horarios y capacidades de acuerdo con la configuración del restaurante.
 
 __Proceso de reserva intuitivo y fácil de usar:__ El servicio de reservas proporciona una interfaz intuitiva para que los usuarios puedan realizar reservas de manera fácil y eficiente. Esto incluye seleccionar la fecha, hora, número de personas y cualquier otra información relevante para la reserva.
