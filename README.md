@@ -181,15 +181,10 @@ _Estrategias de Optimización de Costos:_
 
 ### Frontend
 
-Se prueba que las respuestas del backend sean consistentes con respecto a las peticiones realizadas por el usuario.
+Se prueba que las respuestas de los servicios sean consistentes con respecto a las peticiones realizadas por el usuario.
 
 ![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/front.jpg)
 
-### Backend
-
-Para esta seccion se hicieron pruebas unitarias en cuanto a las llamadas de las funciones de recomendacion ed comidas, recomendacion de hora para reservación, feedback y el funcionamiento del frontend.
-
-![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/backend.jpg)
 
 ### Análisis de sentimiento
 
