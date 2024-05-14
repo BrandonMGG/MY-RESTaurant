@@ -4,7 +4,7 @@
         <div class="reser-row">
             <div class="column">
                 <form [formGroup]="reservacionForm">
-                    <label class="menu-label" for="espacioReservado">Espacios Disponibles:</label>
+                    <label class="menu-label" for="espacioReservado">Numero de Mesa:</label>
                     <select class="menu-select" id="espacioReservado" name="espacioReservado" formControlName="espacioReservado">
                         <option value="">-- Seleccione la mesa --</option>
                         <option *ngFor="let espacio of espaciosDisponiblesArray" [value]="espacio">{{
@@ -18,7 +18,7 @@
                     </select>
                     <label class="menu-label" for="horaReservacion">Hora de Reservacion:</label>
                     <select class="menu-select" id="horaReservacion" name="horaReservacion" formControlName="horaReservacion">
-                        <option value="">-- Seleccione la mesa --</option>
+                        <option value="">-- Seleccione la Hora --</option>
                         <option *ngFor="let hora of horasDisponibles" [value]="hora">{{
                             hora}}</option>
                     </select>
@@ -34,6 +34,74 @@
         <div class="menu-row-button">
             <button class="menu-button" type="submit" (click)="doReservation()">Reservar</button>
         </div>
+    </div>
+    <div class="column">
+        <h1>Modificar Reservaciones</h1>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-icon (click)="deleteRow(row)">delete</mat-icon>
+                </td>
+            </ng-container>
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="numeroReserva">
+                <th mat-header-cell *matHeaderCellDef> ID Reserva </th>
+                <td mat-cell *matCellDef="let element">
+                    <label>{{ element.numeroReserva }}</label>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="hora">
+                <th mat-header-cell *matHeaderCellDef> Hora </th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="text" [(ngModel)]="element.hora">
+                </td>
+            </ng-container>
+    
+            <!-- Name Column -->
+            <ng-container matColumnDef="cantidadPersonas">
+                <th mat-header-cell *matHeaderCellDef> Cantidad de Personas </th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="text" [(ngModel)]="element.personas">
+                </td>
+            </ng-container>
+    
+            <!-- Weight Column -->
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="text" [(ngModel)]="element.fecha">
+                </td>
+            </ng-container>
+    
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="mesa">
+                <th mat-header-cell *matHeaderCellDef> Mesa </th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="text" [(ngModel)]="element.mesa">
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </tr>
+        </table>
+        <button mat-button (click)="editReservation()" >Editar Reserva</button>
     </div>
     <!--<div class="column">
         <h1>Reservaciones</h1>

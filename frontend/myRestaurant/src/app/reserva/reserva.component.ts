@@ -3,11 +3,23 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReservaService } from './reserva.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+
 
 export interface Reserva {
   fecha: string;
   horas_disponibles: string[];
   mensaje: string;
+}
+
+export interface EditReserva {
+  hora: string;
+  personas: number;
+  fecha: string;
+  mesa: number;
+  numeroReserva: number;
+  seleccionado: boolean;
 }
 
 @Component({
@@ -21,25 +33,18 @@ export class ReservaComponent implements OnInit {
   reserva: Reserva;
   form: FormGroup;
   reservacionForm: FormGroup;
-  espaciosDisponiblesArray: string[] = [
-    "mesa 1",
-    "mesa 2",
-    "mesa 3",
-    "mesa 4",
-    "mesa 5",
-    "mesa 6",
-    "mesa 7",
-    "mesa 8",
-    "mesa 9",
-    "mesa 10"
-];
-numeroDePersonas: number[] = [
-  1,2,3,4,5,6,7,8,9,10
-];
-horasDisponibles: string[]=[
-  '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'
-];
+  espaciosDisponiblesArray: string[];
+  numeroDePersonas: number[] = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ];
+  horasDisponibles: string[];
 
+  selectedDate: Date;
+  minDate = new Date();
+  selected: Date;
+  selectedReservationDate: Date;
+  reservation: boolean;
+  reservas: any;
 
   constructor(private reservaService: ReservaService, private formBuilder: FormBuilder,
     private datePipe: DatePipe
@@ -54,15 +59,25 @@ horasDisponibles: string[]=[
     });
   }
 
+  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa'];
+  selection = new SelectionModel<Reserva>(true, []);
+  dataSource = new MatTableDataSource<Reserva>();
+
   ngOnInit(): void {
-    
+    this.reservaService.getMesas().subscribe((data) => {
+      this.espaciosDisponiblesArray = data.mesas;
+    });
+    this.reservaService.getHoras().subscribe((data) => {
+      this.horasDisponibles = data.horas;
+    });
+    this.reservaService.getReservas().subscribe((data) => {
+      this.dataSource.data = data.reservas;
+    });
   }
 
-  selectedDate: Date;
-  minDate = new Date();
-  selected: Date;
-  selectedReservationDate:Date;
-  reservation: boolean;
+  editReservation() {
+    console.log(this.dataSource.data);
+  }
 
   /**
    * Activa el proceso de realizar una reserva y formatea la fecha seleccionada si está disponible.
@@ -104,7 +119,7 @@ horasDisponibles: string[]=[
       });
     }
   }
-  doReservation(){
+  doReservation() {
     const formatDate = this.datePipe.transform(this.selectedReservationDate, 'yyyy-MM-dd');
 
     const data = {
@@ -114,6 +129,31 @@ horasDisponibles: string[]=[
       fechaReservacion: formatDate
     }
     console.log(data);
-
   }
+
+  toggleSeleccion(index: number) {
+    this.reservas[index].seleccionado = !this.reservas[index].seleccionado;
+  }
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+  deleteRow(row: Reserva): void {
+    const index = this.dataSource.data.indexOf(row);
+    if (index > -1) {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource._updateChangeSubscription();
+      this.selection.deselect(row);
+    }
+  }
+
 }

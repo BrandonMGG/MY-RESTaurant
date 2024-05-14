@@ -16,6 +16,15 @@ export class ReservaService {
   getReserva(data: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + '/reservacion?' + convertToUrlParams(data));
   }
+  getMesas(): Observable<any> {
+    return this.http.get<any>('assets/mesas.json');
+  }
+  getHoras(): Observable<any> {
+    return this.http.get<any>('assets/horas.json');
+  }
+  getReservas(): Observable<any> {  //Hay que pasar el cliente
+    return this.http.get<any>('assets/reservaEdit.json');
+  }
 }
 
 function convertToUrlParams(data: any): string {
