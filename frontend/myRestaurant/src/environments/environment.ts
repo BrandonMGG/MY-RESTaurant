@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://us-central1-proyect2soa.cloudfunctions.net/backend'
+  api: 'https://us-central1-proyect2soa.cloudfunctions.net/backend',
+  microservice: 'https://us-central1-proyect2soa.cloudfunctions.net/'
 };
 
 /*

@@ -11,16 +11,17 @@ import { environment } from 'src/environments/environment';
 
 export class ReservaService {
   apiUrl = environment.api;
-
+  microservice = environment.microservice;
+  
   constructor(private http: HttpClient) { }
   getReserva(data: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + '/reservacion?' + convertToUrlParams(data));
   }
   getMesas(): Observable<any> {
-    return this.http.get<any>('assets/mesas.json');
+    return this.http.get<any>(this.microservice +'getMesas');
   }
   getHoras(): Observable<any> {
-    return this.http.get<any>('assets/horas.json');
+    return this.http.get<any>(this.microservice +'getHoras');
   }
   getReservas(): Observable<any> {  //Hay que pasar el cliente
     return this.http.get<any>('assets/reservaEdit.json');
