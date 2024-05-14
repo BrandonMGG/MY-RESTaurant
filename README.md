@@ -62,6 +62,15 @@ __Restablecimiento de contraseña para usuarios olvidadizos:__ En caso de que un
 
 __Gestión de roles de usuario para diferentes niveles de acceso:__ El servicio de autenticación administra los roles de usuario, lo que significa que puede asignar diferentes niveles de acceso y permisos a los usuarios según su rol en la aplicación. Por ejemplo, puede haber roles de cliente y administrador, cada uno con sus propias capacidades y restricciones.
 
+4. Sistema de Reservas:
+__Posibilidad de visualizar disponibilidad de servicios:__ Este servicio permite a los usuarios verificar la disponibilidad de mesas o espacios para reservar en el restaurante. Puede mostrar información en tiempo real sobre la disponibilidad de horarios y capacidades de acuerdo con la configuración del restaurante.
+
+__Proceso de reserva intuitivo y fácil de usar:__ El servicio de reservas proporciona una interfaz intuitiva para que los usuarios puedan realizar reservas de manera fácil y eficiente. Esto incluye seleccionar la fecha, hora, número de personas y cualquier otra información relevante para la reserva.
+
+__Cancelación o edición de reserva para usuarios:__ Los usuarios pueden gestionar sus reservas existentes mediante la capacidad de cancelarlas o editarlas según sea necesario. Esto implica actualizar la información de la reserva en la base de datos y liberar el espacio reservado para otros clientes si la reserva se cancela.
+
+__Notificaciones de reservas realizadas:__ Después de que un usuario realice una reserva con éxito, el servicio de reservas puede enviar notificaciones al usuario y al restaurante para confirmar la reserva. Esto garantiza una comunicación clara y reduce la posibilidad de confusiones o conflictos en las reservas.
+
 
 5. Frontend Cloud Function:
 
@@ -71,7 +80,7 @@ _Entrada:_ Acciones del usuario dentro de la interfaz de usuario, como hacer cli
 
 _Salida esperada:_ textos con las recomendaciones realizadas por el sistema para peticiones como lo son formularios de feedback, recomendaciones de menú personalizadas, y opciones de reserva.
 
-_Relación con otras funciones:_ La Frontend Cloud Function interactúa directamente con el Backend para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al Backend, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el Backend recibe la respuesta de estas funciones, la envía de vuelta a la Frontend Cloud Function, que luego presenta los resultados al usuario.
+_Relación con otras funciones:_ La Frontend Cloud Function interactúa con otros servicios para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al servicio correspondiente, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el servicio recibe la respuesta de estas funciones, la envía de vuelta a la Frontend Cloud Function, que luego presenta los resultados al usuario.
 
 ## Seguridad y escalabilidad.
 
