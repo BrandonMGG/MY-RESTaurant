@@ -24,7 +24,7 @@ La separación de funciones permite escalar vertical u horizontalmente según la
 
 ## Diagrama de Arquitectura.
 
-![javascript-logo](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/sugerencia%20horaria/Component%20Diagram.png)
+![javascript-logo](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/sugerencia%20horaria/diagrama.png)
 
 
 
