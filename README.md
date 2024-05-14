@@ -55,11 +55,13 @@ _Relación con otras funciones:_ La salida de esta función es utilizada por el 
 3.	Servicio de Autenticacion:
 
 __Capacidad de registro de nuevos usuarios:__ Este servicio permite a los usuarios registrarse en la aplicación proporcionando la información necesaria, como nombre, correo electrónico, contraseña, etc. La información de los usuarios registrados se almacena de forma segura en la base de datos.
+
 __Autenticación segura de usuarios registrados:__ Los usuarios registrados pueden iniciar sesión en la aplicación mediante sus credenciales de acceso (correo electrónico y contraseña). El servicio de autenticación verifica las credenciales proporcionadas para garantizar la identidad del usuario y otorgar acceso a las funciones autorizadas.
+
 __Restablecimiento de contraseña para usuarios olvidadizos:__ En caso de que un usuario olvide su contraseña, este servicio proporciona un mecanismo seguro para restablecerla. Puede implicar enviar un enlace de restablecimiento de contraseña al correo electrónico del usuario o responder a preguntas de seguridad previamente establecidas.
+
 __Gestión de roles de usuario para diferentes niveles de acceso:__ El servicio de autenticación administra los roles de usuario, lo que significa que puede asignar diferentes niveles de acceso y permisos a los usuarios según su rol en la aplicación. Por ejemplo, puede haber roles de cliente, administrador del restaurante, personal de cocina, etc., cada uno con sus propias capacidades y restricciones.
 
-_Relación con otras funciones:_ Esta función orquesta la interacción entre las otras Cloud Functions, tomando las entradas del frontend y coordinando las solicitudes y respuestas entre las diferentes funciones. Permite una comunicación fluida y coherente con el resto del sistema.
 
 5. Frontend Cloud Function:
 
