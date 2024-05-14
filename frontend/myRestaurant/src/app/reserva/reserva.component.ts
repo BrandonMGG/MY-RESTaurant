@@ -70,7 +70,7 @@ export class ReservaComponent implements OnInit {
     this.reservaService.getHoras().subscribe((data) => {
       this.horasDisponibles = data.horas;
     });
-    this.reservaService.getReservas().subscribe((data) => {
+    this.reservaService.getReservas("Mario").subscribe((data) => {
       this.dataSource.data = data.reservas;
     });
   }
@@ -121,14 +121,17 @@ export class ReservaComponent implements OnInit {
   }
   doReservation() {
     const formatDate = this.datePipe.transform(this.selectedReservationDate, 'yyyy-MM-dd');
-
     const data = {
-      mesaSeleccionada: this.reservacionForm.value.espacioReservado,
-      numeroDePersonas: this.reservacionForm.value.numeroPersonas,
-      horaReservacion: this.reservacionForm.value.horaReservacion,
-      fechaReservacion: formatDate
+      mesa: this.reservacionForm.value.espacioReservado,
+      personas: this.reservacionForm.value.numeroPersonas,
+      hora: this.reservacionForm.value.horaReservacion,
+      fecha: formatDate,
+      cliente: 'Mario'
     }
     console.log(data);
+    this.reservaService.makeReservation(data).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   toggleSeleccion(index: number) {
@@ -147,7 +150,16 @@ export class ReservaComponent implements OnInit {
 
     this.selection.select(...this.dataSource.data);
   }
-  deleteRow(row: Reserva): void {
+  deleteRow(row: any): void {
+    console.log(row.numeroReserva);
+    this.reservaService.deleteReserva(row.numeroReserva).subscribe(
+      () => {
+        console.log('Data deleted successfully!');
+      },
+      error => {
+        console.error('Error deleting data:', error);
+      }
+    );
     const index = this.dataSource.data.indexOf(row);
     if (index > -1) {
       this.dataSource.data.splice(index, 1);
