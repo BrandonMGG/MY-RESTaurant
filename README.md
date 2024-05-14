@@ -23,6 +23,44 @@ Cada función se diseñó para ser independiente y reutilizable, lo que facilita
 Los servicios se comunican a través de interfaces bien definidas, lo que permite la sustitución o actualización de componentes sin afectar al resto del sistema.
 La separación de funciones permite escalar vertical u horizontalmente según la demanda específica de cada servicio, optimizando los recursos y el rendimiento del sistema de manera eficiente.
 
+### Rediseño del proyecto:
+
+1. Identificación de Servicios Clave:
+
+Analizamos el proyecto actual para identificar las principales funcionalidades y componentes.
+Determinamos qué partes del backend se pueden convertir en servicios independientes, como la gestión de reservas y la autenticación de usuarios.
+
+2. Separación de Funcionalidades:
+   
+Dividimos las funcionalidades del backend en servicios distintos, cada uno con su propia responsabilidad.
+Por ejemplo, creamos un servicio específico para la autenticación de usuarios y otro para la gestión de reservas.
+
+3. Definición de Interfaces:
+   
+Establecemos interfaces claras y estándares de comunicación entre el frontend y los nuevos servicios.
+Definimos cómo el frontend puede enviar solicitudes y recibir respuestas de los servicios.
+
+4. Implementación de Servicios:
+   
+Desarrollamos los nuevos servicios basados en las especificaciones definidas.
+Por ejemplo, creamos un servicio de autenticación que maneja el registro de usuarios, la autenticación segura, el restablecimiento de contraseñas y la gestión de roles.
+
+5. Actualización del Frontend:
+   
+Adaptamos el frontend para interactuar con los nuevos servicios en lugar de comunicarse directamente con el backend monolítico.
+Modificamos las llamadas de API y la lógica de presentación para trabajar con las nuevas interfaces de servicios.
+
+6. Pruebas de Integración:
+   
+Realizamos pruebas exhaustivas para garantizar que los servicios funcionen correctamente y se comuniquen de manera efectiva con el frontend.
+Verificamos la interoperabilidad, la seguridad y la escalabilidad de la nueva arquitectura.
+
+7.Despliegue y Monitoreo:
+
+Implementamos la nueva arquitectura en un entorno de producción y monitoreamos su rendimiento y estabilidad.
+Realizamos ajustes y optimizaciones según sea necesario para mejorar la experiencia del usuario y la eficiencia del sistema.
+
+
 
 ## Diagrama de Arquitectura.
 
