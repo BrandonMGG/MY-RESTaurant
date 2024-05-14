@@ -4,18 +4,20 @@ Esta página contiene la documentación general del proyecto.
 
 ## Visión general de la arquitectura.
 
-La arquitectura del sistema se basa en una infraestructura en la nube proporcionada por Google Cloud Platform (GCP), donde cada componente se despliega como una función independiente de Google Cloud Functions. Este enfoque permite una escalabilidad eficiente y una gestión simplificada de recursos.
+La arquitectura propuesta es una arquitectura orientada a servicios (SOA) para una aplicación de menú interactivo y gestión de reservas para un restaurante. La aplicación consta de varios servicios interconectados que se comunican mediante la separación de responsabilidades. La arquitectura está diseñada para ser modular, flexible y escalable, permitiendo la incorporación de nuevos servicios y la expansión de funcionalidades de manera eficiente.
 
 ### Estructura de la arquitectura (Cloud Functions:):
+La estructura de la arquitectura se basa en los siguientes componentes principales:
 
-1.	Analyze-sentiment: Esta función recibe y procesa el feedback de los clientes utilizando Google Natural Language API para analizar sentimientos por parte del usuario y dar una respuesta acorde a este.
-2.	Sugerencia-hora: Encargada de recomendar fechas y horas de visita, utilizando datos de reservaciones almacenados en un archivo JSON. Esta función optimiza la disponibilidad y distribución de las reservas.
-3.	Food-recommendation: Ofrece recomendaciones de combinaciones de comidas a partir de un menú predefinido. Proporciona un plato principal, una bebida y un postre basados en preferencias del cliente.
-4.	Backend: Actúa como el núcleo de la arquitectura, interactuando con las funciones anteriores para gestionar peticiones del frontend y coordinar las respuestas.
-5.	Frontend: Esta función, desplegada como parte de la arquitectura serverless, sirve como interfaz de usuario para los clientes. Proporciona una experiencia fluida e interactiva, interactuando con el backend para realizar solicitudes y mostrar resultados.
+1.	Servicios existentes: : La aplicación ya cuenta con servicios para la gestión de menús, recomendaciones de comida y reservas.
+2.	Nuevos servicios: : Se agregarán dos nuevos servicios: un servicio de autenticación y un sistema de reservas.
+3.	Separación de responsabilidades:  Todos los servicios se comunican mediante la separación de responsabilidades, lo que significa que cada servicio es responsable de una función específica y se comunica con otros servicios de manera directa según sea necesario.
+4.	Capa de presentación:  Interactúa con los usuarios a través de interfaces de usuario para la gestión de reservas, visualización de menús y recomendaciones, y operaciones de autenticación.
+5.	Capa de lógica de negocio: : Contiene la lógica de negocio de la aplicación, incluyendo la gestión de reservas, autenticación de usuarios, recomendaciones de comida, etc.
+6.	Capa de datos: Almacena y gestiona la información necesaria para el funcionamiento de la aplicación, como datos de usuarios, menús, reservas, etc.
 
 ### Naturaleza orientada a servicios:
-La arquitectura sigue un enfoque orientado a servicios, donde cada función cumple un propósito específico y se comunica de manera independiente con otras funciones a través de solicitudes HTTP o eventos. Esta modularidad y separación de responsabilidades garantizan una mayor flexibilidad, mantenibilidad y escalabilidad del sistema.
+La arquitectura se orienta a servicios al separar las funcionalidades de la aplicación en servicios independientes y reutilizables. Cada servicio cumple una función específica y se comunica directamente con otros servicios según sea necesario. Esto facilita la modularidad, la flexibilidad y la interoperabilidad de la aplicación, permitiendo la incorporación de nuevos servicios y la evolución de la aplicación de manera gradual y eficiente.
 
 Cada función se diseñó para ser independiente y reutilizable, lo que facilita su mantenimiento y actualización. 
 Los servicios se comunican a través de interfaces bien definidas, lo que permite la sustitución o actualización de componentes sin afectar al resto del sistema.
