@@ -78,7 +78,7 @@ _Entrada:_ El feedback del cliente en formato de texto.
 
 _Salida esperada:_ Las coordenadas del feedback analizado y un texto predefinido según el sentimiento detectado en el feed back y un emoji acorde a ese sentimiento.
 
-_Relación con otras funciones:_ La salida de esta función es utilizada por el Backend para informar al usuario sobre lo que se entiende del feedback proporcionado por el usuario.
+_Relación con otras funciones:_ La salida de esta función es utilizada por el servicio para informar al usuario sobre lo que se entiende del feedback proporcionado por el usuario.
 
 2.	Food-recommendation:
    
@@ -88,7 +88,7 @@ _Entrada:_ Preferencias del cliente ya sea el plato principal, una bebida o un p
 
 _Salida esperada:_ Una recomendación que incluye un plato principal, una bebida y un postre.
 
-_Relación con otras funciones:_ La salida de esta función es utilizada por el Backend para personalizar la experiencia del cliente y ofrecer sugerencias al/a los platillos que se quieran consumir. También es mostrada directamente al cliente a través del Frontend Cloud Function.
+_Relación con otras funciones:_ La salida de esta función es utilizada por el servicio para personalizar la experiencia del cliente y ofrecer sugerencias al/a los platillos que se quieran consumir. También es mostrada directamente al cliente a través del Frontend Cloud Function.
 
 3.	Servicio de Autenticacion:
 
