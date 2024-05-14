@@ -75,3 +75,14 @@ form {
   .icon-user i:hover{
     color:lightgrey
   }
+
+  /* Add this to your register.component.css */
+.response-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #d9534f; /* Red color for error */
+}
+
+.response-message.success {
+  color: #5cb85c; /* Green color for success */
+}

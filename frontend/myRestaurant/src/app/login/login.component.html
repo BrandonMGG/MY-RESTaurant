@@ -21,10 +21,14 @@
    
     <button type="submit" [disabled]="!registerForm.valid">Login</button>
     <div class="div-a">
-        ¿Perdistes la contraseña? <a >Restablecer Contraseña</a>
+        ¿Perdistes la contraseña? <a routerLink="/restablecer">Restablecer Contraseña </a>
     </div>
     <div class="div-aRegis">
         ¿No tienes cuenta registrada? <a routerLink="/register">register</a>
+    </div>
+
+    <div *ngIf="responseMessage" class="response-message">
+      {{ responseMessage }}
     </div>
   </form>
 </div>

@@ -18,6 +18,9 @@ export class AppComponent {
      if(this.router.url.includes('/adminreserva') || this.router.url.includes('/register') ){
       return false
     }
+    if(this.router.url.includes('/adminreserva') || this.router.url.includes('/restablecer') ){
+      return false
+    }
     return true
     
   }

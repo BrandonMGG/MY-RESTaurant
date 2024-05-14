@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   confirm:string;
   form:FormGroup;
+  responseMessage:string='';
   constructor(private userService: UserService, private formBuilder: FormBuilder) { 
 
     this.form = this.formBuilder.group({
@@ -24,9 +25,15 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     //logica para enviar datos
     console.log("registrando usuario")
-    this.userService.register(this.form.value.email, this.form.value.password, this.form.value.confirm).subscribe(response => {
+    this.userService.register(this.form.value.email, this.form.value.password, this.form.value.confirm)
+    .subscribe(response => {
          console.log(response);
-      }, (error => { console.error("Error",error) }
+         this.responseMessage=response.message;
+    
+      }, (error => { console.log("Error",error) 
+     
+      this.responseMessage = error.error.message;
+      }
       )
       )
   }

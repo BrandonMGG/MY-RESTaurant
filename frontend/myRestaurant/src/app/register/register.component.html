@@ -25,5 +25,8 @@
     <div class="div-a">
         ya tienes una cuenta? <a routerLink="/login">login</a>
     </div>
+    <div *ngIf="responseMessage" class="response-message">
+      {{ responseMessage }}
+    </div>
   </form>
   
