@@ -1,0 +1,29 @@
+<!-- register.component.html -->
+
+<form (ngSubmit)="registerUser()" #registerForm="ngForm" style="background-color:aliceblue">
+ 
+    <div class="">
+        <h2 class="h2-tittle">Register</h2>
+    </div>
+    <div class="icon-user">
+      <i class="fa fa-user"></i>
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="email" [(ngModel)]="email" required>
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" name="password" placeholder="password" required>
+    </div>
+    <div>
+        <label for="">Confirmar password</label>
+        <input type="text" class="confirmPassword" placeholder="confirmar password" required>
+
+    </div>
+    <button type="submit" [disabled]="!registerForm.valid">Registrar</button>
+    <div class="div-a">
+        ya tienes una cuenta? <a href="">login</a>
+    </div>
+  </form>
+  
