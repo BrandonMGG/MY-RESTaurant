@@ -1,4 +1,4 @@
-# Bienvenidos a la documentación de la aplicacion web My-RESTaurant!
+# Bienvenidos a la documentación de la aplicacion web My-RESTaurant-2!
 
 Esta página contiene la documentación general del proyecto.
 
@@ -9,11 +9,11 @@ La arquitectura propuesta es una arquitectura orientada a servicios (SOA) para u
 ### Estructura de la arquitectura (Cloud Functions:):
 La estructura de la arquitectura se basa en los siguientes componentes principales:
 
-1.	Servicios existentes: : La aplicación ya cuenta con servicios para la gestión de menús, recomendaciones de comida y reservas.
-2.	Nuevos servicios: : Se agregarán dos nuevos servicios: un servicio de autenticación y un sistema de reservas.
+1.	Servicios existentes: La aplicación ya cuenta con servicios para la gestión de menús, recomendaciones de comida y reservas.
+2.	Nuevos servicios: Se agregarán dos nuevos servicios: un servicio de autenticación y un sistema de reservas.
 3.	Separación de responsabilidades:  Todos los servicios se comunican mediante la separación de responsabilidades, lo que significa que cada servicio es responsable de una función específica y se comunica con otros servicios de manera directa según sea necesario.
 4.	Capa de presentación:  Interactúa con los usuarios a través de interfaces de usuario para la gestión de reservas, visualización de menús y recomendaciones, y operaciones de autenticación.
-5.	Capa de lógica de negocio: : Contiene la lógica de negocio de la aplicación, incluyendo la gestión de reservas, autenticación de usuarios, recomendaciones de comida, etc.
+5.	Capa de lógica de negocio: Contiene la lógica de negocio de la aplicación, incluyendo la gestión de reservas, autenticación de usuarios, recomendaciones de comida, etc.
 6.	Capa de datos: Almacena y gestiona la información necesaria para el funcionamiento de la aplicación, como datos de usuarios, menús, reservas, etc.
 
 ### Naturaleza orientada a servicios:
@@ -42,17 +42,7 @@ _Salida esperada:_ Las coordenadas del feedback analizado y un texto predefinido
 
 _Relación con otras funciones:_ La salida de esta función es utilizada por el Backend para informar al usuario sobre lo que se entiende del feedback proporcionado por el usuario.
 
-2.	Recomendacion-hora:
-
-_Función:_ Esta Cloud Function recomienda fechas y horas de visita basadas en datos de reservaciones almacenados en un archivo JSON.
-
-_Entrada:_ Datos de reservaciones del restaurante en formato JSON como una fecha para visitar el restaurante y/o una petición de recomendación para visitarlo.
-
-_Salida esperada:_ Una recomendación de fecha y hora óptimas para la visita del cliente.
-
-_Relación con otras funciones:_ La salida de esta función se envía al Backend para ser mostrada al cliente a través del Frontend Cloud Function. Además, puede ser utilizada por el Backend Service para gestionar las reservaciones y optimizar la capacidad del restaurante.
-
-3.	Food-recommendation:
+2.	Food-recommendation:
    
 _Función:_ Esta Cloud Function ofrece recomendaciones de combinaciones de comidas a partir de un menú predefinido.
 
@@ -62,13 +52,12 @@ _Salida esperada:_ Una recomendación que incluye un plato principal, una bebida
 
 _Relación con otras funciones:_ La salida de esta función es utilizada por el Backend para personalizar la experiencia del cliente y ofrecer sugerencias al/a los platillos que se quieran consumir. También es mostrada directamente al cliente a través del Frontend Cloud Function.
 
-4.	Backend:
+3.	Servicio de Autenticacion:
 
-_Función:_ Esta Cloud Function actúa como el núcleo de la arquitectura, gestionando las solicitudes del frontend y coordinando las respuestas de las otras funciones.
-
-_Entrada:_ Solicitudes del frontend, como solicitudes de recomendaciones, feedback del cliente, etc.
-
-_Salida esperada:_ Respuestas a las solicitudes del frontend, que pueden incluir recomendaciones de menú, fechas de visita recomendadas, respuestas a feedback.
+__Capacidad de registro de nuevos usuarios:__ Este servicio permite a los usuarios registrarse en la aplicación proporcionando la información necesaria, como nombre, correo electrónico, contraseña, etc. La información de los usuarios registrados se almacena de forma segura en la base de datos.
+__Autenticación segura de usuarios registrados:__ Los usuarios registrados pueden iniciar sesión en la aplicación mediante sus credenciales de acceso (correo electrónico y contraseña). El servicio de autenticación verifica las credenciales proporcionadas para garantizar la identidad del usuario y otorgar acceso a las funciones autorizadas.
+__Restablecimiento de contraseña para usuarios olvidadizos:__ En caso de que un usuario olvide su contraseña, este servicio proporciona un mecanismo seguro para restablecerla. Puede implicar enviar un enlace de restablecimiento de contraseña al correo electrónico del usuario o responder a preguntas de seguridad previamente establecidas.
+__Gestión de roles de usuario para diferentes niveles de acceso:__ El servicio de autenticación administra los roles de usuario, lo que significa que puede asignar diferentes niveles de acceso y permisos a los usuarios según su rol en la aplicación. Por ejemplo, puede haber roles de cliente, administrador del restaurante, personal de cocina, etc., cada uno con sus propias capacidades y restricciones.
 
 _Relación con otras funciones:_ Esta función orquesta la interacción entre las otras Cloud Functions, tomando las entradas del frontend y coordinando las solicitudes y respuestas entre las diferentes funciones. Permite una comunicación fluida y coherente con el resto del sistema.
 
