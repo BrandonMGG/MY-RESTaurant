@@ -24,7 +24,7 @@ export class ReservaService {
     return this.http.get<any>(this.microservice +'getHoras');
   }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
-    return this.http.get<any>(this.microservice + 'getResCliente', cliente);
+    return this.http.post<any>(this.microservice + 'getResCliente', cliente);
   }
   deleteReserva(id: any): Observable<any> {
     return this.http.delete<any>(this.microservice + 'deleteReservation', id);

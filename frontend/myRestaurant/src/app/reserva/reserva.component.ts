@@ -70,8 +70,12 @@ export class ReservaComponent implements OnInit {
     this.reservaService.getHoras().subscribe((data) => {
       this.horasDisponibles = data.horas;
     });
-    this.reservaService.getReservas("Mario").subscribe((data) => {
+    const dataCliente ={
+      cliente: "Mario"
+    }
+    this.reservaService.getReservas(dataCliente).subscribe((data) => {
       this.dataSource.data = data.reservas;
+      
     });
   }
 
