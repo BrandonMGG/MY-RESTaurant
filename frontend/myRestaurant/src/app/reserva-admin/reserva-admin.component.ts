@@ -5,7 +5,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DatePipe } from '@angular/common';
 import { ReservaAdminService } from './reserva-admin.service';
 
-
 export interface Reserva {
   hora: string;
   personas: number;
@@ -20,7 +19,6 @@ export interface Reserva {
   templateUrl: './reserva-admin.component.html',
   styleUrls: ['./reserva-admin.component.scss']
 })
-
 
 export class ReservaAdminComponent implements OnInit {
   displayedColumns: string[] = ['select','delete','numeroReserva','hora', 'cantidadPersonas', 'fecha', 'mesa'];
@@ -38,7 +36,6 @@ export class ReservaAdminComponent implements OnInit {
       this.dataSource.data = this.reservas?.reservas;
     });
   }
-
 
   toggleSeleccion(index: number) {
     this.reservas[index].seleccionado = !this.reservas[index].seleccionado;
@@ -73,12 +70,8 @@ export class ReservaAdminComponent implements OnInit {
       this.selection.clear();
       return;
     }
-
     this.selection.select(...this.dataSource.data);
-  }
-
-  /** The label for the checkbox on the passed row */
-  
+  }  
 
   deleteRow(row: Reserva): void {
     const index = this.dataSource.data.indexOf(row);
