@@ -104,4 +104,16 @@ horasDisponibles: string[]=[
       });
     }
   }
+  doReservation(){
+    const formatDate = this.datePipe.transform(this.selectedReservationDate, 'yyyy-MM-dd');
+
+    const data = {
+      mesaSeleccionada: this.reservacionForm.value.espacioReservado,
+      numeroDePersonas: this.reservacionForm.value.numeroPersonas,
+      horaReservacion: this.reservacionForm.value.horaReservacion,
+      fechaReservacion: formatDate
+    }
+    console.log(data);
+
+  }
 }

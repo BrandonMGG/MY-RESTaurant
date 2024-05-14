@@ -1,11 +1,11 @@
 <div class="container">
     <div class="horarios">
         <h1>Agregar Horarios</h1>
-        <input matInput [matDatepicker]="picker1">
+        <input matInput [matDatepicker]="picker1"  [(ngModel)]="fechaSeleccionada" name="fechaSeleccionada">
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
 
-        <input [ngxTimepicker]="picker" #timeInput placeholder="Hora" />
+        <input [ngxTimepicker]="picker" #timeInput placeholder="Hora" [(ngModel)]="horaSeleccionada" name="horaSeleccionada"/>
         <ngx-material-timepicker #picker></ngx-material-timepicker>
         <button mat-raised-button color="primary" (click)="addTime(timeInput.value)">Añadir Hora</button>
     </div>

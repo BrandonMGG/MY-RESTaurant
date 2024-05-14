@@ -1,0 +1,28 @@
+{
+    "reservas": [
+        {
+            "hora": "10: 00",
+            "personas": 4,
+            "fecha": "2024-05-11",
+            "mesa": 1,
+            "numeroReserva": 1,
+            "seleccionado": false
+        },
+        {
+            "hora": "12: 00",
+            "personas": 2,
+            "fecha": "2024-05-12",
+            "mesa": 2,
+            "numeroReserva": 2,
+            "seleccionado": false
+        },
+        {
+            "hora": "15: 00",
+            "personas": 6,
+            "fecha": "2024-05-13",
+            "mesa": 3,
+            "numeroReserva": 3,
+            "seleccionado": false
+        }
+    ]
+}
