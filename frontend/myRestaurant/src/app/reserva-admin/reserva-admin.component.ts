@@ -98,7 +98,16 @@ export class ReservaAdminComponent implements OnInit {
     this.selection.select(...this.dataSource.data);
   }
 
-  deleteRow(row: Reserva): void {
+  deleteRow(row: any): void {
+    console.log(row.numeroReserva);
+    this.reserAdmin.deleteReserva(row.numeroReserva).subscribe(
+      () => {
+        console.log('Data deleted successfully!');
+      },
+      error => {
+        console.error('Error deleting data:', error);
+      }
+    );
     const index = this.dataSource.data.indexOf(row);
     if (index > -1) {
       this.dataSource.data.splice(index, 1);

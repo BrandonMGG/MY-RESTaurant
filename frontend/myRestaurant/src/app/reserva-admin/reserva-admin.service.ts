@@ -14,12 +14,19 @@ export class ReservaAdminService {
   constructor(private http: HttpClient) { }
   
   getReservaAdmin(): Observable<any> {
-    return this.http.get<any>('assets/reservaAdmin.json');
+    return this.http.get<any>(this.microservice + 'getAllRes')
   }
   agregarHora(data:any): Observable<any> {
     return this.http.get<any>(this.microservice + 'addHours?fecha='+data["fecha"]+'&hora='+data["hora"]);
   }
    editReserva(data:any): Observable<any> {
     return this.http.get<any>(this.microservice + 'updateReservas?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&id='+data["id"]);
+  }
+  getAllReservations(): Observable<any> {
+    return this.http.get<any>(this.microservice + 'getAllRes');
+  }
+  deleteReserva(id: any): Observable<any> {
+    console.log(id)
+    return this.http.get<any>(this.microservice + 'deleteReservation?id='+id);
   }
 }
