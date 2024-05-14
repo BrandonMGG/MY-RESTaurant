@@ -5,10 +5,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private urlapi=''
+  private urlapi='http://localhost:8080/'
   constructor(private httclient:HttpClient) { }
-  register(email:string,password:string){
-    const userData={email,password};
-    return this.httclient.post(`${this.urlapi}/register`,userData);
+  register(email:string,password:string, confirm:string):Observable<any>{
+   
+    const userData={email,password,confirm};
+    console.log(userData)
+    return this.httclient.post<any>('http://localhost:8080/register',userData);
   }
 }
+
+

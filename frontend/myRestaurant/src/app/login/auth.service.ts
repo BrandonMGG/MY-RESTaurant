@@ -6,12 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private url='' //url of servidor
-  private Urlreset=''
+  private url='https://us-central1-proyect2soa.cloudfunctions.net/authServices' //url of servidor
+  private Urlreset='https://us-central1-proyect2soa.cloudfunctions.net/authServices'
   constructor(private http:HttpClient) { }
 
   login(email:string, password:string):Observable<any>{
+    console.log("todo bien")
     return this.http.post<any>(`${this.url}/login`,{email,password})
+    
   }
 
   resetPassword(email: string): Observable<any> {
