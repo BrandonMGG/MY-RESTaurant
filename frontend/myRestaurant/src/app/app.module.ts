@@ -22,10 +22,12 @@ import { HomeComponent } from './home/home.component';
 import { ReservaAdminComponent } from './reserva-admin/reserva-admin.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
-
 import {MatTableModule} from '@angular/material/table';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -34,7 +36,11 @@ import { MatInputModule } from '@angular/material/input';
     MenuComponent,
     ReservaComponent,
     HomeComponent,
-    ReservaAdminComponent
+    ReservaAdminComponent, 
+    LoginComponent,
+    RegisterComponent,
+    ResetPasswordComponent
+
   ],
   imports: [
     BrowserModule,

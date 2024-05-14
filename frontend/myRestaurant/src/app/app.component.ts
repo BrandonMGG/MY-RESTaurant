@@ -12,6 +12,10 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   isOnAdminPage(): boolean {
-    return !this.router.url.includes('/adminreserva');
+    if(this.router.url.includes('/adminreserva') || this.router.url.includes('/login') ){
+      return false
+    }
+    return true
+    
   }
 }

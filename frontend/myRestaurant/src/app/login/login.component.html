@@ -1,9 +1,11 @@
 <!-- register.component.html -->
+<div class="pad">
+    <!-- register.component.html -->
 
 <form (ngSubmit)="login()" #registerForm="ngForm" style="background-color:aliceblue">
  
     <div>
-        <h2 class="h2-tittle">Register</h2>
+        <h2 class="h2-tittle">Login</h2>
     </div>
     <div class="icon-user">
         <i class="fa fa-user"></i>
@@ -16,17 +18,13 @@
       <label>Password:</label>
       <input type="password" name="password" placeholder="password" required>
     </div>
-    <div>
-        <label for="">Confirmar password</label>
-        <input type="text" class="confirmPassword" placeholder="confirmar password" required>
-
-    </div>
-    <button type="submit" [disabled]="!registerForm.valid">Registrar</button>
+   
+    <button type="submit" [disabled]="!registerForm.valid">Login</button>
     <div class="div-a">
-        ¿Perdistes la contraseña? <a href="">login</a>
+        ¿Perdistes la contraseña? <a href="">Restablecer Contraseña</a>
     </div>
     <div class="div-aRegis">
-        ¿No tienes cuenta registrada?
+        ¿No tienes cuenta registrada? <a href="">register</a>
     </div>
   </form>
-  
+</div>
