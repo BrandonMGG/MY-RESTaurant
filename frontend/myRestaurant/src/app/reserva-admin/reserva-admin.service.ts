@@ -9,10 +9,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ReservaAdminService {
   apiUrl = environment.api;
+  microservice = environment.microservice;
 
   constructor(private http: HttpClient) { }
   
   getReservaAdmin(): Observable<any> {
     return this.http.get<any>('assets/reservaAdmin.json');
+  }
+  agregarHora(data:any): Observable<any> {
+    return this.http.get<any>(this.microservice + 'addHours?fecha='+data["fecha"]+'&hora='+data["hora"]);
+  }
+   editReserva(data:any): Observable<any> {
+    return this.http.get<any>(this.microservice + 'updateReservas?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&id='+data["id"]);
   }
 }

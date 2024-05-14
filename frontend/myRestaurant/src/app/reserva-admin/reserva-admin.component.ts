@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DatePipe } from '@angular/common';
 import { ReservaAdminService } from './reserva-admin.service';
 
@@ -21,7 +21,7 @@ export interface Reserva {
 })
 
 export class ReservaAdminComponent implements OnInit {
-  displayedColumns: string[] = ['select','delete','numeroReserva','hora', 'cantidadPersonas', 'fecha', 'mesa'];
+  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa'];
   selection = new SelectionModel<Reserva>(true, []);
   dataSource = new MatTableDataSource<Reserva>();
   fechaSeleccionada: Date;
@@ -46,19 +46,44 @@ export class ReservaAdminComponent implements OnInit {
     console.log(this.dataSource.data);
     this.timeList.push(time);
     const fechaFormateada = this.datePipe.transform(this.fechaSeleccionada, 'yyyy-MM-dd');
-    const data ={
+    const data = {
       fecha: fechaFormateada,
       hora: this.horaSeleccionada
     }
+    this.reserAdmin.agregarHora(data).subscribe((data) => {
+
+    });
+
     console.log(data);
   }
-
   deleteTime(index: number) {
     this.timeList.splice(index, 1);
   }
   enviarReservas() {
     const reservasSeleccionadas = this.selection.selected;
     console.log(reservasSeleccionadas);
+
+    // Crear un arreglo para almacenar los datos de las reservas seleccionadas
+    const dataToSend: { id: number; mesa: number; personas: number; hora: string; fecha: string; }[] = [];
+
+    // Iterar sobre las reservas seleccionadas y construir los datos necesarios
+    reservasSeleccionadas.forEach(reserva => {
+      const datat = {
+        id: reserva.numeroReserva,
+        mesa: reserva.mesa,
+        personas: reserva.personas,
+        hora: reserva.hora,
+        fecha: reserva.fecha
+      };
+      dataToSend.push(datat); // Agregar los datos de la reserva al arreglo
+    });
+
+    console.log(dataToSend);
+
+    // Enviar los datos de las reservas seleccionadas al servicio
+    this.reserAdmin.editReserva(dataToSend[0]).subscribe((data) => {
+      // Manejar la respuesta del servicio si es necesario
+    });
   }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -71,7 +96,7 @@ export class ReservaAdminComponent implements OnInit {
       return;
     }
     this.selection.select(...this.dataSource.data);
-  }  
+  }
 
   deleteRow(row: Reserva): void {
     const index = this.dataSource.data.indexOf(row);

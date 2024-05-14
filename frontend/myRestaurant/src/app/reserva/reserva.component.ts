@@ -61,7 +61,7 @@ export class ReservaComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa'];
   selection = new SelectionModel<Reserva>(true, []);
-  dataSource = new MatTableDataSource<Reserva>();
+  dataSource = new MatTableDataSource<any>();
 
   ngOnInit(): void {
     this.reservaService.getMesas().subscribe((data) => {
@@ -70,19 +70,30 @@ export class ReservaComponent implements OnInit {
     this.reservaService.getHoras().subscribe((data) => {
       this.horasDisponibles = data.horas;
     });
-    const dataCliente ={
-      cliente: "Mario"
-    }
-    this.reservaService.getReservas(dataCliente).subscribe((data) => {
-      this.dataSource.data = data.reservas;
-      
-    });
+   this.getReservas();
   }
 
   editReservation() {
     console.log(this.dataSource.data);
+   
+    const datat = {
+      id: this.dataSource.data[0].numeroReserva,
+      mesa: this.dataSource.data[0].mesa,
+      personas: this.dataSource.data[0].personas,
+      hora: this.dataSource.data[0].hora,
+      fecha:this.dataSource.data[0].fecha
+    };
+    console.log("ACA");
+    console.log(datat);
+    this.reservaService.editReserva(datat).subscribe((data) => {
+      this.getReservas();
+    });
   }
-
+  getReservas(){
+    this.reservaService.getReservas("Mario").subscribe((data) => {
+      this.dataSource.data = data.reservas;
+    });
+  }
   /**
    * Activa el proceso de realizar una reserva y formatea la fecha seleccionada si está disponible.
    * Luego, llama a la función getReserva() para obtener la sugerencia de reserva.

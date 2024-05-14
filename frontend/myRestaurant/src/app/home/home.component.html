@@ -4,7 +4,7 @@
         <mat-tab label="Menu">
             <app-menu></app-menu>
         </mat-tab>
-        <mat-tab label="Reserva" *ngIf="client">
+        <mat-tab label="Reserva" *ngIf="tipoUsuario">
             <app-reserva></app-reserva>
         </mat-tab>
     </mat-tab-group>
