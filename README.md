@@ -55,7 +55,7 @@ Modificamos las llamadas de API y la lógica de presentación para trabajar con 
 Realizamos pruebas exhaustivas para garantizar que los servicios funcionen correctamente y se comuniquen de manera efectiva con el frontend.
 Verificamos la interoperabilidad, la seguridad y la escalabilidad de la nueva arquitectura.
 
-7.Despliegue y Monitoreo:
+7. Despliegue y Monitoreo:
 
 Implementamos la nueva arquitectura en un entorno de producción y monitoreamos su rendimiento y estabilidad.
 Realizamos ajustes y optimizaciones según sea necesario para mejorar la experiencia del usuario y la eficiencia del sistema.
