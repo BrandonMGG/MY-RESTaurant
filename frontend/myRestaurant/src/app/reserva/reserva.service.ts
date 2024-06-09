@@ -23,6 +23,9 @@ export class ReservaService {
   getHoras(): Observable<any> {
     return this.http.get<any>(this.microservice +'getHoras');
   }
+  getLocalidades():  Observable<any> {
+    return this.http.get<any>('./assets/horas.json');
+  }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
     return this.http.get<any>(this.microservice + 'getResCliente'+ '?cliente='+cliente);
   }

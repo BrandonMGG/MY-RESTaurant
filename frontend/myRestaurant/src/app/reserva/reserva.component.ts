@@ -38,7 +38,7 @@ export class ReservaComponent implements OnInit {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   ];
   horasDisponibles: string[];
-
+  localesDisponibles:string[];
   selectedDate: Date;
   minDate = new Date();
   selected: Date;
@@ -55,7 +55,8 @@ export class ReservaComponent implements OnInit {
     this.reservacionForm = this.formBuilder.group({
       espacioReservado: ['', Validators.required],
       numeroPersonas: ['', Validators.required],
-      horaReservacion: ['', Validators.required]
+      horaReservacion: ['', Validators.required],
+      localidadReservacion: ['', Validators.required]
     });
   }
 
@@ -70,18 +71,21 @@ export class ReservaComponent implements OnInit {
     this.reservaService.getHoras().subscribe((data) => {
       this.horasDisponibles = data.horas;
     });
-   this.getReservas();
+    this.reservaService.getLocalidades().subscribe((data) => {
+      this.localesDisponibles = data.localidades;
+    });
+    this.getReservas();
   }
 
   editReservation() {
     console.log(this.dataSource.data);
-   
+
     const datat = {
       id: this.dataSource.data[0].numeroReserva,
       mesa: this.dataSource.data[0].mesa,
       personas: this.dataSource.data[0].personas,
       hora: this.dataSource.data[0].hora,
-      fecha:this.dataSource.data[0].fecha
+      fecha: this.dataSource.data[0].fecha
     };
     console.log("ACA");
     console.log(datat);
@@ -89,8 +93,9 @@ export class ReservaComponent implements OnInit {
       this.getReservas();
     });
   }
-  getReservas(){
-    this.reservaService.getReservas("Mario").subscribe((data) => {
+  getReservas() {
+    const user = localStorage.getItem('email');
+    this.reservaService.getReservas(user).subscribe((data) => {
       this.dataSource.data = data.reservas;
     });
   }
@@ -141,7 +146,7 @@ export class ReservaComponent implements OnInit {
       personas: this.reservacionForm.value.numeroPersonas,
       hora: this.reservacionForm.value.horaReservacion,
       fecha: formatDate,
-      cliente: 'Mario'
+      cliente: localStorage.getItem('email')
     }
     console.log(data);
     this.reservaService.makeReservation(data).subscribe((data) => {

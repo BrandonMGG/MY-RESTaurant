@@ -22,6 +22,12 @@
                         <option *ngFor="let hora of horasDisponibles" [value]="hora">{{
                             hora}}</option>
                     </select>
+                    <label class="menu-label" for="localidadReservacion">Localidad:</label>
+                    <select class="menu-select" id="localidadReservacion" name="localidadReservacion" formControlName="localidadReservacion">
+                        <option value="">-- Seleccione el Local --</option>
+                        <option *ngFor="let local of localesDisponibles" [value]="local">{{
+                            local}}</option>
+                    </select>
                 </form>
             </div>
             <div class="column">
