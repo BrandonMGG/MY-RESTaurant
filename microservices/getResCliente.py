@@ -43,6 +43,8 @@ def obtener_resCliente():
                 return jsonify({"reservas": listaRes}), 200
             else:
                 return jsonify("El usuario solicitado no cuenta con reservaciones."), 200
+        else:
+            return jsonify({"error": "Invalid content type, expected application/json"}), 415
     except FileNotFoundError:
         # Enviar respuesta con el código de estado 404 si el archivo no se encuentra
         return jsonify({"respuesta": "El archivo de reservaciones no se ha encontrado."}), 404
