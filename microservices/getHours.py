@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 # Ruta para agregar horas al horario
-@app.route('/getHours', methods=['GET'])
+@app.route('/getHours', methods=['POST'])
 def getHours():
     try:
         # abre el archivo JSON

@@ -2,8 +2,6 @@ import datetime
 from flask import Flask, jsonify, request
 from datetime import datetime
 import json
-import re
-import random
 
 app = Flask(__name__)
 

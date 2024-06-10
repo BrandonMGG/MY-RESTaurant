@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addHours-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: addHours
+  template:
+    metadata:
+      labels:
+        app: addHours
+    spec:
+      containers:
+      - name: addHours
+        image: addHours:latest
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+        - name: reservaciones-storage
+          mountPath: /app/reservacionesDB.json
+          subPath: reservacionesDB.json
+      volumes:
+      - name: reservaciones-storage
+        hostPath:
+          path: /home/YOUR_USERNAME/Desktop/servicio1/reservacionesDB.json  # Cambia esto a la ruta donde está tu archivo JSON
+          type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service1-service
+spec:
+  selector:
+    app: service1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5001
