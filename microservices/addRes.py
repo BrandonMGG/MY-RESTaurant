@@ -24,7 +24,9 @@ def agregar_reserva():
         # updeate id
         reservaciones["idx"] = ident+1
         
-        datos = {"cliente": cliente,
+        datos = {
+                "id": ident,
+                "cliente": cliente,
                 "hora": hora,
                 "mesa": mesa,
                 "personas": personas,
