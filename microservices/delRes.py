@@ -30,4 +30,4 @@ def eliminar_reservaciones():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=6000)
