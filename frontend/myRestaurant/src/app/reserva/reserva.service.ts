@@ -12,7 +12,8 @@ import { environment } from 'src/environments/environment';
 export class ReservaService {
   apiUrl = environment.api;
   microservice = environment.microservice;
-  delete = environment.getResCliente
+  getResCliente = environment.getResCliente
+  delete = environment.delete
   constructor(private http: HttpClient) { }
   getReserva(data: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + '/reservacion?' + convertToUrlParams(data));
@@ -32,11 +33,12 @@ export class ReservaService {
   }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.delete + 'getResCliente', cliente);
+    return this.http.post<any>(this.getResCliente + 'getResCliente', cliente);
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)
-    return this.http.get<any>(this.microservice + 'deleteReservation?id='+id);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<any>(this.delete + 'delete', { headers: headers, body:id });
   }
   makeReservation(data:any): Observable<any> {
     return this.http.post<any>(this.microservice + 'addReservation',data);

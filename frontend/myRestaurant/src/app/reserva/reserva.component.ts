@@ -92,7 +92,7 @@ export class ReservaComponent implements OnInit {
     console.log(reservasSeleccionadas);
     const dataToSend: { id: number; mesa: number; personas: number; hora: string; fecha: string; local: string }[] = [];
 
-    console.log(this.dataSource.data);
+    //console.log(this.dataSource.data);
     reservasSeleccionadas.forEach(reserva => {
       const datat = {
         id: reserva.id,
@@ -103,7 +103,6 @@ export class ReservaComponent implements OnInit {
         local: reserva.local
       };
       dataToSend.push(datat); // Agregar los datos de la reserva al arreglo
-      
     });
    /* const datat = {
       id: this.dataSource.data[0].numeroReserva,
@@ -113,8 +112,9 @@ export class ReservaComponent implements OnInit {
       fecha: this.dataSource.data[0].fecha,
       local: this.dataSource.data[0].local
     };
-    console.log("ACA");
+   
     console.log(datat);*/
+    console.log("DATATOSEND");
     console.log(dataToSend);
     this.reservaService.editReserva(dataToSend[0]).subscribe((data) => {
       this.getReservas();
@@ -204,8 +204,12 @@ export class ReservaComponent implements OnInit {
     this.selection.select(...this.dataSource.data);
   }
   deleteRow(row: any): void {
+    console.log("Borrando ID:");
     console.log(row.numeroReserva);
-    this.reservaService.deleteReserva(row.numeroReserva).subscribe(
+    const data = {
+      id: row.id
+    }
+    this.reservaService.deleteReserva(data).subscribe(
       () => {
         console.log('Data deleted successfully!');
       },
