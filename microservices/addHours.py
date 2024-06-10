@@ -33,18 +33,20 @@ def agregar_horas():
                     return jsonify({"respuesta":"La hora ya ha sido agregada previamente."}), 200
                 reservaciones["reservaciones"][fecha]["disponibles"].append(hora)
                 horario = reservaciones["reservaciones"][fecha]["disponibles"]
-                horario.sort(key=lambda x: datetime.strptime(x, "%H:%M"))            
+                horario.sort(key=lambda x: datetime.strptime(x, "%I:%M %p"))
+         
             else: # en caso de que no este la fecha, agregarla
                 reservaciones["reservaciones"][fecha] = {"disponibles": []}
                 reservaciones["reservaciones"][fecha]["disponibles"].append(hora)
                 horario = reservaciones["reservaciones"][fecha]["disponibles"]
-                horario.sort(key=lambda x: datetime.strptime(x, "%H:%M"))
+                horario.sort(key=lambda x: datetime.strptime(x, "%I:%M %p"))
+
             
             
             with open('reservacionesDB.json', 'w') as archivo:
                 json.dump(reservaciones, archivo, indent=4)
             # devuelve la lista de reservas realizadas para cada fecha
-            return  jsonify({"respuesta":"Datos actualizados con exito! para la fecha indicada"}) ### DEVOLVER LISTA SIN LAS DISPONIBLES ---------------------------------------
+            return  jsonify({"respuesta":"Datos actualizados con exito! para la fecha indicada"}), 200 ### DEVOLVER LISTA SIN LAS DISPONIBLES ---------------------------------------
         else:
             return jsonify({"error": "Invalid content type, expected application/json"}), 415
     except FileNotFoundError:
