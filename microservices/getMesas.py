@@ -1,11 +1,8 @@
 
 from flask import Flask, jsonify
 import json
-from flask_cors import CORS
-import json
 
 app = Flask(__name__)
-CORS(app)
 
 app = Flask(__name__)
 
@@ -16,9 +13,20 @@ def get_mesas():
         # abre el archivo JSON
         with open('reservacionesDB.json') as f:
             reservaciones = json.load(f)
-        return jsonify({"mesas":reservaciones["mesas"]})
+        response = jsonify({"mesas":reservaciones["mesas"]})
+        # Agregar encabezados CORS
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
     except FileNotFoundError:
-        return jsonify({"respuesta":"El archivo de reservaciones no se ha encontrado."}), 404
+        
+        response = jsonify({"respuesta":"El archivo de reservaciones no se ha encontrado."}), 404
+        # Agregar encabezados CORS
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
 
 if __name__ == '__main__':
     app.run(debug=True)

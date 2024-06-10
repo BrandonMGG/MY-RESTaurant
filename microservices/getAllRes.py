@@ -1,10 +1,10 @@
 import datetime
 from flask import Flask, jsonify, request
 import json
-import re
-import random
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Ruta para obtener las reservaciones
 @app.route('/getAllRes', methods=['GET'])
