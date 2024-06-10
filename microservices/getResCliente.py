@@ -8,13 +8,17 @@ CORS(app)
 
 # Ruta para obtener las reservaciones de un cliente en especifico
 # AGREGAR NUMERO DE RESERVA Y FECHA
-@app.route('/getResCliente', methods=['GET', 'OPTIONS'])
+@app.route('/getResCliente', methods=['POST', 'OPTIONS'])
 def obtener_resCliente():
     if request.method == 'OPTIONS':
         return jsonify({'message': 'OK'}), 200
     try:
+         # Log the request content type
+        print(f"Content-Type: {request.content_type}")
+        
         if request.is_json:
             data = request.get_json()
+            print(f"Request JSON: {data}")
             # abre el archivo JSON
             with open('reservacionesDB.json') as f:
                 reservaciones = json.load(f)
