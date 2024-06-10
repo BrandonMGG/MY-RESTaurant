@@ -1,9 +1,9 @@
-
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
-
+CORS(app)
 
 # Ruta para agregar horas al horario
 @app.route('/getHours', methods=['POST', 'OPTIONS'])
@@ -17,20 +17,11 @@ def getHours():
 
         # verificar que la fecha esta en la base de datos
         if fecha in reservaciones["reservaciones"]:      
-            response = jsonify({"horas" : reservaciones["reservaciones"][fecha]["disponibles"]}), 200
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-            response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-            return response
+            return jsonify({"horas": reservaciones["reservaciones"][fecha]["disponibles"]}), 200
         else: # en caso de que no este la fecha, agregarla
-            return jsonify({"horas" : []}), 200
+            return jsonify({"horas": []}), 200
     except FileNotFoundError:
-        response = jsonify({"respuesta":"El archivo de reservaciones no se ha encontrado."}), 404
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-        return response
-    
+        return jsonify({"respuesta": "El archivo de reservaciones no se ha encontrado."}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
