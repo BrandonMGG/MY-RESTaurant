@@ -150,6 +150,7 @@
             "4": {
                 "id": "4",
                 "cliente": "mario@gmail.com",
+                "fecha":  "2024-05-15",
                 "hora": "10:00",
                 "mesa": 8,
                 "personas": 2,
@@ -159,6 +160,7 @@
             "3": {
                 "id": "3",
                 "cliente": "mario@gmail.com",
+                "fecha" :  "2024-05-15",
                 "hora": "11:00",
                 "mesa": 8,
                 "personas": 2,
