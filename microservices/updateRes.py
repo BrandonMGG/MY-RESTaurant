@@ -13,39 +13,41 @@ def actualizar_reservaciones():
         return jsonify({'message': 'OK'}), 200
     try:
         if request.is_json:
+            data = request.get_json()
+            print(f"Request JSON: {data}")
             
             with open('reservacionesDB.json') as f:
                 reservaciones = json.load(f)
                 
-            for res in request.json:
-                #obtener el ID
-                idRes = res.get('id')
-                idRes = str(idRes)
-                fecha = res.get('fecha')
-                hora = res.get('hora')
-                personas = res.get('personas')
-                mesa = res.get('mesa')
-                sel = 'seleccionado'
-                local = res.get('local')
-                
-                # recorrer cada fecha buscando el id y borra la reservacion
-                for date in reservaciones["reservaciones"]:
-                    for res in reservaciones["reservaciones"][date]:
-                        if res == idRes:
-                            # obtener el cliente 
-                            cliente = reservaciones["reservaciones"][date][idRes]["cliente"]
-                            # obtener la fecha para liberar en disponibles
-                            del reservaciones["reservaciones"][date][idRes]
-                            break
-                # crear la nueva reservacion
-                reservaciones["reservaciones"][fecha][idRes] = {"id": idRes,
-                                                                "cliente":cliente,
-                                                                "fecha" : fecha,
-                                                                "hora":hora,
-                                                                "mesa": mesa,
-                                                                "personas": personas,
-                                                                "seleccionado": sel,
-                                                                "local" : local}
+
+            #obtener el ID
+            idRes = data.get('id')
+            idRes = str(idRes)
+            fecha = data.get('fecha')
+            hora = data.get('hora')
+            personas = data.get('personas')
+            mesa = data.get('mesa')
+            sel = 'seleccionado'
+            local = data.get('local')
+            
+            # recorrer cada fecha buscando el id y borra la reservacion
+            for date in reservaciones["reservaciones"]:
+                for res in reservaciones["reservaciones"][date]:
+                    if res == idRes:
+                        # obtener el cliente 
+                        cliente = reservaciones["reservaciones"][date][idRes]["cliente"]
+                        # obtener la fecha para liberar en disponibles
+                        del reservaciones["reservaciones"][date][idRes]
+                        break
+            # crear la nueva reservacion
+            reservaciones["reservaciones"][fecha][idRes] = {"id": idRes,
+                                                            "cliente":cliente,
+                                                            "fecha" : fecha,
+                                                            "hora":hora,
+                                                            "mesa": mesa,
+                                                            "personas": personas,
+                                                            "seleccionado": sel,
+                                                            "local" : local}
             
             # Escribir los datos modificados de nuevo en el archivo
             with open('reservacionesDB.json', 'w') as archivo:
