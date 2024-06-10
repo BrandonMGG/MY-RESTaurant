@@ -28,6 +28,7 @@ def agregar_reserva():
             restaurant = data.get('local')
             # calcular el id (este es el que sigue)
             ident = reservaciones["idx"]
+            ident = str(ident)
             # updeate id
             reservaciones["idx"] = ident+1
             
@@ -38,7 +39,7 @@ def agregar_reserva():
                     "hora": hora,
                     "mesa": mesa,
                     "personas": personas,
-                    "seleccionado": seleccionado,
+                    "seleccionado": False,
                     "local" : restaurant}
             
             # verificar que la fecha esta en la base de datos
