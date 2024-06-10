@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service1-service
+  name: addHours-service
 spec:
   selector:
-    app: service1
+    app: addHours
   ports:
     - protocol: TCP
       port: 80

@@ -1,14 +1,13 @@
 
-import datetime
-from flask import Flask, jsonify, request
-from datetime import datetime
+from flask import Flask, jsonify
 import json
-import re
-import random
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app)
 
-
+app = Flask(__name__)
 
 # Ruta para agregar horas al horario
 @app.route('/getMesas', methods=['GET'])
