@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -20,14 +20,19 @@ export class ReservaService {
   getMesas(): Observable<any> {
     return this.http.get<any>(this.microservice +'getMesas');
   }
-  getHoras(): Observable<any> {
+  /*  getHoras(): Observable<any> {
     return this.http.get<any>(this.microservice +'getHoras');
+  }*/
+  getLocalidades(): Observable<any> {
+    return this.http.get<any>(this.microservice + 'getLocal')
   }
-  getLocalidades():  Observable<any> {
-    return this.http.get<any>('./assets/horas.json');
+  getHoras(fecha: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.microservice + 'getHours', fecha, { headers });
   }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
-    return this.http.get<any>(this.microservice + 'getResCliente'+ '?cliente='+cliente);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.microservice + 'getResCliente', cliente);
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)

@@ -21,12 +21,14 @@ export interface Reserva {
 })
 
 export class ReservaAdminComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa'];
+  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa', 'localidad'];
   selection = new SelectionModel<Reserva>(true, []);
   dataSource = new MatTableDataSource<Reserva>();
   fechaSeleccionada: Date;
   horaSeleccionada: string;
+  localidad: string;
   reservas: any;
+  localidades: any[];
 
   constructor(private datePipe: DatePipe, private reserAdmin: ReservaAdminService) { }
 
@@ -34,6 +36,9 @@ export class ReservaAdminComponent implements OnInit {
     this.reserAdmin.getReservaAdmin().subscribe((data) => {
       this.reservas = data;
       this.dataSource.data = this.reservas?.reservas;
+    });
+    this.reserAdmin.getLocalidades().subscribe((data) => {
+      this.localidades = data.localidades;
     });
   }
 
@@ -43,6 +48,7 @@ export class ReservaAdminComponent implements OnInit {
   timeList: string[] = [];
 
   addTime(time: string) {
+    console.log(this.localidades);
     console.log(this.dataSource.data);
     this.timeList.push(time);
     const fechaFormateada = this.datePipe.transform(this.fechaSeleccionada, 'yyyy-MM-dd');
@@ -50,6 +56,7 @@ export class ReservaAdminComponent implements OnInit {
       fecha: fechaFormateada,
       hora: this.horaSeleccionada
     }
+    console.log(data);
     this.reserAdmin.agregarHora(data).subscribe((data) => {
 
     });
@@ -99,8 +106,12 @@ export class ReservaAdminComponent implements OnInit {
   }
 
   deleteRow(row: any): void {
-    console.log(row.numeroReserva);
-    this.reserAdmin.deleteReserva(row.numeroReserva).subscribe(
+    console.log(row);
+    console.log(row.id);
+    const data = {
+      id: row.id
+    }
+    this.reserAdmin.deleteReserva(data).subscribe(
       () => {
         console.log('Data deleted successfully!');
       },

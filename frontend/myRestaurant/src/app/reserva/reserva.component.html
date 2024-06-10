@@ -33,7 +33,7 @@
             <div class="column">
                 <mat-card class="demo-inline-calendar-card">
                     <mat-hint>MM-DD-YYYY</mat-hint>
-                    <mat-calendar [(selected)]="selectedReservationDate"></mat-calendar>
+                    <mat-calendar [(selected)]="selectedReservationDate" (selectedChange)="onDateChange(selectedReservationDate)"></mat-calendar>
                 </mat-card>
             </div>
         </div>
@@ -100,6 +100,13 @@
                 <th mat-header-cell *matHeaderCellDef> Mesa </th>
                 <td mat-cell *matCellDef="let element">
                     <input type="text" [(ngModel)]="element.mesa">
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="localidad">
+                <th mat-header-cell *matHeaderCellDef> Localidad </th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="text" [(ngModel)]="element.local">
                 </td>
             </ng-container>
     

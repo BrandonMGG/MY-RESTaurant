@@ -1,13 +1,18 @@
 <div class="container">
     <div class="horarios">
         <h1>Agregar Horarios</h1>
-        <input matInput [matDatepicker]="picker1"  [(ngModel)]="fechaSeleccionada" name="fechaSeleccionada">
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="fechaSeleccionada" name="fechaSeleccionada">
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
 
-        <input [ngxTimepicker]="picker" #timeInput placeholder="Hora" [(ngModel)]="horaSeleccionada" name="horaSeleccionada"/>
+     
+
+        <input [ngxTimepicker]="picker" #timeInput placeholder="Hora" [(ngModel)]="horaSeleccionada"
+            name="horaSeleccionada" />
         <ngx-material-timepicker #picker></ngx-material-timepicker>
+
         <button mat-raised-button color="primary" (click)="addTime(timeInput.value)">Añadir Hora</button>
+
     </div>
 
 
@@ -40,7 +45,7 @@
         <ng-container matColumnDef="numeroReserva">
             <th mat-header-cell *matHeaderCellDef> ID Reserva </th>
             <td mat-cell *matCellDef="let element">
-                <label>{{ element.numeroReserva }}</label>
+                <label>{{ element.id }}</label>
             </td>
         </ng-container>
 
@@ -74,7 +79,12 @@
                 <input type="text" [(ngModel)]="element.mesa">
             </td>
         </ng-container>
-
+        <ng-container matColumnDef="localidad">
+            <th mat-header-cell *matHeaderCellDef> Localidad </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="text" [(ngModel)]="element.local">
+            </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
         </tr>

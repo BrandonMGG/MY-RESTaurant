@@ -68,9 +68,9 @@ export class ReservaComponent implements OnInit {
     this.reservaService.getMesas().subscribe((data) => {
       this.espaciosDisponiblesArray = data.mesas;
     });
-    this.reservaService.getHoras().subscribe((data) => {
+    /*this.reservaService.getHoras().subscribe((data) => {
       this.horasDisponibles = data.horas;
-    });
+    });*/
     this.reservaService.getLocalidades().subscribe((data) => {
       this.localesDisponibles = data.localidades;
     });
@@ -95,7 +95,11 @@ export class ReservaComponent implements OnInit {
   }
   getReservas() {
     const user = localStorage.getItem('email');
-    this.reservaService.getReservas(user).subscribe((data) => {
+    const data = {
+      cliente:user
+    }
+    console.log(data)
+    this.reservaService.getReservas(data).subscribe((data) => {
       this.dataSource.data = data.reservas;
     });
   }
@@ -186,6 +190,19 @@ export class ReservaComponent implements OnInit {
       this.dataSource._updateChangeSubscription();
       this.selection.deselect(row);
     }
+  }
+  onDateChange(event: Date): void {
+    // Your custom function to be executed on date selection
+    const formatedDate = this.datePipe.transform(event, 'yyyy-MM-dd');
+    console.log(formatedDate);
+    const datatmp = {
+      fecha:this.datePipe.transform(event, 'yyyy-MM-dd')
+    }
+    this.reservaService.getHoras(datatmp).subscribe((data) => {
+      this.horasDisponibles = data.horas;
+      console.log(data);
+    });
+    // Add your custom logic here
   }
 
 }

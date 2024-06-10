@@ -9,7 +9,14 @@
     margin: 20px;
     padding: 10px;
   }
-  
+  .menu-select {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    appearance: none;
+  }
   .mat-elevation-z8 {
     width: 100%;
     border-collapse: collapse;

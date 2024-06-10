@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 
@@ -10,14 +10,18 @@ import { environment } from 'src/environments/environment';
 export class ReservaAdminService {
   apiUrl = environment.api;
   microservice = environment.microservice;
+  delete = environment.delete
 
   constructor(private http: HttpClient) { }
   
   getReservaAdmin(): Observable<any> {
     return this.http.get<any>(this.microservice + 'getAllRes')
   }
+  getLocalidades(): Observable<any> {
+    return this.http.get<any>(this.microservice + 'getLocal')
+  }
   agregarHora(data:any): Observable<any> {
-    return this.http.get<any>(this.microservice + 'addHours?fecha='+data["fecha"]+'&hora='+data["hora"]);
+    return this.http.post<any>(this.microservice + 'addHours', data);
   }
    editReserva(data:any): Observable<any> {
     return this.http.get<any>(this.microservice + 'updateReservas?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&id='+data["id"]);
@@ -27,6 +31,7 @@ export class ReservaAdminService {
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)
-    return this.http.get<any>(this.microservice + 'deleteReservation?id='+id);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<any>(this.delete + 'delete', { headers: headers, body:id });
   }
 }

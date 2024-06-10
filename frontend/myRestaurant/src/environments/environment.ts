@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  api: 'https://us-central1-proyect2soa.cloudfunctions.net/backend',
-  microservice: 'https://us-central1-proyect2soa.cloudfunctions.net/'
+  api: 'http://127.0.0.1:5000/',
+  microservice: 'http://127.0.0.1:5000/',
+  delete: 'http://127.0.0.1:5001/'
 };
 
 /*
