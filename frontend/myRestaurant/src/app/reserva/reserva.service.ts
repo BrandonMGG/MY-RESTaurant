@@ -12,37 +12,37 @@ import { environment } from 'src/environments/environment';
 export class ReservaService {
   apiUrl = environment.api;
   microservice = environment.microservice;
-  
+  delete = environment.getResCliente
   constructor(private http: HttpClient) { }
   getReserva(data: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + '/reservacion?' + convertToUrlParams(data));
   }
   getMesas(): Observable<any> {
-    return this.http.get<any>(this.microservice +'getMesas');
+    return this.http.get<any>(environment.getMesas +'getMesas');
   }
   /*  getHoras(): Observable<any> {
     return this.http.get<any>(this.microservice +'getHoras');
   }*/
   getLocalidades(): Observable<any> {
-    return this.http.get<any>(this.microservice + 'getLocal')
+    return this.http.get<any>(environment.getLocal+ 'getLocal')
   }
   getHoras(fecha: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.microservice + 'getHours', fecha, { headers });
+    return this.http.post<any>(environment.getHours + 'getHours', fecha, { headers });
   }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.microservice + 'getResCliente', cliente);
+    return this.http.post<any>(this.delete + 'getResCliente', cliente);
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)
     return this.http.get<any>(this.microservice + 'deleteReservation?id='+id);
   }
   makeReservation(data:any): Observable<any> {
-    return this.http.get<any>(this.microservice + 'addReservation?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&cliente='+data["cliente"]);
+    return this.http.post<any>(this.microservice + 'addReservation',data);
   }
   editReserva(data:any): Observable<any> {
-    return this.http.get<any>(this.microservice + 'updateReservas?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&id='+data["id"]);
+    return this.http.get<any>(this.microservice + 'update', data);
   }
 }
 

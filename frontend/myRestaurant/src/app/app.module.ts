@@ -59,7 +59,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatTabsModule,
     MatTableModule,
     MatCheckboxModule,
-    MatIconModule,NgxMaterialTimepickerModule,MatInputModule
+    MatIconModule,
+    NgxMaterialTimepickerModule,
+    MatInputModule
     
   ],
   providers: [MatDatepickerModule, DatePipe],

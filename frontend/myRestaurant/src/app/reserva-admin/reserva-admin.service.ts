@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ReservaAdminService {
   apiUrl = environment.api;
   microservice = environment.microservice;
-  delete = environment.delete
+  delete = environment.getResCliente
 
   constructor(private http: HttpClient) { }
   
@@ -24,7 +24,7 @@ export class ReservaAdminService {
     return this.http.post<any>(this.microservice + 'addHours', data);
   }
    editReserva(data:any): Observable<any> {
-    return this.http.get<any>(this.microservice + 'updateReservas?mesa='+data["mesa"]+'&personas='+data["personas"]+'&hora='+data["hora"]+'&fecha='+data["fecha"]+'&id='+data["id"]);
+    return this.http.put<any>(this.microservice + 'update', data);
   }
   getAllReservations(): Observable<any> {
     return this.http.get<any>(this.microservice + 'getAllRes');

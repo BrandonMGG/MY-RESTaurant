@@ -10,8 +10,9 @@ export interface Reserva {
   personas: number;
   fecha: string;
   mesa: number;
-  numeroReserva: number;
+  id: number;
   seleccionado: boolean;
+  local: string;
 }
 
 @Component({
@@ -33,15 +34,17 @@ export class ReservaAdminComponent implements OnInit {
   constructor(private datePipe: DatePipe, private reserAdmin: ReservaAdminService) { }
 
   ngOnInit(): void {
-    this.reserAdmin.getReservaAdmin().subscribe((data) => {
-      this.reservas = data;
-      this.dataSource.data = this.reservas?.reservas;
-    });
+    this.getReservas();
     this.reserAdmin.getLocalidades().subscribe((data) => {
       this.localidades = data.localidades;
     });
   }
-
+  getReservas(){
+    this.reserAdmin.getReservaAdmin().subscribe((data) => {
+      this.reservas = data;
+      this.dataSource.data = this.reservas?.reservas;
+    });
+  }
   toggleSeleccion(index: number) {
     this.reservas[index].seleccionado = !this.reservas[index].seleccionado;
   }
@@ -71,18 +74,20 @@ export class ReservaAdminComponent implements OnInit {
     console.log(reservasSeleccionadas);
 
     // Crear un arreglo para almacenar los datos de las reservas seleccionadas
-    const dataToSend: { id: number; mesa: number; personas: number; hora: string; fecha: string; }[] = [];
+    const dataToSend: { id: number; mesa: number; personas: number; hora: string; fecha: string; local: string }[] = [];
 
     // Iterar sobre las reservas seleccionadas y construir los datos necesarios
     reservasSeleccionadas.forEach(reserva => {
       const datat = {
-        id: reserva.numeroReserva,
+        id: reserva.id,
         mesa: reserva.mesa,
         personas: reserva.personas,
         hora: reserva.hora,
-        fecha: reserva.fecha
+        fecha: reserva.fecha,
+        local: reserva.local
       };
       dataToSend.push(datat); // Agregar los datos de la reserva al arreglo
+      
     });
 
     console.log(dataToSend);
@@ -90,6 +95,8 @@ export class ReservaAdminComponent implements OnInit {
     // Enviar los datos de las reservas seleccionadas al servicio
     this.reserAdmin.editReserva(dataToSend[0]).subscribe((data) => {
       // Manejar la respuesta del servicio si es necesario
+      window.location.reload();
+
     });
   }
   isAllSelected() {

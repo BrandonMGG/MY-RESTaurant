@@ -6,7 +6,11 @@ export const environment = {
   production: false,
   api: 'http://127.0.0.1:5000/',
   microservice: 'http://127.0.0.1:5000/',
-  delete: 'http://127.0.0.1:5001/'
+  getResCliente: 'http://127.0.0.1:5001/',
+  getLocal: 'http://127.0.0.1:5002/',
+  getHours: 'http://127.0.0.1:5003/',
+  getMesas: 'http://127.0.0.1:5004/'
+
 };
 
 /*

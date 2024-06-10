@@ -19,6 +19,7 @@ export interface EditReserva {
   fecha: string;
   mesa: number;
   numeroReserva: number;
+  local:string;
   seleccionado: boolean;
 }
 
@@ -60,7 +61,7 @@ export class ReservaComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa'];
+  displayedColumns: string[] = ['select', 'delete', 'numeroReserva', 'hora', 'cantidadPersonas', 'fecha', 'mesa','local'];
   selection = new SelectionModel<Reserva>(true, []);
   dataSource = new MatTableDataSource<any>();
 
@@ -85,7 +86,8 @@ export class ReservaComponent implements OnInit {
       mesa: this.dataSource.data[0].mesa,
       personas: this.dataSource.data[0].personas,
       hora: this.dataSource.data[0].hora,
-      fecha: this.dataSource.data[0].fecha
+      fecha: this.dataSource.data[0].fecha,
+      local: this.dataSource.data[0].local
     };
     console.log("ACA");
     console.log(datat);
@@ -150,12 +152,14 @@ export class ReservaComponent implements OnInit {
       personas: this.reservacionForm.value.numeroPersonas,
       hora: this.reservacionForm.value.horaReservacion,
       fecha: formatDate,
-      cliente: localStorage.getItem('email')
+      cliente: localStorage.getItem('email'),
+      local: this.reservacionForm.value.localidadReservacion
     }
     console.log(data);
     this.reservaService.makeReservation(data).subscribe((data) => {
       console.log(data);
     });
+    this.getReservas();
   }
 
   toggleSeleccion(index: number) {
