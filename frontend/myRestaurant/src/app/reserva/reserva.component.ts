@@ -6,8 +6,17 @@ import { DatePipe } from '@angular/common';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
-
 export interface Reserva {
+  hora: string;
+  personas: number;
+  fecha: string;
+  mesa: number;
+  id: number;
+  seleccionado: boolean;
+  local: string;
+}
+
+export interface Reserva1 {
   fecha: string;
   horas_disponibles: string[];
   mensaje: string;
@@ -31,7 +40,7 @@ export interface EditReserva {
 export class ReservaComponent implements OnInit {
 
   formattedDate: string | null;
-  reserva: Reserva;
+  reserva: Reserva1;
   form: FormGroup;
   reservacionForm: FormGroup;
   espaciosDisponiblesArray: string[];
@@ -79,9 +88,24 @@ export class ReservaComponent implements OnInit {
   }
 
   editReservation() {
-    console.log(this.dataSource.data);
+    const reservasSeleccionadas = this.selection.selected;
+    console.log(reservasSeleccionadas);
+    const dataToSend: { id: number; mesa: number; personas: number; hora: string; fecha: string; local: string }[] = [];
 
-    const datat = {
+    console.log(this.dataSource.data);
+    reservasSeleccionadas.forEach(reserva => {
+      const datat = {
+        id: reserva.id,
+        mesa: reserva.mesa,
+        personas: reserva.personas,
+        hora: reserva.hora,
+        fecha: reserva.fecha,
+        local: reserva.local
+      };
+      dataToSend.push(datat); // Agregar los datos de la reserva al arreglo
+      
+    });
+   /* const datat = {
       id: this.dataSource.data[0].numeroReserva,
       mesa: this.dataSource.data[0].mesa,
       personas: this.dataSource.data[0].personas,
@@ -90,8 +114,9 @@ export class ReservaComponent implements OnInit {
       local: this.dataSource.data[0].local
     };
     console.log("ACA");
-    console.log(datat);
-    this.reservaService.editReserva(datat).subscribe((data) => {
+    console.log(datat);*/
+    console.log(dataToSend);
+    this.reservaService.editReserva(dataToSend[0]).subscribe((data) => {
       this.getReservas();
     });
   }
