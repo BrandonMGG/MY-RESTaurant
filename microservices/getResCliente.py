@@ -1,21 +1,25 @@
-import datetime
+
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
-import re
-import random
 
 app = Flask(__name__)
+CORS(app)
 
 # Ruta para obtener las reservaciones de un cliente en especifico
 # AGREGAR NUMERO DE RESERVA Y FECHA
-@app.route('/getResCliente', methods=['GET'])
+@app.route('/getResCliente', methods=['GET', 'OPTIONS'])
 def obtener_resCliente():
+    if request.method == 'OPTIONS':
+        return jsonify({'message': 'OK'}), 200
     try:
+        if request.is_json:
+            data = request.get_json()
         # abre el archivo JSON
         with open('reservacionesDB.json') as f:
             reservaciones = json.load(f)
         # obtener el id del cliente
-        cliente = request.json.get('cliente')
+        cliente = data.get('cliente')
         # lista de reservaciones del cliente
         if cliente is None:
             return jsonify("Debe proporcionar el ID del cliente en los parámetros de la URL."), 400
@@ -36,26 +40,12 @@ def obtener_resCliente():
 
         # Si hay reservaciones para el cliente
         if len(listaRes) > 0:
-            # Crear respuesta JSON
-            response = jsonify({"reservas": listaRes})
-            # Agregar encabezados CORS
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-            response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-            return response
+            return jsonify({"reservas": listaRes})
         else:
-            # Devuelve la lista de reservas realizadas para cada fecha
-            response = jsonify("El usuario solicitado no cuenta con reservaciones.")
-            # Agregar encabezados CORS
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-            response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-            return response
+            return jsonify("El usuario solicitado no cuenta con reservaciones.")
     except FileNotFoundError:
         # Enviar respuesta con el código de estado 404 si el archivo no se encuentra
-        response = jsonify({"respuesta": "El archivo de reservaciones no se ha encontrado."})
-        response.status_code = 404
-        return response
+        return jsonify({"respuesta": "El archivo de reservaciones no se ha encontrado."}), 404
     
 if __name__ == '__main__':
     app.run(debug=True)
