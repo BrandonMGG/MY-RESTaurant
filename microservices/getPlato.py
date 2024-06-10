@@ -12,15 +12,11 @@ def getPlato():
         return jsonify({'message': 'OK'}), 200
 
     try:
-        if request.is_json:
-            # Cargar el archivo JSON
-            with open('db.json', 'r') as file:
-                data = json.load(file)
+        # Cargar el archivo JSON
+        with open('db.json', 'r') as file:
+            data = json.load(file)
 
-            return jsonify(data), 200
-
-        else:
-            return jsonify({"mensaje": "La solicitud no contiene un JSON válido."}), 400
+        return jsonify(data), 200
 
     except FileNotFoundError:
         return jsonify({"mensaje": "El archivo de base de datos no se ha encontrado."}), 500
