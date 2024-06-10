@@ -1,62 +1,62 @@
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 # Ruta para agregar horas al horario
-@app.route('/addReservation', methods=['POST'])
+@app.route('/addReservation', methods=['POST','OPTIONS'])
 def agregar_reserva():
+    if request.method == 'OPTIONS':
+        return jsonify({'message': 'OK'}), 200
     try:
-        # abre el archivo JSON
-        with open('reservacionesDB.json') as f:
-            reservaciones = json.load(f)
-        # leer lo que viene en el request
-        fecha = request.json.get('fecha')
-        hora = request.json.get('hora')
-        mesa = request.json.get('mesa')
-        personas = request.json.get('personas')
-        cliente = request.json.get('cliente')
-        seleccionado = "false"
-        restaurant = request.json.get('local')
-        # calcular el id (este es el que sigue)
-        ident = reservaciones["idx"]
-        # updeate id
-        reservaciones["idx"] = ident+1
-        
-        datos = {
-                "id": ident,
-                "cliente": cliente,
-                "fecha" : fecha,
-                "hora": hora,
-                "mesa": mesa,
-                "personas": personas,
-                "seleccionado": seleccionado,
-                "local" : restaurant}
-        
-        # verificar que la fecha esta en la base de datos
-        if fecha in reservaciones["reservaciones"]:
-            reservaciones["reservaciones"][fecha][ident] = datos
-        else: # en caso de que no este la fecha, agregarla
-            reservaciones["reservaciones"][fecha] = {"disponibles": []}
-            reservaciones["reservaciones"][fecha][ident] = datos
-        
-        
-        with open('reservacionesDB.json', 'w') as archivo:
-            json.dump(reservaciones, archivo, indent=4)
-        # devuelve la lista de reservas realizadas para cada fecha
-        response = jsonify("Datos actualizados con exito!")
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-        return response
-        
+        if request.is_json:
+            data = request.get_json()
+            print(f"Request JSON: {data}")
+            # abre el archivo JSON
+            with open('reservacionesDB.json') as f:
+                reservaciones = json.load(f)
+            # leer lo que viene en el request
+            fecha = data.get('fecha')
+            hora = data.get('hora')
+            mesa = data.get('mesa')
+            personas = data.get('personas')
+            cliente = data.get('cliente')
+            seleccionado = "false"
+            restaurant = data.get('local')
+            # calcular el id (este es el que sigue)
+            ident = reservaciones["idx"]
+            # updeate id
+            reservaciones["idx"] = ident+1
+            
+            datos = {
+                    "id": ident,
+                    "cliente": cliente,
+                    "fecha" : fecha,
+                    "hora": hora,
+                    "mesa": mesa,
+                    "personas": personas,
+                    "seleccionado": seleccionado,
+                    "local" : restaurant}
+            
+            # verificar que la fecha esta en la base de datos
+            if fecha in reservaciones["reservaciones"]:
+                reservaciones["reservaciones"][fecha][ident] = datos
+            else: # en caso de que no este la fecha, agregarla
+                reservaciones["reservaciones"][fecha] = {"disponibles": []}
+                reservaciones["reservaciones"][fecha][ident] = datos
+            
+            
+            with open('reservacionesDB.json', 'w') as archivo:
+                json.dump(reservaciones, archivo, indent=4)
+            
+            return jsonify("Datos actualizados con exito!")
+        else:
+            return jsonify({"error": "Invalid content type, expected application/json"}), 415
     except FileNotFoundError:
-        response = jsonify("El archivo de reservaciones no se ha encontrado.")
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-        return response
+        return jsonify("El archivo de reservaciones no se ha encontrado.")
 
 
 
