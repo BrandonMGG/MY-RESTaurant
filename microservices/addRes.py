@@ -44,9 +44,18 @@ def agregar_reserva():
         with open('reservacionesDB.json', 'w') as archivo:
             json.dump(reservaciones, archivo, indent=4)
         # devuelve la lista de reservas realizadas para cada fecha
-        return  jsonify("Datos actualizados con exito!") ### DEVOLVER LISTA SIN LAS DISPONIBLES ---------------------------------------
+        response = jsonify("Datos actualizados con exito!")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+        
     except FileNotFoundError:
-        return jsonify({"respuesta":"El archivo de reservaciones no se ha encontrado."}), 404
+        response = jsonify("El archivo de reservaciones no se ha encontrado.")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
 
 
 

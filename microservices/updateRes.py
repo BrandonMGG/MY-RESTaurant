@@ -46,10 +46,19 @@ def actualizar_reservaciones():
         with open('reservacionesDB.json', 'w') as archivo:
             json.dump(reservaciones, archivo, indent=4)
         
-        return jsonify("Los datos de la reservacion han sido actualizados.")
+        response = jsonify("Los datos de la reservacion han sido actualizados.")
+        # Agregar encabezados CORS
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
         
     except FileNotFoundError:
-        return "El archivo de reservaciones no se ha encontrado.", 404
+        response = jsonify("El archivo de reservaciones no se ha encontrado.")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
 
 
 

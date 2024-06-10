@@ -72,6 +72,7 @@
     "reservaciones": {
         "2024-05-11": {
             "1": {
+                "id": "1",
                 "cliente": "alex@gmail.com",
                 "fecha": "2024-05-11",
                 "hora": "15:30",
@@ -101,6 +102,7 @@
         },
         "2024-05-22": {
             "2": {
+                "id": "2",
                 "cliente": "brandon@gmail.com",
                 "fecha": "2024-05-22",
                 "hora": "18:00",
@@ -138,6 +140,7 @@
                 "13:00"
             ],
             "4": {
+                "id": "4",
                 "cliente": "mario@gmail.com",
                 "hora": "10:00",
                 "mesa": 8,
@@ -146,6 +149,7 @@
                 "local": "RESTaurant Cartago"
             },
             "3": {
+                "id": "3",
                 "cliente": "mario@gmail.com",
                 "hora": "11:00",
                 "mesa": 8,
