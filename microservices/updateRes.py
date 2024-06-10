@@ -36,6 +36,7 @@ def actualizar_reservaciones():
             # crear la nueva reservacion
             reservaciones["reservaciones"][fecha][idRes] = {"id": idRes,
                                                             "cliente":cliente,
+                                                            "fecha" : fecha,
                                                             "hora":hora,
                                                             "mesa": mesa,
                                                             "personas": personas,

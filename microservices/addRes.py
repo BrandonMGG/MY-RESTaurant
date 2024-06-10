@@ -27,6 +27,7 @@ def agregar_reserva():
         datos = {
                 "id": ident,
                 "cliente": cliente,
+                "fecha" : fecha,
                 "hora": hora,
                 "mesa": mesa,
                 "personas": personas,
