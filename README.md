@@ -117,7 +117,56 @@ Se envía un correo electrónico al usuario con un enlace para restablecer la co
 El usuario hace clic en el enlace y envía una solicitud a POST /api/auth/reset-password/:token con la nueva contraseña.
 El token se verifica y, si es válido, la contraseña se actualiza en la base de datos.
 
+## Proceso de Diseño de la Aplicación "MY microRESTaurant"  en microservicio
+el proceso de diseño y desarrollo del sistema basado en microservicios para el sitio web del restaurante, conocido como "MY microRESTaurant". El objetivo principal es transformar la arquitectura existente del proyecto a una puramente orientada a microservicios, garantizando funcionalidad, seguridad, y un despliegue eficiente en un entorno local utilizando Minikube.
+Objetivos 
+Mejorar la funcionalidad y usabilidad de la aplicación.
+Aplicar principios de arquitectura orientada a microservicios.
+Implementar una arquitectura puramente orientada a microservicios.
+Descripción del Sistema
+El sistema permitirá a los usuarios realizar reservaciones en diferentes localidades del restaurante, pedir recomendaciones del menú, y a los administradores gestionar dichas reservaciones. Se implementarán varios modelos de seguridad para asegurar la integridad, confidencialidad, y disponibilidad de la información.
 
+### Funcionalidades del sitio web
+Pedir Recomendaciones del Menú
+Los usuarios podrán solicitar recomendaciones del menú.
+Hacer Reservaciones
+Los usuarios podrán hacer y editar reservaciones en cualquiera de las tres localidades del restaurante.
+Administrar Reservaciones
+Los administradores podrán gestionar las reservaciones, incluyendo la creación, actualización y cancelación de las mismas.
+
+### Arquitectura del Sistema
+El sistema se basará en una arquitectura de microservicios, donde cada servicio tendrá una responsabilidad específica. Los componentes principales serán:
+Servicio de Gestión de Reservaciones
+Crear, actualizar y eliminar reservaciones.
+Servicio de Administración de Localidades
+Gestionar las diferentes localidades del restaurante.
+Servicio de Manejo de Menús
+Proveer recomendaciones de menús.
+Servicio de Notificaciones
+Enviar notificaciones a los usuarios sobre sus reservaciones.
+
+
+#### Modelos de Seguridad:
+Para garantizar la seguridad del sistema, se implementarán los siguientes modelos:
+Cifrado y Seguridad de Datos
+HTTPS/TLS: Para asegurar la transmisión segura de datos entre los usuarios y los servicios.
+AES (Advanced Encryption Standard): Para proteger la información almacenada. Integridad y No Repudio
+Firmas Digitales: Para garantizar la autenticidad e integridad de los datos transmitidos.
+Funciones Hash (e.g., SHA-256): Para asegurar que los datos no han sido alterados.
+Documentación de los modelos de 
+###Plan de Trabajo
+Fase de Análisis y Diseño
+Recolección de requisitos.
+Diseño de la arquitectura del sistema.
+seguridad.
+Fase de Implementación
+Desarrollo de los microservicios.
+Implementación de los modelos de seguridad.
+Fase de Pruebas
+Pruebas de seguridad.
+ase de Despliegue
+Configuración y despliegue en Minikube.
+Verificación de la funcionalidad y seguridad en el entorno desplegado.
 
 
 
