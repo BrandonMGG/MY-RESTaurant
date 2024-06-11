@@ -100,6 +100,23 @@ Realizamos ajustes y optimizaciones según sea necesario para mejorar la experie
 12.	getResCliente: Este microservicio se enfoca en la única función de obtener desde la base de datos todas las reservaciones realizadas por un único cliente. Esta es utilizada por el usuario cliente para poder visualizar y administrar sus propias reservaciones.
 13.	sugHora: Este microservicio se enfoca en la única función de sugerir una hora o en su defecto un día de la semana para visitar cualquier restaurante de acuerdo con la entrada del usuario. En caso de que el usuario indique una fecha, este retorna una lista de horas disponibles para la visita al restaurante. Por otro lado, si el usuario define que quiere visitar algún restaurante durante la semana o el fin de semana, se le recomienda un día de la semana de acuerdo con su opetición.
 14.	updateRes: Este microservicio se enfoca en la única función de actualizar las reservaciones realizadas. En caso de que el usuario se un administrador, este puede editar cualquier reservación vigente; en caso de que se trate de un cliente, este solo puede actualizar las reservaciones a su nombre.
+15.	auth-service: Auth Service se encarga de la gestión de usuarios, incluyendo el registro, inicio de sesión, y recuperación de contraseñas. Endpoints:
+POST /api/auth/register: Registra un nuevo usuario.
+POST /api/auth/login: Inicia sesión de un usuario.
+POST /api/auth/forgot-password: Envía un correo electrónico para restablecer la contraseña.
+PUT /api/auth/reset-password/:token: Restablece la contraseña utilizando un token.
+Controladores:
+register: Crea un nuevo usuario con una contraseña encriptada.
+login: Autentica al usuario y retorna un JWT.
+forgotPassword: Genera un token de restablecimiento de contraseña y envía un correo electrónico.
+resetPassword: Restablece la contraseña utilizando el token.
+Proceso de Recuperación de Contraseña:
+El usuario envía una solicitud a POST /api/auth/forgot-password con su correo electrónico.
+Se genera un token y se almacena en la base de datos con una fecha de expiración.
+Se envía un correo electrónico al usuario con un enlace para restablecer la contraseña.
+El usuario hace clic en el enlace y envía una solicitud a POST /api/auth/reset-password/:token con la nueva contraseña.
+El token se verifica y, si es válido, la contraseña se actualiza en la base de datos.
+
 
 
 
