@@ -64,7 +64,7 @@ Realizamos ajustes y optimizaciones según sea necesario para mejorar la experie
 
 ## Diagrama de Arquitectura.
 
-![javascript-logo](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/sugerencia%20horaria/diagrama1.png)
+![javascript-logo](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/sugerencia%20horaria/diagra1.png)
 
 
 
