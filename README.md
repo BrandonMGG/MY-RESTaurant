@@ -143,32 +143,7 @@ En este caso, se utilizó la estrategia de desarrollo local, lo cual permitió q
 
 Cuando se desarrolla una arquitectura en Google Cloud Platform (GCP), la gestión de costos es esencial y debe evaluarse cuidadosamente para asegurar que el proyecto se mantenga dentro del presupuesto. Aquí hay un análisis detallado de los costos asociados con la arquitectura realizada, utilizando los servicios de Google Cloud Functions y Google Natural Language API.
 
-1. Google Cloud Functions
 
-Costos:
-
-_Invocaciones:_ Google Cloud Functions cobra por el número de invocaciones. Cada invocación cuesta $0.0000004.
-_Tiempo de Ejecución y Recursos:_ El costo también depende del tiempo de ejecución y la memoria asignada a cada función. Por ejemplo, $0.0000025 por GB-segundo y $0.00001 por GHz-segundo.
-
-Análisis:
-
-Si cada una de las funciones se invoca 1000 veces al día, esto conduce a unas 4,000 invocaciones diarias. Estimar los recursos de computación por función puede variar, pero suponiendo un uso moderado, podemos calcular un costo aproximado no tan elevado.
-
-2. Google Natural Language API
-
-_Costos:_ Se cobra por cada 1000 caracteres de texto procesado. El costo puede variar dependiendo del modelo utilizado, pero generalmente está alrededor de $1.00 por 1000 caracteres para el análisis de sentimientos.
-
-Análisis:
-Si el análisis de feedback se realiza en textos cortos (aproximadamente 500 caracteres en promedio) 500 veces al día, el costo será una consideración relevante.
-
-_Estrategias de Optimización de Costos:_
-
-1.	Monitorización y Alertas: Utilizar Google Cloud Monitoring para rastrear el uso y costos, configurando alertas para evitar gastos inesperados.
-2.	Ajuste de Recursos: Optimizar la configuración de memoria y CPU de las Cloud Functions basándose en las métricas de uso reales para no sobreprovisionar recursos.
-
-3.	Revisión de Precios y Quotas: Revisar regularmente las opciones de precios de GCP y aplicar a las quotas y descuentos por uso extendido o compromisos a largo plazo.
-
-4.	Caché de Datos: Implementar soluciones de caché para reducir las consultas a bases de datos y APIs externas, minimizando los costos operacionales.
 
 ## Pruebas y Validación: 
 
