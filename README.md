@@ -1,4 +1,4 @@
-# Bienvenidos a la documentación de la aplicacion web My-RESTaurant-2!
+# Bienvenidos a la documentación de la aplicacion web My-RESTaurant-4!
 
 Esta página contiene la documentación general del proyecto.
 
@@ -32,12 +32,11 @@ Todos los microservicios son independientes y están diseñados para realizar un
       •	Almacenamiento de Reservas: Guarda toda la información relacionada con las reservas
 
 
-### Naturaleza orientada a servicios:
-La arquitectura se orienta a servicios al separar las funcionalidades de la aplicación en servicios independientes y reutilizables. Cada servicio cumple una función específica y se comunica directamente con otros servicios según sea necesario. Esto facilita la modularidad, la flexibilidad y la interoperabilidad de la aplicación, permitiendo la incorporación de nuevos servicios y la evolución de la aplicación de manera gradual y eficiente.
+### Naturaleza orientada a microservicios:
+La arquitectura de microservicios separa las funcionalidades de la aplicación en servicios independientes y reutilizables. Cada microservicio cumple una función específica y se comunica directamente con el frontend según sea necesario. Esto facilita la modularidad, la flexibilidad y la interoperabilidad de la aplicación, permitiendo la incorporación de nuevos microservicios y la evolución de la aplicación de manera gradual y eficiente.
 
-Cada función se diseñó para ser independiente y reutilizable, lo que facilita su mantenimiento y actualización. 
-Los servicios se comunican a través de interfaces bien definidas, lo que permite la sustitución o actualización de componentes sin afectar al resto del sistema.
-La separación de funciones permite escalar vertical u horizontalmente según la demanda específica de cada servicio, optimizando los recursos y el rendimiento del sistema de manera eficiente.
+Cada microservicio se diseñó para ser independiente y reutilizable, lo que facilita su mantenimiento y actualización. Los microservicios se comunican con el frontend a través del api gateway, lo que permite un único punto de acceso a cada microservicio disponible. La separación de funciones realizada permite escalar vertical u horizontalmente según la demanda específica de cada microservicio, optimizando los recursos y el rendimiento del sistema de manera eficiente.
+
 
 ### Rediseño del proyecto:
 
@@ -100,7 +99,14 @@ Realizamos ajustes y optimizaciones según sea necesario para mejorar la experie
 12.	getResCliente: Este microservicio se enfoca en la única función de obtener desde la base de datos todas las reservaciones realizadas por un único cliente. Esta es utilizada por el usuario cliente para poder visualizar y administrar sus propias reservaciones.
 13.	sugHora: Este microservicio se enfoca en la única función de sugerir una hora o en su defecto un día de la semana para visitar cualquier restaurante de acuerdo con la entrada del usuario. En caso de que el usuario indique una fecha, este retorna una lista de horas disponibles para la visita al restaurante. Por otro lado, si el usuario define que quiere visitar algún restaurante durante la semana o el fin de semana, se le recomienda un día de la semana de acuerdo con su opetición.
 14.	updateRes: Este microservicio se enfoca en la única función de actualizar las reservaciones realizadas. En caso de que el usuario se un administrador, este puede editar cualquier reservación vigente; en caso de que se trate de un cliente, este solo puede actualizar las reservaciones a su nombre.
-15.	auth-service: Auth Service se encarga de la gestión de usuarios, incluyendo el registro, inicio de sesión, y recuperación de contraseñas. Endpoints:
+15.	Frontend Cloud Function: Sirve como la capa de presentación de la aplicación, proporcionando una interfaz de usuario interactiva que los clientes pueden utilizar para interactuar con el sistema. Esta interfaz incluye formularios para enviar feedback, opciones para solicitar recomendaciones de menú, seleccionar fechas y horas para reservaciones, y visualizar recomendaciones realizadas por el sistema. Interactúa con todos los microservicios para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al microservicio correspondiente, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el servicio recibe la respuesta de estas funciones, la envía de vuelta al Frontend, que luego presenta los resultados al usuario.
+
+_Entrada:_ Acciones del usuario dentro de la interfaz de usuario, como hacer clic en botones, enviar formularios, y solicitudes de información.
+
+_Salida esperada:_ textos con las recomendaciones realizadas por el sistema para peticiones como lo son formularios de feedback, recomendaciones de menú personalizadas, y opciones de reserva.
+
+
+16.	auth-service: Auth Service se encarga de la gestión de usuarios, incluyendo el registro, inicio de sesión, y recuperación de contraseñas. Endpoints:
 POST /api/auth/register: Registra un nuevo usuario.
 POST /api/auth/login: Inicia sesión de un usuario.
 POST /api/auth/forgot-password: Envía un correo electrónico para restablecer la contraseña.
@@ -154,31 +160,20 @@ AES (Advanced Encryption Standard): Para proteger la información almacenada. In
 Firmas Digitales: Para garantizar la autenticidad e integridad de los datos transmitidos.
 Funciones Hash (e.g., SHA-256): Para asegurar que los datos no han sido alterados.
 Documentación de los modelos de 
-### Plan de Trabajo
-###Fase de Análisis y Diseño
-Recolección de requisitos.
-Diseño de la arquitectura del sistema.
-seguridad.
+## Plan de Trabajo
+### Fase de Análisis y Diseño
+- Recolección de requisitos.
+- Diseño de la arquitectura del sistema.
+- seguridad.
 ### Fase de Implementación
-Desarrollo de los microservicios.
-Implementación de los modelos de seguridad.
+- Desarrollo de los microservicios.
+- Implementación de los modelos de seguridad.
 ### Fase de Pruebas
-Pruebas de seguridad.
+- Pruebas de seguridad.
 ### Fase de Despliegue
-Configuración y despliegue en Minikube.
-Verificación de la funcionalidad y seguridad en el entorno desplegado.
+- Configuración y despliegue en Minikube.
+- Verificación de la funcionalidad y seguridad en el entorno desplegado.
 
-
-
-5. Frontend Cloud Function:
-
-_Función:_ Sirve como la capa de presentación de la aplicación, proporcionando una interfaz de usuario interactiva que los clientes pueden utilizar para interactuar con el sistema. Esta interfaz incluye formularios para enviar feedback, opciones para solicitar recomendaciones de menú, seleccionar fechas y horas para reservaciones, y visualizar recomendaciones realizadas por el sistema.
-
-_Entrada:_ Acciones del usuario dentro de la interfaz de usuario, como hacer clic en botones, enviar formularios, y solicitudes de información.
-
-_Salida esperada:_ textos con las recomendaciones realizadas por el sistema para peticiones como lo son formularios de feedback, recomendaciones de menú personalizadas, y opciones de reserva.
-
-_Relación con otras funciones:_ La Frontend Cloud Function interactúa con otros servicios para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al servicio correspondiente, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el servicio recibe la respuesta de estas funciones, la envía de vuelta a la Frontend Cloud Function, que luego presenta los resultados al usuario.
 
 ## Seguridad y escalabilidad.
 
