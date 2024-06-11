@@ -79,14 +79,7 @@ Para cada microservicio se crea un Dockerfile para ser usado por minikube para s
 12.	getResCliente: Este microservicio se enfoca en la única función de obtener desde la base de datos todas las reservaciones realizadas por un único cliente. Esta es utilizada por el usuario cliente para poder visualizar y administrar sus propias reservaciones.
 13.	sugHora: Este microservicio se enfoca en la única función de sugerir una hora o en su defecto un día de la semana para visitar cualquier restaurante de acuerdo con la entrada del usuario. En caso de que el usuario indique una fecha, este retorna una lista de horas disponibles para la visita al restaurante. Por otro lado, si el usuario define que quiere visitar algún restaurante durante la semana o el fin de semana, se le recomienda un día de la semana de acuerdo con su opetición.
 14.	updateRes: Este microservicio se enfoca en la única función de actualizar las reservaciones realizadas. En caso de que el usuario se un administrador, este puede editar cualquier reservación vigente; en caso de que se trate de un cliente, este solo puede actualizar las reservaciones a su nombre.
-15.	Frontend Cloud Function: Sirve como la capa de presentación de la aplicación, proporcionando una interfaz de usuario interactiva que los clientes pueden utilizar para interactuar con el sistema. Esta interfaz incluye formularios para enviar feedback, opciones para solicitar recomendaciones de menú, seleccionar fechas y horas para reservaciones, y visualizar recomendaciones realizadas por el sistema. Interactúa con todos los microservicios para enviar y recibir datos. Cuando un usuario realiza una acción, como enviar feedback o solicitar una recomendación de reserva, esta información se pasa al microservicio correspondiente, que a su vez interactúa con las funciones específicas necesarias para procesar la solicitud. Una vez que el servicio recibe la respuesta de estas funciones, la envía de vuelta al Frontend, que luego presenta los resultados al usuario.
-
-_Entrada:_ Acciones del usuario dentro de la interfaz de usuario, como hacer clic en botones, enviar formularios, y solicitudes de información.
-
-_Salida esperada:_ textos con las recomendaciones realizadas por el sistema para peticiones como lo son formularios de feedback, recomendaciones de menú personalizadas, y opciones de reserva.
-
-
-16.	auth-service: Auth Service se encarga de la gestión de usuarios, incluyendo el registro, inicio de sesión, y recuperación de contraseñas. Endpoints:
+15.	auth-service: Auth Service se encarga de la gestión de usuarios, incluyendo el registro, inicio de sesión, y recuperación de contraseñas. Endpoints:
 POST /api/auth/register: Registra un nuevo usuario.
 POST /api/auth/login: Inicia sesión de un usuario.
 POST /api/auth/forgot-password: Envía un correo electrónico para restablecer la contraseña.
@@ -161,7 +154,7 @@ En cuanto a las consideraciones de seguridad, hemos implementado un microservici
 
 ## Gestión de errores.
 
-Para esta arquitectura, los errores se basan en "bad requests" y pueden ser generadas por una mala inserción de los datos requeridos en cada uno de los campos por parte del usuario. Estos errores no hacen que el sistema se caiga o deje de funcionar, ya que cuando se detecta alguna inconsistencia en los requests se devuelve un mensaje que le indica al usuario lo que ha pasado con su petición o con las diferentes acciones realizadas.
+Para esta arquitectura, los errores se basan en mensajes de error que se envían al frontend y pueden ser generados por una mala inserción de los datos requeridos en cada uno de los campos por parte del usuario. Estos errores no hacen que el sistema se caiga o deje de funcionar, ya que cuando se detecta alguna inconsistencia en los requests se devuelve un mensaje que le indica al usuario lo que ha pasado con su petición o con las diferentes acciones realizadas.
 
 
 ## Estrategias de despliegue
