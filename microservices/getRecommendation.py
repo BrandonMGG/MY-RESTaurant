@@ -29,7 +29,9 @@ def buscar_recomendacion():
                 if (food == "" or food == recomendacion["food"]) and \
                    (dessert == "" or dessert == recomendacion["dessert"]) and \
                    (drink == "" or drink == recomendacion["drink"]):
-                    return jsonify(recomendacion), 200
+                       print(recomendacion)
+                       data = {"platoPrincipal":recomendacion["food"], "bebidas": recomendacion["drink"], "postres" : recomendacion["dessert"]}
+                       return jsonify(data), 200
 
             return jsonify({"mensaje": "No se encontró ninguna recomendación que coincida con los parámetros proporcionados."}), 200
 
