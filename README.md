@@ -6,15 +6,31 @@ Esta página contiene la documentación general del proyecto.
 
 La arquitectura propuesta es una arquitectura de microservicios para una aplicación de menú interactivo y gestión de reservas para un restaurante. La aplicación consta de múltiples microservicios independientes que se comunican mediante APIs ligeras, siguiendo el principio de separación de responsabilidades. El frontend se comunica con los microservicios a través de un API Gateway, que centraliza y gestiona las solicitudes, proporcionando un punto de acceso único. La arquitectura está diseñada para ser altamente modular, flexible y escalable, permitiendo la incorporación de nuevos microservicios y la expansión de funcionalidades de manera eficiente.
 
-### Estructura de la arquitectura (Cloud Functions:):
-La estructura de la arquitectura se basa en los siguientes componentes principales:
+### Estructura de la arquitectura:
+Todos los microservicios son independientes y están diseñados para realizar una función específica. Se comunican por el API Gateway según sea necesario, siguiendo el principio de separación de responsabilidades.
 
-1.	Servicios existentes: La aplicación ya cuenta con servicios para la gestión de menús, recomendaciones de comida y reservas.
-2.	Nuevos servicios: Se agregarán dos nuevos servicios: un servicio de autenticación y un sistema de reservas.
-3.	Separación de responsabilidades:  Todos los servicios se comunican mediante la separación de responsabilidades, lo que significa que cada servicio es responsable de una función específica y se comunica con otros servicios de manera directa según sea necesario.
-4.	Capa de presentación:  Interactúa con los usuarios a través de interfaces de usuario para la gestión de reservas, visualización de menús y recomendaciones, y operaciones de autenticación.
-5.	Capa de lógica de negocio: Contiene la lógica de negocio de la aplicación, incluyendo la gestión de reservas, autenticación de usuarios, recomendaciones de comida, etc.
-6.	Capa de datos: Almacena y gestiona la información necesaria para el funcionamiento de la aplicación, como datos de usuarios, menús, reservas, etc.
+1.	Capa de Presentación:
+
+  	   •  Interfaz de Usuario: Interactúa con los usuarios proporcionando interfaces para la gestión de reservas, visualización de menús, recomendaciones y operaciones de autenticación.
+
+2.	Capa de Lógica de Negocio:
+   
+      •	Lógica de Negocio de Reservas: Incluye la lógica para la gestión completa de reservas, desde la creación hasta la cancelación.
+     	
+      •	Autenticación de Usuarios: Implementa la lógica para autenticar usuarios y gestionar sesiones.
+      
+      •	Recomendaciones de Comida: Contiene los algoritmos y la lógica para generar recomendaciones de platos.
+      
+      •	Gestión de Menús: Incluye la lógica necesaria para mostrar menús.
+
+3.	Capa de Datos:
+
+      •	Almacenamiento de Datos de Usuarios: Gestiona la información de los usuarios, como credenciales y perfiles, en una base de datos de mongo.
+     	
+      •	Almacenamiento de Menús: Almacena los detalles de los menús del restaurante.
+      
+      •	Almacenamiento de Reservas: Guarda toda la información relacionada con las reservas
+
 
 ### Naturaleza orientada a servicios:
 La arquitectura se orienta a servicios al separar las funcionalidades de la aplicación en servicios independientes y reutilizables. Cada servicio cumple una función específica y se comunica directamente con otros servicios según sea necesario. Esto facilita la modularidad, la flexibilidad y la interoperabilidad de la aplicación, permitiendo la incorporación de nuevos servicios y la evolución de la aplicación de manera gradual y eficiente.
