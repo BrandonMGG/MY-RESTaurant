@@ -68,47 +68,24 @@ Realizamos ajustes y optimizaciones según sea necesario para mejorar la experie
 
 
 
-## Descripción de las Cloud Functions.
+## Descripción de los microservicios.
 
-1.	Analyze-sentiment:
+1.	addHours: Este microservicio se enfoca en la única función de agregar horas al horario de atención actual para un día en específico. Esta recibe un request que contiene la fecha en que se quiere extender el horario y la hora que se desea agregar de más.
+2.	addRes: Este microservicio se enfoca en la única función de agregar una reserva por parte de un cliente al especificar los datos requeridos, los cuales incluyen fecha, hora y el local en que se hace la reservación entre otras.
+3.	analyze: Este microservicio se enfoca en la única función de analizar el sentimiento presente en el texto de retroalimentación de la aplicación que envía cada usuario, y devuelve un texto con la respuesta de acuerdo con el sentimiento detectado.
+4.	apiGateway: Este microservicio se enfoca en la única función de redireccionar las peticiones provenientes del frontend a cada uno de los microservicios según corresponda, utilizando el método (PUT, GET, POST, etc.) correspondiente.
+5.	delRes: Este microservicio se enfoca en la única función de eliminar una reservación. Esta utiliza solamente el id de la reservación correspondiente y en la base de datos se busca y elimina el objeto.
+6.	getAllRes: Este microservicio es utilizado por el usuario administrador para obtener una lista de todas las reservaciones realizadas por los demás usuarios con toda su información correspondiente.
+7.	getHours: Este microservicio se enfoca en la única función de obtener las horas definidas como el horario de atención del restaurante.
+8.	getLocal: Este microservicio se enfoca en la única función de obtener desde la base de datos la lista de los 3 locales disponibles para poder realizar una reservación.
+9.	getMesas: Este microservicio se enfoca en la única función de obtener desde la base de datos la lista de mesas disponibles con las que se cuenta, de forma que el cliente pueda elegir una mesa y reservar su espacio.
+10.	getPlato: Este microservicio se enfoca en la única función de buscar en la base de datos y devolver la lista de productos que ofrece el restaurante.
+11.	getRecommendation: Este microservicio se enfoca en la única función de dar una recomendación dada una combinación de una o dos entradas, se procesa y se devuelve la recomendación con plato principal, bebida y postre.
+12.	getResCliente: Este microservicio se enfoca en la única función de obtener desde la base de datos todas las reservaciones realizadas por un único cliente. Esta es utilizada por el usuario cliente para poder visualizar y administrar sus propias reservaciones.
+13.	sugHora: Este microservicio se enfoca en la única función de sugerir una hora o en su defecto un día de la semana para visitar cualquier restaurante de acuerdo con la entrada del usuario. En caso de que el usuario indique una fecha, este retorna una lista de horas disponibles para la visita al restaurante. Por otro lado, si el usuario define que quiere visitar algún restaurante durante la semana o el fin de semana, se le recomienda un día de la semana de acuerdo con su opetición.
+14.	updateRes: Este microservicio se enfoca en la única función de actualizar las reservaciones realizadas. En caso de que el usuario se un administrador, este puede editar cualquier reservación vigente; en caso de que se trate de un cliente, este solo puede actualizar las reservaciones a su nombre.
 
-_Función:_ Esta Cloud Function recibe el feedback de los clientes, realiza un análisis de sentimientos y envía una respuesta acorde utilizando Google Natural Language API.
 
-_Entrada:_ El feedback del cliente en formato de texto.
-
-_Salida esperada:_ Las coordenadas del feedback analizado y un texto predefinido según el sentimiento detectado en el feed back y un emoji acorde a ese sentimiento.
-
-_Relación con otras funciones:_ La salida de esta función es utilizada por el servicio para informar al usuario sobre lo que se entiende del feedback proporcionado por el usuario.
-
-2.	Food-recommendation:
-   
-_Función:_ Esta Cloud Function ofrece recomendaciones de combinaciones de comidas a partir de un menú predefinido.
-
-_Entrada:_ Preferencias del cliente ya sea el plato principal, una bebida o un postre.
-
-_Salida esperada:_ Una recomendación que incluye un plato principal, una bebida y un postre.
-
-_Relación con otras funciones:_ La salida de esta función es utilizada por el servicio para personalizar la experiencia del cliente y ofrecer sugerencias al/a los platillos que se quieran consumir. También es mostrada directamente al cliente a través del Frontend Cloud Function.
-
-3.	Servicio de Autenticacion:
-
-__Capacidad de registro de nuevos usuarios:__ Este servicio permite a los usuarios registrarse en la aplicación proporcionando la información necesaria, correo electrónico y contraseña. La información de los usuarios registrados se almacena de forma segura en la base de datos.
-
-__Autenticación segura de usuarios registrados:__ Los usuarios registrados pueden iniciar sesión en la aplicación mediante sus credenciales de acceso (correo electrónico y contraseña). El servicio de autenticación verifica las credenciales proporcionadas para garantizar la identidad del usuario y otorgar acceso a las funciones autorizadas.
-
-__Restablecimiento de contraseña para usuarios olvidadizos:__ En caso de que un usuario olvide su contraseña, este servicio proporciona un mecanismo seguro para restablecerla. Puede implicar enviar un enlace de restablecimiento de contraseña al correo electrónico del usuario.
-
-__Gestión de roles de usuario para diferentes niveles de acceso:__ El servicio de autenticación administra los roles de usuario, lo que significa que puede asignar diferentes niveles de acceso y permisos a los usuarios según su rol en la aplicación. Por ejemplo, puede haber roles de cliente y administrador, cada uno con sus propias capacidades y restricciones.
-
-4. Sistema de Reservas:
-   
-__Posibilidad de visualizar disponibilidad de servicios:__ Este servicio permite a los usuarios verificar la disponibilidad de mesas o espacios para reservar en el restaurante. Puede mostrar información en tiempo real sobre la disponibilidad de horarios y capacidades de acuerdo con la configuración del restaurante.
-
-__Proceso de reserva intuitivo y fácil de usar:__ El servicio de reservas proporciona una interfaz intuitiva para que los usuarios puedan realizar reservas de manera fácil y eficiente. Esto incluye seleccionar la fecha, hora, número de personas y cualquier otra información relevante para la reserva.
-
-__Cancelación o edición de reserva para usuarios:__ Los usuarios pueden gestionar sus reservas existentes mediante la capacidad de cancelarlas o editarlas según sea necesario. Esto implica actualizar la información de la reserva en la base de datos y liberar el espacio reservado para otros clientes si la reserva se cancela.
-
-__Notificaciones de reservas realizadas:__ Después de que un usuario realice una reserva con éxito, el servicio de reservas puede enviar notificaciones al usuario y al restaurante para confirmar la reserva. Esto garantiza una comunicación clara y reduce la posibilidad de confusiones o conflictos en las reservas.
 
 
 5. Frontend Cloud Function:
