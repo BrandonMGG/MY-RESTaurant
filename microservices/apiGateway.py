@@ -41,9 +41,9 @@ def gateway(service, path):
     elif method == 'PUT':
         resp = requests.put(url, json=request.json)
     elif method == 'DELETE':
-        resp = requests.delete(url)
-    elif method == 'DELETE':
-        resp = requests.delete(url)
+        resp = requests.delete(url, json=request.json)
+    elif method == 'OPTIONS':
+        resp = requests.options(url)
     else:
         return jsonify({'error': 'Method not supported'}), 405
 
