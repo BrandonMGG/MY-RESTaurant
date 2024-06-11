@@ -4,7 +4,7 @@ Esta página contiene la documentación general del proyecto.
 
 ## Visión general de la arquitectura.
 
-La arquitectura propuesta es una arquitectura orientada a servicios (SOA) para una aplicación de menú interactivo y gestión de reservas para un restaurante. La aplicación consta de varios servicios interconectados que se comunican mediante la separación de responsabilidades. La arquitectura está diseñada para ser modular, flexible y escalable, permitiendo la incorporación de nuevos servicios y la expansión de funcionalidades de manera eficiente.
+La arquitectura propuesta es una arquitectura de microservicios para una aplicación de menú interactivo y gestión de reservas para un restaurante. La aplicación consta de múltiples microservicios independientes que se comunican mediante APIs ligeras, siguiendo el principio de separación de responsabilidades. El frontend se comunica con los microservicios a través de un API Gateway, que centraliza y gestiona las solicitudes, proporcionando un punto de acceso único. La arquitectura está diseñada para ser altamente modular, flexible y escalable, permitiendo la incorporación de nuevos microservicios y la expansión de funcionalidades de manera eficiente.
 
 ### Estructura de la arquitectura (Cloud Functions:):
 La estructura de la arquitectura se basa en los siguientes componentes principales:
