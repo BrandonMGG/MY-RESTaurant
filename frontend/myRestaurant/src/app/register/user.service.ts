@@ -20,6 +20,7 @@ export class UserService {
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,14 @@ export class UserService {
       .set('email', email)
       .set('password', password)
       .set('confirm', confirm);
-    console.log(params)
+    const data ={
+      username: email,
+      password: password,
+     
+    }
+    console.log(data)
     // Realizar la solicitud GET con los parámetros en la URL
-    return this.httpClient.get<any>(`${this.url}/register`, { params: params });
+    return this.httpClient.post<any>(environment.auth+'register', data);
   }
 }
 

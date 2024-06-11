@@ -1,11 +1,10 @@
-ROM node:16-alpine
-
-WORKDIR /app
-
-COPY package.json .
+FROM node AS builder
+WORKDIR /myRestaurant
+COPY package.json package-lock.json ./
 RUN npm install
-
 COPY . .
-RUN npm run build --configuration=production
-
-CMD ["ng", "serve", "-o"]
+RUN npm run build
+FROM nginx:alpine
+COPY --from=builder /myRestaurant/dist/my-restaurant /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

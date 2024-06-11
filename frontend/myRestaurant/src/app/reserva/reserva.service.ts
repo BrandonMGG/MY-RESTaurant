@@ -19,32 +19,32 @@ export class ReservaService {
     return this.http.get<any>(this.apiUrl + '/reservacion?' + convertToUrlParams(data));
   }
   getMesas(): Observable<any> {
-    return this.http.get<any>(environment.getMesas +'getMesas');
+    return this.http.get<any>(environment.api +'getMesas/getMesas');
   }
   /*  getHoras(): Observable<any> {
     return this.http.get<any>(this.microservice +'getHoras');
   }*/
   getLocalidades(): Observable<any> {
-    return this.http.get<any>(environment.getLocal+ 'getLocal')
+    return this.http.get<any>(environment.api+ 'getLocal/getLocal')
   }
   getHoras(fecha: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(environment.getHours + 'getHours', fecha, { headers });
+    return this.http.post<any>(environment.api + 'getHours/getHours', fecha, { headers });
   }
   getReservas(cliente: any): Observable<any> {  //Hay que pasar el cliente
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.getResCliente + 'getResCliente', cliente);
+    return this.http.post<any>(environment.api + 'getResCliente/getResCliente', cliente);
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.delete<any>(this.delete + 'delete', { headers: headers, body:id });
+    return this.http.delete<any>(environment.api + 'delRes/delete', { headers: headers, body:id });
   }
   makeReservation(data:any): Observable<any> {
-    return this.http.post<any>(this.microservice + 'addReservation',data);
+    return this.http.post<any>(environment.api + 'addRes/addReservation',data);
   }
   editReserva(data:any): Observable<any> {
-    return this.http.put<any>(environment.update + 'update', data);
+    return this.http.put<any>(environment.api + 'updateRes/update', data);
   }
 }
 

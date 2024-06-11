@@ -15,23 +15,23 @@ export class ReservaAdminService {
   constructor(private http: HttpClient) { }
   
   getReservaAdmin(): Observable<any> {
-    return this.http.get<any>(this.microservice + 'getAllRes')
+    return this.http.get<any>(environment.api + 'getAllRes/getAllRes')
   }
   getLocalidades(): Observable<any> {
-    return this.http.get<any>(this.microservice + 'getLocal')
+    return this.http.get<any>(environment.api + 'getLocal/getLocal')
   }
   agregarHora(data:any): Observable<any> {
-    return this.http.post<any>(this.microservice + 'addHours', data);
+    return this.http.post<any>(environment.api + 'addHours/addHours', data);
   }
    editReserva(data:any): Observable<any> {
-    return this.http.put<any>(this.microservice + 'update', data);
+    return this.http.put<any>(environment.api + 'updateRes/update', data);
   }
   getAllReservations(): Observable<any> {
-    return this.http.get<any>(this.microservice + 'getAllRes');
+    return this.http.get<any>(environment.api + 'getAllRes/getAllRes');
   }
   deleteReserva(id: any): Observable<any> {
     console.log(id)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.delete<any>(this.delete + 'delete', { headers: headers, body:id });
+    return this.http.delete<any>(environment.api + 'delRes/delete', { headers: headers, body:id });
   }
 }
