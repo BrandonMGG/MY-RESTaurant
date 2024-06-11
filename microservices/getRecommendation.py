@@ -19,9 +19,9 @@ def buscar_recomendacion():
             with open('foodDB.json', 'r') as file:
                 data = json.load(file)
 
-            food = req.get('food', "")
-            dessert = req.get('dessert', "")
-            drink = req.get('drink', "")
+            food = req.get('platoPrincipal', "")
+            dessert = req.get('postres', "")
+            drink = req.get('bebidas', "")
 
             # Filtrar recomendaciones basadas en los parámetros proporcionados
             recomendaciones = data["RECOMMENDATIONS"]
