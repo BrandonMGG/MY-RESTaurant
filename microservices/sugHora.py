@@ -1,4 +1,5 @@
 import datetime
+import sys
 from flask import Flask, jsonify, request
 import json
 import re
@@ -137,4 +138,5 @@ def detectar_finde(texto):
     return False
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)

@@ -1,4 +1,5 @@
 import datetime
+import sys
 from flask import Flask, jsonify, request
 from datetime import datetime
 from flask_cors import CORS
@@ -54,4 +55,5 @@ def agregar_horas():
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)

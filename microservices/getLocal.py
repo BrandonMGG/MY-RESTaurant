@@ -1,4 +1,5 @@
 
+import sys
 from flask import Flask, jsonify
 import json
 
@@ -28,6 +29,6 @@ def getLocal():
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return response
     
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)

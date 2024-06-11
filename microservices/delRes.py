@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
@@ -39,4 +40,5 @@ def eliminar_reservaciones():
         return jsonify({"respuesta":"El archivo de reservaciones no se ha encontrado."}), 404
 
 if __name__ == '__main__':
-    app.run(port=5001)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)

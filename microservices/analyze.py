@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, request, jsonify
 from google.cloud import language_v1
 from flask_cors import CORS
@@ -43,8 +44,8 @@ def analyze_sentiment():
         return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)
 
 '''
 Ejemplos de Interpretación

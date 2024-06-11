@@ -1,4 +1,5 @@
 
+import sys
 from flask import Flask, jsonify, request
 import json
 from flask_cors import CORS
@@ -42,4 +43,5 @@ def obtener_reservaciones():
         return response
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)

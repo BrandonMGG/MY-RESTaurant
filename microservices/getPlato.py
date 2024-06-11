@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
@@ -22,4 +23,5 @@ def getPlato():
         return jsonify({"mensaje": "El archivo de base de datos no se ha encontrado."}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(port=port)
