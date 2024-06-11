@@ -154,17 +154,17 @@ AES (Advanced Encryption Standard): Para proteger la información almacenada. In
 Firmas Digitales: Para garantizar la autenticidad e integridad de los datos transmitidos.
 Funciones Hash (e.g., SHA-256): Para asegurar que los datos no han sido alterados.
 Documentación de los modelos de 
-###Plan de Trabajo
-Fase de Análisis y Diseño
+### Plan de Trabajo
+###Fase de Análisis y Diseño
 Recolección de requisitos.
 Diseño de la arquitectura del sistema.
 seguridad.
-Fase de Implementación
+### Fase de Implementación
 Desarrollo de los microservicios.
 Implementación de los modelos de seguridad.
-Fase de Pruebas
+### Fase de Pruebas
 Pruebas de seguridad.
-ase de Despliegue
+### Fase de Despliegue
 Configuración y despliegue en Minikube.
 Verificación de la funcionalidad y seguridad en el entorno desplegado.
 
