@@ -155,9 +155,6 @@ Enviar notificaciones a los usuarios sobre sus reservaciones.
 #### Modelos de Seguridad:
 Para garantizar la seguridad del sistema, se implementarán los siguientes modelos:
 Cifrado y Seguridad de Datos
-HTTPS/TLS: Para asegurar la transmisión segura de datos entre los usuarios y los servicios.
-AES (Advanced Encryption Standard): Para proteger la información almacenada. Integridad y No Repudio
-Firmas Digitales: Para garantizar la autenticidad e integridad de los datos transmitidos.
 Funciones Hash (e.g., SHA-256): Para asegurar que los datos no han sido alterados.
 Documentación de los modelos de 
 ## Plan de Trabajo
@@ -175,21 +172,12 @@ Documentación de los modelos de
 - Verificación de la funcionalidad y seguridad en el entorno desplegado.
 
 
-## Seguridad y escalabilidad.
+## Seguridad
 
 1. Seguridad
 
-En cuanto a las consideraciones de seguridad, los datos utilizados son transferidos por medio de metodos HTTP (en este caso específico GET) para todas las Cloud Funcions, y las bases de datos utilizadas se ubican en cada una de las Cloud Functions que lo requieren(recomendacion de comida y recomendacion de hora para posibles reservaciones), lo que asegura su fiabilidad y consistencia.
+En cuanto a las consideraciones de seguridad, hemos implementado un microservicio de autenticación utilizando JWT (JSON Web Tokens). Este microservicio garantiza que solo los usuarios autenticados puedan acceder a las funcionalidades protegidas de la aplicación. Los datos utilizados son transferidos por medio de métodos HTTP para todos los microservicios, y las bases de datos utilizadas se encuentran en mongo y archivos json para cada uno de los microservicios que lo requieren (recomendación de comida y reserva etc), lo que asegura su fiabilidad y consistencia.
 
-2. Escalabilidad
-
-En cuanto a la escalabilidad de las funciones realizadas, las consideraciones aplican a nivel general dado que se trata de funciones independientes del sistema. Estas consideraciones incluyen:
-
-Almacenamiento de Datos: Es posible utilizar servicios como Cloud Firestore o Cloud Bigtable, que escalan automáticamente para manejar grandes volúmenes de datos y picos de tráfico sin degradación del rendimiento.
-
-Balanceo de Carga: La arquitectura actual del sistema hace posiblemplementar el balanceo de carga HTTP(S) de Google Cloud de manera que se pueda distribuir de manera eficiente las solicitudes entrantes entre las instancias de Cloud Functions, mejorando el rendimiento y la disponibilidad.
-
-Diseño sin servidor: Esto nos permitió facilitar la escalabilidad individual de las funciones sin afectar otras partes del sistema, de forma que cada componente sea escalado de manera independiente según sea necesario, optimizando los recursos y reduciendo costos.
 
 ## Gestión de errores.
 
@@ -198,11 +186,8 @@ Para esta arquitectura, los errores se basan en "bad requests" y pueden ser gene
 
 ## Estrategias de despliegue
 
-En este caso, se utilizó la estrategia de desarrollo local, lo cual permitió que se desarrollara y probara cada una de las funciones del proyecto utilizando un repositorio de GitHub para el control de versiones del código y el desarrollo incremental. Posteriormente, una vez que se encontraran funcionando las funciones desarrolladas, se procedió a hacer deploy de las mismas en la plataforma de Google Cloud.
+En este caso, se utilizó la estrategia de desarrollo local, lo cual permitió que se desarrollara y probara cada una de las funciones del proyecto utilizando un repositorio de GitHub para el control de versiones del código y el desarrollo incremental.
 
-## Consideraciones de costos
-
-Cuando se desarrolla una arquitectura en Google Cloud Platform (GCP), la gestión de costos es esencial y debe evaluarse cuidadosamente para asegurar que el proyecto se mantenga dentro del presupuesto. Aquí hay un análisis detallado de los costos asociados con la arquitectura realizada, utilizando los servicios de Google Cloud Functions y Google Natural Language API.
 
 
 
@@ -227,11 +212,6 @@ Se prueba que dada una petición de recomendación, se devuelva una respuesta co
 
 ![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/food.jpg)
 
-### Recomendación de horario
-
-Se prueba que dada una petición por parte del usuario para obtener una recomendación de un día y una hora para reservar o visitar el restaurante se haga de manera coherente con respecto a lo que proporciona la base de datos.
-
-![imagen](https://github.com/BrandonMGG/MY-RESTaurant/blob/main/horario.jpg)
 
 ## Bibliografia
 
