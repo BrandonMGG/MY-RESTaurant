@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
 from google.cloud import language_v1
-from dotenv import load_dotenv
 from flask_cors import CORS
-import json
 
 app = Flask(__name__)
 CORS(app)
