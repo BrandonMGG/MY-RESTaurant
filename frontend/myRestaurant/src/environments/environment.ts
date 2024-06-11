@@ -11,7 +11,11 @@ export const environment = {
   getHours: 'http://127.0.0.1:5003/',
   getMesas: 'http://127.0.0.1:5004/',
   update: 'http://127.0.0.1:5005/',
-  delete :'http://127.0.0.1:5006/'
+  delete :'http://127.0.0.1:5006/',
+  getRecommedation :'http://127.0.0.1:5007/',
+  getPlatos :'http://127.0.0.1:5008/',
+  getfeedback: 'http://127.0.0.1:5009/'
+  
 };
 
 /*

@@ -11,15 +11,14 @@ export class MenuService {
 
   constructor(private http:HttpClient) { }
   getMenu(){
-    return this.http.get<any>(this.apiUrl)
+    return this.http.get<any>(environment.getPlatos+'getPlatos')
   }
   getRecomendation(comidas:any){
-    return this.http.get<any>(this.apiUrl+'/menu?'+ convertToUrlParams(comidas))
+    return this.http.post<any>(environment.getRecommedation+'getRecommendation',comidas)
   }
   postFeedback(mensaje: any){
-    return this.http.get<any>(this.apiUrl+'/feedback?'+ convertToUrlParams(mensaje))
+    return this.http.post<any>(environment.getfeedback+'analyze', mensaje)
   }
-  
 }
 function convertToUrlParams(data: any): string {
   const params = new URLSearchParams();

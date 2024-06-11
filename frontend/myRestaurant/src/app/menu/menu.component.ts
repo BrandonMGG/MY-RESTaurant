@@ -71,6 +71,7 @@ export class MenuComponent implements OnInit {
       this.postres = data.postres;  // Asigna los postres recibidos a la variable postres.
       this.bebidas = data.bebidas;  // Asigna las bebidas recibidas a la variable bebidas.
     });
+    
   }
 
   /**
@@ -86,10 +87,17 @@ export class MenuComponent implements OnInit {
       postres: this.formulario.value.postres,
       bebidas: this.formulario.value.bebidas,
     };
+    console.log("Recomendacion");
+    console.log(data);
     this.menuService.getRecomendation(data).subscribe((data) => {
       this.recomendation = data;
     });
     this.updateMenu();
+    this.formulario.reset({
+      platoPrincipal: '',
+      postres: '',
+      bebidas: ''
+    });
   }
 
   /**
@@ -100,7 +108,7 @@ export class MenuComponent implements OnInit {
  */
   postFeedback() {
     const mensaje = {  // Obtiene el mensaje de feedback del formulario.
-      mensaje: this.formFeedback.value.feedbackControl
+      text: this.formFeedback.value.feedbackControl
     };
     // Realiza una solicitud al servicio menuService para enviar el feedback.
     this.menuService.postFeedback(mensaje).subscribe((data) => {

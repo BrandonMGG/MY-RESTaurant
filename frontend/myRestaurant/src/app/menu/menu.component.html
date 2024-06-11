@@ -43,8 +43,8 @@
                 {{recomendation?.bebidas}}</p>
         </div>
         <div class="recom-container">
-            <p *ngIf="recomendation?.error">
-                {{recomendation?.error}}</p>
+            <p *ngIf="recomendation?.mensaje">
+                {{recomendation?.mensaje}}</p>
         </div>
         <div *ngIf="recomendation">
             <form [formGroup]="formFeedback">
